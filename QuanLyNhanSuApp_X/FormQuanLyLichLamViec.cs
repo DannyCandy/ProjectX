@@ -13,33 +13,83 @@ namespace QuanLyNhanSuApp
 {
     public partial class FormQuanLyLichLamViec : Form
     {
+        private bool isSelf = false;
+        private string selfQuery = string.Empty;
         public FormQuanLyLichLamViec()
         {
             InitializeComponent();
         }
 
+        public FormQuanLyLichLamViec(string query)
+        {
+            InitializeComponent();
+            isSelf = true;
+            selfQuery = query;
+        }
+
         private void FormQuanLyLichLamViec_Load(object sender, EventArgs e)
         {
-            try
+            if (isSelf)
             {
-                BindToDataGridView();
-               
-                // Thiết lập định dạng hiển thị thành 24 giờ
-                dateTimePickerGioVao.Format = DateTimePickerFormat.Custom;
-                dateTimePickerGioVao.CustomFormat = "HH:mm:ss";
+                try
+                {
+                    BindToDataGridView(selfQuery);
 
-                dateTimePickerGioRa.Format = DateTimePickerFormat.Custom;
-                dateTimePickerGioRa.CustomFormat = "HH:mm:ss";
+                    // Thiết lập định dạng hiển thị thành 24 giờ
+                    dateTimePickerGioVao.Format = DateTimePickerFormat.Custom;
+                    dateTimePickerGioVao.CustomFormat = "HH:mm:ss";
 
-                
+                    dateTimePickerGioRa.Format = DateTimePickerFormat.Custom;
+                    dateTimePickerGioRa.CustomFormat = "HH:mm:ss";
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Không thể load dữ liệu Datagridview. Error: " + ex.Message);
+                }
+                finally
+                {
+                    ResetTextBox();
+                    txtMaLichLamViec.ReadOnly = true;
+                    txtNgayLamViec.ReadOnly = true;
+                    txtThang.ReadOnly = true;
+                    txtNam.ReadOnly = true;
+                    txtCaLamViec.ReadOnly = true;
+                    txtMaNhanVien.ReadOnly = true;
+
+                    dateTimePickerGioRa.Enabled = false;
+                    dateTimePickerGioVao.Enabled = false;
+
+                    btnThem.Visible = false;
+                    btnSua.Visible = false;
+                    btnXoa.Visible = false;
+                    btnTraCuu.Visible = false;  
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Không thể load dữ liệu Datagridview. Error: " + ex.Message);
-            }
-            finally
-            {
-                ResetTextBox();
+                try
+                {
+                    BindToDataGridView();
+
+                    // Thiết lập định dạng hiển thị thành 24 giờ
+                    dateTimePickerGioVao.Format = DateTimePickerFormat.Custom;
+                    dateTimePickerGioVao.CustomFormat = "HH:mm:ss";
+
+                    dateTimePickerGioRa.Format = DateTimePickerFormat.Custom;
+                    dateTimePickerGioRa.CustomFormat = "HH:mm:ss";
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Không thể load dữ liệu Datagridview. Error: " + ex.Message);
+                }
+                finally
+                {
+                    ResetTextBox();
+                }
             }
 
         }
@@ -66,17 +116,21 @@ namespace QuanLyNhanSuApp
         {
             DataAccess dataAccess = new DataAccess();
             string query = "SELECT * FROM lichlamviec";
-            dgvFormQuanLyLichLamViec.DataSource = dataAccess.GetData(query);
+            DataTable dataTable = dataAccess.GetData(query);
+            if (dataTable != null)
+            {
+                dgvFormQuanLyLichLamViec.DataSource = dataTable;
+            }
 
         }
 
         private bool checkDateIsEmpty(DataGridViewRow currentRow)
         {
-            if (currentRow.Cells[4] != null && currentRow.Cells[5] != null)
+            if (currentRow.Cells[4].Value.ToString().Equals(string.Empty) && currentRow.Cells[5].Value.ToString().Equals(string.Empty))
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
         private void dgvFormQuanLyLichLamViec_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -196,26 +250,22 @@ namespace QuanLyNhanSuApp
             double hoursDiff = timeDiff.TotalHours;
             if(hoursDiff < 4)
             {
-                message += "Thời gian làm việc không hợp lệ!";
+                message += "Thời gian làm việc tối thiểu của 1 ca làm việc không thể nhỏ hơn 4 giờ!\n";
+            }
+
+            int thangValue = int.Parse(txtThang.Text);
+            Console.WriteLine(thangValue);
+            if (thangValue > 12 || thangValue < 1)
+            {
+                message += "Giá trị của tháng không hợp lệ!\n";
+            }
+            if (txtNam.Text.Length != 4)
+            {
+                message += "Giá trị của năm chưa phù hợp!\n";
             }
             return message;
         }
 
-        private void txtThang_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void txtNam_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
@@ -322,6 +372,79 @@ namespace QuanLyNhanSuApp
                     MessageBox.Show(isValid(), "Cảnh báo");
                 }
             }
+        }
+
+        private void txtCaLamViec_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != (char)Keys.Back)
+            {
+                // Nếu không phải chữ số hoặc dấu phẩy, hủy sự kiện KeyPress
+                e.Handled = true;
+            }
+        }
+
+        private void txtNgayLamViec_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != (char)Keys.Back)
+            {
+                // Nếu không phải chữ số hoặc dấu phẩy, hủy sự kiện KeyPress
+                e.Handled = true;
+            }
+        }
+
+        private void txtThang_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNam_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        //Chuc nang tra cuu
+        private string fieldValue = string.Empty;
+        private void BindToDataGridView(string queryCondition)
+        {
+            DataAccess dataAccess = new DataAccess();
+            string query = "SELECT * FROM lichlamviec WHERE " + queryCondition;
+            DataTable dataTable = dataAccess.GetData(query);
+            if (dataTable != null)
+            {
+                dgvFormQuanLyLichLamViec.DataSource = dataTable;
+            }
+        }
+        private void FormSearchClosed(object sender, FormClosedEventArgs e)
+        {
+            FormSearching_LichLamViec fsearch = sender as FormSearching_LichLamViec;
+            if (fsearch != null)
+            {
+                fieldValue = fsearch.ResultSearching();
+            }
+
+            if (fieldValue.Equals(string.Empty))
+            {
+                BindToDataGridView();
+            }
+            else
+            {
+                Console.WriteLine(fieldValue.ToString());
+                BindToDataGridView(fieldValue);
+            }
+        }
+        private void btnTraCuu_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` " +
+                "WHERE `TABLE_SCHEMA`='employeems' AND `TABLE_NAME`='lichlamviec'";
+            FormSearching_LichLamViec fsearch = new FormSearching_LichLamViec(query, 1,2);
+            fsearch.FormClosed += FormSearchClosed;
+            fsearch.ShowDialog();
         }
     }
 }

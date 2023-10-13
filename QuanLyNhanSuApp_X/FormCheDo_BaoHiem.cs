@@ -13,17 +13,32 @@ namespace QuanLyNhanSuApp
 {
     public partial class FormCheDo_BaoHiem : Form
     {
+        private bool isSelf = false;
+        private string selfQuery = string.Empty;
         public FormCheDo_BaoHiem()
         {
             InitializeComponent();
         }
 
+        public FormCheDo_BaoHiem(string query)
+        {
+            InitializeComponent();
+            isSelf = true;
+            selfQuery = query;
+        }
 
         private void BindToDataGridView()
         {
             DataAccess dataAccess = new DataAccess();
             string query = "SELECT * FROM baohiem";
-            dgvFormQuanLyCheDo_BaoHiem.DataSource = dataAccess.GetData(query);
+            DataTable dataTable = dataAccess.GetData(query);
+            if (dataTable != null)
+            {
+                dgvFormQuanLyCheDo_BaoHiem.DataSource = dataTable;
+                // Đặt định dạng hiển thị cho cột ngày (indexColumn là chỉ số cột trong DataGridView)
+                dgvFormQuanLyCheDo_BaoHiem.Columns[3].DefaultCellStyle.Format = "dd/MM/yyyy";
+                dgvFormQuanLyCheDo_BaoHiem.Columns[6].DefaultCellStyle.Format = "dd/MM/yyyy";
+            }
         }
 
         private void ResetTextBox()
@@ -41,38 +56,75 @@ namespace QuanLyNhanSuApp
 
         private void FormCheDo_BaoHiem_Load(object sender, EventArgs e)
         {
-            try
+            if (isSelf)
             {
-                BindToDataGridView();
+                try
+                {
+                    BindToDataGridView(selfQuery);
 
-                dateTimePickerNgayCap.Format = DateTimePickerFormat.Custom;
-                dateTimePickerNgayCap.CustomFormat = "yyyy-MM-dd";
+                    dateTimePickerNgayCap.Format = DateTimePickerFormat.Custom;
+                    dateTimePickerNgayCap.CustomFormat = "yyyy-MM-dd";
 
-                dateTimePickerNgayKetThuc.Format = DateTimePickerFormat.Custom;
-                dateTimePickerNgayKetThuc.CustomFormat = "yyyy-MM-dd";
+                    dateTimePickerNgayKetThuc.Format = DateTimePickerFormat.Custom;
+                    dateTimePickerNgayKetThuc.CustomFormat = "yyyy-MM-dd";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Không thể load dữ liệu Datagridview. Error: " + ex.Message);
+                }
+                finally
+                {
+                    ResetTextBox();
+                    btnSua.Visible = false;
+                    btnThem.Visible = false;
+                    btnXoa.Visible = false;
+                    btnTraCuu.Visible = false;
+                    
+                    txtGhiChu.ReadOnly = true;
+                    txtLoaiBaoHiem.ReadOnly = true;
+                    txtMaBaoHiem.ReadOnly = true;
+                    txtMaNV.ReadOnly = true;
+                    txtMaSoBaoHiem.ReadOnly= true;
+                    txtNoiCap.ReadOnly = true;
+                    dateTimePickerNgayCap.Enabled = false;
+                    dateTimePickerNgayKetThuc.Enabled = false;
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Không thể load dữ liệu Datagridview. Error: " + ex.Message);
-            }
-            finally
-            {
-                ResetTextBox();
+                try
+                {
+                    BindToDataGridView();
+
+                    dateTimePickerNgayCap.Format = DateTimePickerFormat.Custom;
+                    dateTimePickerNgayCap.CustomFormat = "yyyy-MM-dd";
+
+                    dateTimePickerNgayKetThuc.Format = DateTimePickerFormat.Custom;
+                    dateTimePickerNgayKetThuc.CustomFormat = "yyyy-MM-dd";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Không thể load dữ liệu Datagridview. Error: " + ex.Message);
+                }
+                finally
+                {
+                    ResetTextBox();
+                }
             }
         }
 
         private bool checkDateIsEmpty(DataGridViewRow currentRow)
         {
-            if (currentRow.Cells[3] != null && currentRow.Cells[6] != null)
+            if (currentRow.Cells[3].Value.ToString().Equals(string.Empty) && currentRow.Cells[6].Value.ToString().Equals(string.Empty))
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
 
         private void dgvFormQuanLyNhanSu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvFormQuanLyCheDo_BaoHiem.Rows.Count > 0 && checkDateIsEmpty(dgvFormQuanLyCheDo_BaoHiem.SelectedRows[0]))
+            if (dgvFormQuanLyCheDo_BaoHiem.Rows.Count > 0 && !checkDateIsEmpty(dgvFormQuanLyCheDo_BaoHiem.SelectedRows[0]))
             {
                 txtMaNV.Text = dgvFormQuanLyCheDo_BaoHiem.SelectedRows[0].Cells[0].Value.ToString();
                 txtLoaiBaoHiem.Text = dgvFormQuanLyCheDo_BaoHiem.SelectedRows[0].Cells[1].Value.ToString();
@@ -94,7 +146,7 @@ namespace QuanLyNhanSuApp
                 dateTimePickerNgayKetThuc.Value = DateTime.ParseExact(formattedKetThucString, "yyyy-MM-dd", CultureInfo.InvariantCulture);
 
                 
-                txtMaSoBaoHiem.Text = dgvFormQuanLyCheDo_BaoHiem.SelectedRows[0].Cells[6].Value.ToString();
+                txtMaSoBaoHiem.Text = dgvFormQuanLyCheDo_BaoHiem.SelectedRows[0].Cells[7].Value.ToString();
 
             }
         }
@@ -183,8 +235,6 @@ namespace QuanLyNhanSuApp
                 {
                     try
                     {
-
-
                         string timeInString = dateTimePickerNgayCap.Value.ToString("yyyy-MM-dd");
 
                         string timeOutString = dateTimePickerNgayKetThuc.Value.ToString("yyyy-MM-dd");
@@ -283,6 +333,49 @@ namespace QuanLyNhanSuApp
                     MessageBox.Show(isValid(), "Cảnh báo");
                 }
             }
+        }
+
+        //Chuc nang tra cuu
+        private string fieldValue = string.Empty;
+        private void BindToDataGridView(string queryCondition)
+        {
+            DataAccess dataAccess = new DataAccess();
+            string query = "SELECT * FROM baohiem WHERE " + queryCondition;
+            DataTable dataTable = dataAccess.GetData(query);
+            if (dataTable != null)
+            {
+                dgvFormQuanLyCheDo_BaoHiem.DataSource = dataTable;
+                // Đặt định dạng hiển thị cho cột ngày (indexColumn là chỉ số cột trong DataGridView)
+                dgvFormQuanLyCheDo_BaoHiem.Columns[3].DefaultCellStyle.Format = "dd/MM/yyyy";
+                dgvFormQuanLyCheDo_BaoHiem.Columns[6].DefaultCellStyle.Format = "dd/MM/yyyy";
+            }
+        }
+        private void FormSearchClosed(object sender, FormClosedEventArgs e)
+        {
+            FormSearching fsearch = sender as FormSearching;
+            if (fsearch != null)
+            {
+                fieldValue = fsearch.ResultSearching();
+            }
+
+            if (fieldValue.Equals(string.Empty))
+            {
+                BindToDataGridView();
+            }
+            else
+            {
+                Console.WriteLine(fieldValue.ToString());
+                BindToDataGridView(fieldValue);
+            }
+        }
+
+        private void btnTraCuu_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` " +
+                "WHERE `TABLE_SCHEMA`='employeems' AND `TABLE_NAME`='baohiem'";
+            FormSearching fsearch = new FormSearching(query, 5,6);
+            fsearch.FormClosed += FormSearchClosed;
+            fsearch.ShowDialog();
         }
     }
 }

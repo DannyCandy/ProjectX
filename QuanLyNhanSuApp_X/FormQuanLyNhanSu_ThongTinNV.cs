@@ -24,10 +24,13 @@ namespace QuanLyNhanSuApp
             {
                 DataAccess dataAccess = new DataAccess();
                 string query = "SELECT maBoPhan,tenBoPhan FROM bophan";
-                cbbBoPhan.DataSource = dataAccess.GetData(query);
-                cbbBoPhan.DisplayMember = "tenBoPhan"; // Cột hiển thị
-                cbbBoPhan.ValueMember = "maBoPhan"; // Cột giá trị
-
+                DataTable dataTable = dataAccess.GetData(query);
+                if (dataTable != null)
+                {
+                    cbbBoPhan.DataSource = dataAccess.GetData(query);
+                    cbbBoPhan.DisplayMember = "tenBoPhan"; // Cột hiển thị
+                    cbbBoPhan.ValueMember = "maBoPhan"; // Cột giá trị
+                }
             }
             catch (Exception ex)
             {
@@ -42,10 +45,13 @@ namespace QuanLyNhanSuApp
             {
                 DataAccess dataAccess = new DataAccess();
                 string query = "SELECT maPhong,tenPhong FROM phongban";
-                cbbPhongBan.DataSource = dataAccess.GetData(query);
-                cbbPhongBan.DisplayMember = "tenPhong"; // Cột hiển thị
-                cbbPhongBan.ValueMember = "maPhong"; // Cột giá trị
-
+                DataTable dataTable = dataAccess.GetData(query);
+                if (dataTable != null)
+                {
+                    cbbPhongBan.DataSource = dataAccess.GetData(query);
+                    cbbPhongBan.DisplayMember = "tenPhong"; // Cột hiển thị
+                    cbbPhongBan.ValueMember = "maPhong"; // Cột giá trị
+                }
             }
             catch (Exception ex)
             {
@@ -58,7 +64,13 @@ namespace QuanLyNhanSuApp
         {
             DataAccess dataAccess = new DataAccess();
             string query = "SELECT * FROM ttnvcoban";
-            dgvFormQuanLyTTNVCoBan.DataSource = dataAccess.GetData(query);
+            DataTable dataTable = dataAccess.GetData(query);
+            if (dataTable != null)
+            {
+                dgvFormQuanLyTTNVCoBan.DataSource = dataTable;
+                // Đặt định dạng hiển thị cho cột ngày (indexColumn là chỉ số cột trong DataGridView)
+                dgvFormQuanLyTTNVCoBan.Columns[3].DefaultCellStyle.Format = "dd/MM/yyyy";
+            }
         }
 
         private void ResetTextBox()
@@ -329,6 +341,49 @@ namespace QuanLyNhanSuApp
                 
                 cbbGioiTinh.SelectedIndex = selectedGioiTinh;
             }
+        }
+
+        //Chuc nang tra cuu
+        private string fieldValue = string.Empty;
+
+        private void BindToDataGridView(string queryCondition)
+        {
+            DataAccess dataAccess = new DataAccess();
+            string query = "SELECT * FROM ttnvcoban WHERE " + queryCondition;
+            DataTable dataTable = dataAccess.GetData(query);
+            if (dataTable != null)
+            {
+                dgvFormQuanLyTTNVCoBan.DataSource = dataTable;
+                // Đặt định dạng hiển thị cho cột ngày (indexColumn là chỉ số cột trong DataGridView)
+                dgvFormQuanLyTTNVCoBan.Columns[3].DefaultCellStyle.Format = "dd/MM/yyyy";
+            }
+        }
+        private void FormSearchClosed(object sender, FormClosedEventArgs e)
+        {
+            FormSearching fsearch = sender as FormSearching;
+            if (fsearch != null)
+            {
+                fieldValue = fsearch.ResultSearching();
+            }
+
+            if (fieldValue.Equals(string.Empty))
+            {
+                BindToDataGridView();
+            }
+            else
+            {
+                Console.WriteLine(fieldValue.ToString());
+                BindToDataGridView(fieldValue);
+            }
+        }
+
+        private void btnTraCuu_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` " +
+                "WHERE `TABLE_SCHEMA`='employeems' AND `TABLE_NAME`='ttnvcoban'";
+            FormSearching fsearch = new FormSearching(query, 6);
+            fsearch.FormClosed += FormSearchClosed;
+            fsearch.ShowDialog();
         }
     }
 }

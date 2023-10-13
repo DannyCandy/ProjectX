@@ -141,6 +141,12 @@
     <Compile Include="FormCaNhan.Designer.cs">
       <DependentUpon>FormCaNhan.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCaNhan_TTCaNhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCaNhan_TTCaNhan.Designer.cs">
+      <DependentUpon>FormCaNhan_TTCaNhan.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCheDo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -255,6 +261,12 @@
     <Compile Include="FormSearching.Designer.cs">
       <DependentUpon>FormSearching.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSearching_LichLamViec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSearching_LichLamViec.Designer.cs">
+      <DependentUpon>FormSearching_LichLamViec.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormThongTinNV.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCaNhan.resx">
       <DependentUpon>FormCaNhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCaNhan_TTCaNhan.resx">
+      <DependentUpon>FormCaNhan_TTCaNhan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCheDo.resx">
       <DependentUpon>FormCheDo.cs</DependentUpon>
@@ -347,6 +362,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSearching.resx">
       <DependentUpon>FormSearching.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSearching_LichLamViec.resx">
+      <DependentUpon>FormSearching_LichLamViec.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormThongTinNV.resx">
       <DependentUpon>FormThongTinNV.cs</DependentUpon>

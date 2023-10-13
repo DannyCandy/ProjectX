@@ -61,6 +61,7 @@
             this.btnTraCuu.TabIndex = 35;
             this.btnTraCuu.Text = "Tra cứu";
             this.btnTraCuu.UseVisualStyleBackColor = true;
+            this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
             // 
             // btnSua
             // 
@@ -110,6 +111,7 @@
             this.txtCaLamViec.Name = "txtCaLamViec";
             this.txtCaLamViec.Size = new System.Drawing.Size(229, 34);
             this.txtCaLamViec.TabIndex = 26;
+            this.txtCaLamViec.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCaLamViec_KeyPress);
             // 
             // txtNam
             // 
@@ -118,6 +120,7 @@
             this.txtNam.Name = "txtNam";
             this.txtNam.Size = new System.Drawing.Size(292, 34);
             this.txtNam.TabIndex = 25;
+            this.txtNam.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNam_KeyPress);
             // 
             // txtThang
             // 
@@ -126,6 +129,7 @@
             this.txtThang.Name = "txtThang";
             this.txtThang.Size = new System.Drawing.Size(292, 34);
             this.txtThang.TabIndex = 31;
+            this.txtThang.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtThang_KeyPress);
             // 
             // txtNgayLamViec
             // 
@@ -134,6 +138,7 @@
             this.txtNgayLamViec.Name = "txtNgayLamViec";
             this.txtNgayLamViec.Size = new System.Drawing.Size(292, 34);
             this.txtNgayLamViec.TabIndex = 22;
+            this.txtNgayLamViec.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNgayLamViec_KeyPress);
             // 
             // lblMaNV
             // 
@@ -210,7 +215,6 @@
             this.txtMaLichLamViec.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaLichLamViec.Location = new System.Drawing.Point(348, 36);
             this.txtMaLichLamViec.Name = "txtMaLichLamViec";
-            this.txtMaLichLamViec.ReadOnly = true;
             this.txtMaLichLamViec.Size = new System.Drawing.Size(292, 34);
             this.txtMaLichLamViec.TabIndex = 21;
             // 

@@ -46,13 +46,16 @@ namespace QuanLyNhanSuApp
         {
             DataAccess dataAccess = new DataAccess();
             string query = "SELECT * FROM ttcanhan";
-            dgvFormQuanLyTTCaNhan.DataSource = dataAccess.GetData(query);
-
-            // Đặt độ cao của mỗi dòng là 100
-            dgvFormQuanLyTTCaNhan.RowTemplate.Height = 50;
-            DataGridViewImageColumn imageCol = new DataGridViewImageColumn();
-            imageCol = (DataGridViewImageColumn)dgvFormQuanLyTTCaNhan.Columns[12];
-            imageCol.ImageLayout = DataGridViewImageCellLayout.Stretch;
+            DataTable dataTable = dataAccess.GetData(query);
+            if (dataTable != null)
+            {
+                dgvFormQuanLyTTCaNhan.DataSource = dataTable;
+                // Đặt độ cao của mỗi dòng là 100
+                dgvFormQuanLyTTCaNhan.RowTemplate.Height = 50;
+                DataGridViewImageColumn imageCol = new DataGridViewImageColumn();
+                imageCol = (DataGridViewImageColumn)dgvFormQuanLyTTCaNhan.Columns[12];
+                imageCol.ImageLayout = DataGridViewImageCellLayout.Stretch;
+            }
         }
 
         private void ResetTextBox()
@@ -445,6 +448,54 @@ namespace QuanLyNhanSuApp
                 ImageSrc = ofd.FileName;
                 pictureBoxAvt.ImageLocation = ofd.FileName;
             }
+        }
+
+        //Chuc nang tra cuu
+        private string fieldValue = string.Empty;
+
+        private void BindToDataGridView(string queryCondition)
+        {
+            DataAccess dataAccess = new DataAccess();
+            string query = "SELECT * FROM ttcanhan WHERE " + queryCondition;
+            DataTable dataTable = dataAccess.GetData(query);
+            if (dataTable != null)
+            {
+                dgvFormQuanLyTTCaNhan.DataSource = dataTable;
+                // Đặt độ cao của mỗi dòng là 100
+                dgvFormQuanLyTTCaNhan.RowTemplate.Height = 50;
+                DataGridViewImageColumn imageCol = new DataGridViewImageColumn();
+                imageCol = (DataGridViewImageColumn)dgvFormQuanLyTTCaNhan.Columns[12];
+                imageCol.ImageLayout = DataGridViewImageCellLayout.Stretch;
+            }
+        }
+        private void FormSearchClosed(object sender, FormClosedEventArgs e)
+        {
+            FormSearching fsearch = sender as FormSearching;
+            if (fsearch != null)
+            {
+                fieldValue = fsearch.ResultSearching();
+            }
+
+            if (fieldValue.Equals(string.Empty))
+            {
+                BindToDataGridView();
+            }
+            else
+            {
+                Console.WriteLine(fieldValue.ToString());
+                BindToDataGridView(fieldValue);
+            }
+        }
+
+        private void btnTraCuu_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` " +
+                "WHERE `TABLE_SCHEMA`='employeems' " +
+                "AND `TABLE_NAME`='ttcanhan' " +
+                "AND `COLUMN_NAME` <> 'anhDaiDien'";
+            FormSearching fsearch = new FormSearching(query);
+            fsearch.FormClosed += FormSearchClosed;
+            fsearch.ShowDialog();
         }
     }
 }

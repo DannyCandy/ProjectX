@@ -59,6 +59,7 @@
             this.btnTraCuu.TabIndex = 35;
             this.btnTraCuu.Text = "Tra cứu";
             this.btnTraCuu.UseVisualStyleBackColor = true;
+            this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
             // 
             // btnSua
             // 
@@ -98,7 +99,6 @@
             this.txtMaHopDong.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaHopDong.Location = new System.Drawing.Point(873, 34);
             this.txtMaHopDong.Name = "txtMaHopDong";
-            this.txtMaHopDong.ReadOnly = true;
             this.txtMaHopDong.Size = new System.Drawing.Size(294, 34);
             this.txtMaHopDong.TabIndex = 26;
             // 

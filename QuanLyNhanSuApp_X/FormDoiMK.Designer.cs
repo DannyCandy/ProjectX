@@ -39,7 +39,7 @@
             // txtNewPass
             // 
             this.txtNewPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNewPass.Location = new System.Drawing.Point(223, 123);
+            this.txtNewPass.Location = new System.Drawing.Point(554, 212);
             this.txtNewPass.Name = "txtNewPass";
             this.txtNewPass.Size = new System.Drawing.Size(323, 30);
             this.txtNewPass.TabIndex = 4;
@@ -48,7 +48,7 @@
             // 
             this.lblPasswordOld.AutoSize = true;
             this.lblPasswordOld.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPasswordOld.Location = new System.Drawing.Point(36, 126);
+            this.lblPasswordOld.Location = new System.Drawing.Point(367, 215);
             this.lblPasswordOld.Name = "lblPasswordOld";
             this.lblPasswordOld.Size = new System.Drawing.Size(129, 25);
             this.lblPasswordOld.TabIndex = 3;
@@ -58,7 +58,7 @@
             // 
             this.lblRepeatPassword.AutoSize = true;
             this.lblRepeatPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRepeatPassword.Location = new System.Drawing.Point(36, 176);
+            this.lblRepeatPassword.Location = new System.Drawing.Point(367, 265);
             this.lblRepeatPassword.Name = "lblRepeatPassword";
             this.lblRepeatPassword.Size = new System.Drawing.Size(168, 25);
             this.lblRepeatPassword.TabIndex = 3;
@@ -67,7 +67,7 @@
             // txtRepeatPass
             // 
             this.txtRepeatPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRepeatPass.Location = new System.Drawing.Point(223, 173);
+            this.txtRepeatPass.Location = new System.Drawing.Point(554, 262);
             this.txtRepeatPass.Name = "txtRepeatPass";
             this.txtRepeatPass.Size = new System.Drawing.Size(323, 30);
             this.txtRepeatPass.TabIndex = 4;
@@ -75,7 +75,7 @@
             // btnHoanTac
             // 
             this.btnHoanTac.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHoanTac.Location = new System.Drawing.Point(325, 317);
+            this.btnHoanTac.Location = new System.Drawing.Point(656, 406);
             this.btnHoanTac.Name = "btnHoanTac";
             this.btnHoanTac.Size = new System.Drawing.Size(172, 57);
             this.btnHoanTac.TabIndex = 5;
@@ -86,7 +86,7 @@
             // btnXacNhan
             // 
             this.btnXacNhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXacNhan.Location = new System.Drawing.Point(89, 317);
+            this.btnXacNhan.Location = new System.Drawing.Point(420, 406);
             this.btnXacNhan.Name = "btnXacNhan";
             this.btnXacNhan.Size = new System.Drawing.Size(172, 57);
             this.btnXacNhan.TabIndex = 6;
@@ -98,13 +98,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(582, 453);
+            this.ClientSize = new System.Drawing.Size(1244, 675);
             this.Controls.Add(this.btnHoanTac);
             this.Controls.Add(this.btnXacNhan);
             this.Controls.Add(this.txtRepeatPass);
             this.Controls.Add(this.lblRepeatPassword);
             this.Controls.Add(this.txtNewPass);
             this.Controls.Add(this.lblPasswordOld);
+            this.Location = new System.Drawing.Point(0, 31);
             this.Name = "FormDoiMK";
             this.Text = "Đổi mật khẩu";
             this.ResumeLayout(false);

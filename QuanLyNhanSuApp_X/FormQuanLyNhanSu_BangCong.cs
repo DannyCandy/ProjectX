@@ -12,21 +12,32 @@ namespace QuanLyNhanSuApp
 {
     public partial class FormQuanLyNhanSu_BangCong : Form
     {
+        private bool isSelf = false;
+        private string selfQuery = string.Empty;
         public FormQuanLyNhanSu_BangCong()
         {
             InitializeComponent();
         }
 
+        public FormQuanLyNhanSu_BangCong(string query)
+        {
+            InitializeComponent();
+            isSelf = true;
+            selfQuery = query;
+        }
         private void BindToCombobox()
         {
             try
             {
                 DataAccess dataAccess = new DataAccess();
                 string query = "SELECT maLuong FROM bangluongcty";
-                cbbMaLuong.DataSource = dataAccess.GetData(query);
-                cbbMaLuong.DisplayMember = "maLuong"; // Cột hiển thị
-                cbbMaLuong.ValueMember = "maLuong"; // Cột giá trị
-
+                DataTable dataTable = dataAccess.GetData(query);
+                if(dataTable != null )
+                {
+                    cbbMaLuong.DataSource = dataAccess.GetData(query);
+                    cbbMaLuong.DisplayMember = "maLuong"; // Cột hiển thị
+                    cbbMaLuong.ValueMember = "maLuong"; // Cột giá trị
+                }
             }
             catch (Exception ex)
             {
@@ -58,7 +69,11 @@ namespace QuanLyNhanSuApp
         {
             DataAccess dataAccess = new DataAccess();
             string query = "SELECT * FROM bangcongnhanviencoban";
-            dgvFormQuanLyNhanSu.DataSource = dataAccess.GetData(query);
+            DataTable dataTable = dataAccess.GetData(query);
+            if (dataTable != null)
+            {
+                dgvFormQuanLyNhanSu.DataSource = dataTable;
+            }
         }
         
         private void setDefault()
@@ -167,19 +182,55 @@ namespace QuanLyNhanSuApp
        
         private void FormQuanLyNhanSu_BangCong_Load(object sender, EventArgs e)
         {
-            try
+            if (isSelf)
             {
+                try
+                {
+                    BindToDataGridView(selfQuery);
+                    BindToCombobox();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Không thể load dữ liệu Datagridview. Error: " + ex.Message);
+                }
+                finally
+                {
+                    ResetTextBox();
+                    txtMaNV.ReadOnly = true;
+                    txtPhuCapKhac.ReadOnly = true;
+                    txtThuong.ReadOnly = true;
+                    txtKyLuat.ReadOnly = true;
+                    txtThang.ReadOnly = true;
+                    txtNam.ReadOnly = true;
+                    txtSoNgayCong.ReadOnly = true;
+                    txtSoNgayNghi.ReadOnly = true;
+                    txtSoGioLamThem.ReadOnly = true;
+                    txtGhiChu.ReadOnly = true;
+                    txtLuong.ReadOnly = true;
 
-                BindToDataGridView();
-                BindToCombobox();
+                    cbbMaLuong.Enabled = false;
+
+                    btnThem.Visible = false;
+                    btnSua.Visible = false;
+                    btnXoa.Visible = false;
+                    btnTraCuu.Visible = false;
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Không thể load dữ liệu Datagridview. Error: " + ex.Message);
-            }
-            finally
-            {
-                ResetTextBox();
+                try
+                {
+                    BindToDataGridView();
+                    BindToCombobox();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Không thể load dữ liệu Datagridview. Error: " + ex.Message);
+                }
+                finally
+                {
+                    ResetTextBox();
+                }
             }
         }
         private void txtPhuCapKhac_KeyPress(object sender, KeyPressEventArgs e)
@@ -361,6 +412,47 @@ namespace QuanLyNhanSuApp
                 string selectedValue = dgvFormQuanLyNhanSu.SelectedRows[0].Cells[11].Value.ToString();
                 cbbMaLuong.SelectedItem = cbbMaLuong.Items.Cast<DataRowView>().FirstOrDefault(item => item["maLuong"].ToString() == selectedValue);
             }
+        }
+
+        //Chuc nang tra cuu
+        private string fieldValue = string.Empty;
+
+        private void BindToDataGridView(string queryCondition)
+        {
+            DataAccess dataAccess = new DataAccess();
+            string query = "SELECT * FROM bangcongnhanviencoban WHERE " + queryCondition;
+            DataTable dataTable = dataAccess.GetData(query);
+            if (dataTable != null)
+            {
+                dgvFormQuanLyNhanSu.DataSource = dataTable;
+            }
+        }
+        private void FormSearchClosed(object sender, FormClosedEventArgs e)
+        {
+            FormSearching fsearch = sender as FormSearching;
+            if (fsearch != null)
+            {
+                fieldValue = fsearch.ResultSearching();
+            }
+
+            if (fieldValue.Equals(string.Empty))
+            {
+                BindToDataGridView();
+            }
+            else
+            {
+                Console.WriteLine(fieldValue.ToString());
+                BindToDataGridView(fieldValue);
+            }
+        }
+
+        private void btnTraCuu_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` " +
+                "WHERE `TABLE_SCHEMA`='employeems' AND `TABLE_NAME`='bangcongnhanviencoban'";
+            FormSearching fsearch = new FormSearching(query);
+            fsearch.FormClosed += FormSearchClosed;
+            fsearch.ShowDialog();
         }
     }
 }

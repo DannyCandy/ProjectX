@@ -35,7 +35,7 @@
             // 
             this.lblDescription.AutoSize = true;
             this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription.Location = new System.Drawing.Point(294, 213);
+            this.lblDescription.Location = new System.Drawing.Point(516, 325);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(213, 25);
             this.lblDescription.TabIndex = 0;
@@ -45,8 +45,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1244, 675);
             this.Controls.Add(this.lblDescription);
+            this.Location = new System.Drawing.Point(0, 31);
             this.Name = "FormVePM";
             this.Text = "FormVePM";
             this.ResumeLayout(false);

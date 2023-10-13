@@ -55,6 +55,7 @@
             this.btnTraCuu.TabIndex = 56;
             this.btnTraCuu.Text = "Tra cứu";
             this.btnTraCuu.UseVisualStyleBackColor = true;
+            this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
             // 
             // btnSua
             // 
@@ -194,7 +195,7 @@
             this.dateTimePickerNgayThanhLap.Size = new System.Drawing.Size(296, 34);
             this.dateTimePickerNgayThanhLap.TabIndex = 57;
             // 
-            // QuanLyDonVi_PhongBan
+            // FormQuanLyDonVi_PhongBan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -215,7 +216,7 @@
             this.Controls.Add(this.lblMaPhong);
             this.Controls.Add(this.dgvFormQuanLyDonVi_PhongBan);
             this.Location = new System.Drawing.Point(0, 33);
-            this.Name = "QuanLyDonVi_PhongBan";
+            this.Name = "FormQuanLyDonVi_PhongBan";
             this.Text = "QuanLyDonVi_PhongBan";
             this.Load += new System.EventHandler(this.QuanLyDonVi_PhongBan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFormQuanLyDonVi_PhongBan)).EndInit();

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,21 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace QuanLyNhanSuApp
 {
-    public partial class FormSearching : Form
+    public partial class FormSearching_LichLamViec : Form
     {
         private string queryDBToCbb = string.Empty;
         private string queryParam = string.Empty;
         private List<int> listDateIndex = new List<int>();
-        public FormSearching()
+        public FormSearching_LichLamViec()
         {
             InitializeComponent();
         }
 
-        public FormSearching(string query,params int[] dateIndex)
+        public FormSearching_LichLamViec(string query, params int[] dateIndex)
         {
             InitializeComponent();
             queryDBToCbb = query;
@@ -41,18 +39,18 @@ namespace QuanLyNhanSuApp
             cbbTruongTimKiem.ValueMember = "COLUMN_NAME";
         }
 
-        private void FormSearching_Load(object sender, EventArgs e)
+        private void FormSearching_LichLamViec_Load(object sender, EventArgs e)
         {
             try
             {
                 BindToComboboxField();
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
-                MessageBox.Show("Lỗi không thể tải dữ liệu vào Trường tìm kiếm: "+ex.ToString(), "Thông báo");
+                MessageBox.Show("Lỗi không thể tải dữ liệu vào Trường tìm kiếm: " + ex.ToString(), "Thông báo");
             }
         }
-        
+
         private bool isRequire()
         {
             bool isRequire = true;
@@ -80,13 +78,13 @@ namespace QuanLyNhanSuApp
 
         public string ResultSearching()
         {
-            return queryParam;  
+            return queryParam;
         }
 
         private string isValid()
         {
             string message = "";
-            if (dateTimePickerFrom.Value >= dateTimePickerTo.Value)
+            if (dateTimePickerStart.Value >= dateTimePickerEnd.Value)
             {
                 message += "Khoảng thời gian không hợp lệ!\n";
 
@@ -102,25 +100,28 @@ namespace QuanLyNhanSuApp
             }
             else
             {
-                if(listDateIndex.Contains(cbbTruongTimKiem.SelectedIndex))
+                if (listDateIndex.Contains(cbbTruongTimKiem.SelectedIndex))
                 {
-                    if(isValid() == "")
+                    if (isValid() == "")
                     {
-                        queryParam = "`" + cbbTruongTimKiem.Text + "` BETWEEN '" + dateTimePickerFrom.Value.ToString("yyyy-MM-dd") + "' AND '" + dateTimePickerTo.Value.ToString("yyyy-MM-dd") + "'";
+                        string timeStartString = dateTimePickerStart.Value.ToString("HH:mm:ss");
+                        string timeEndString = dateTimePickerEnd.Value.ToString("HH:mm:ss");
+
+                        queryParam = "`" + cbbTruongTimKiem.Text + "` BETWEEN '" + timeStartString + "' AND '" + timeEndString + "'";
                         this.Close();
                     }
                     else
                     {
                         MessageBox.Show(isValid(), "Cảnh báo");
                     }
-                    
+
                 }
                 else
                 {
                     queryParam = "`" + cbbTruongTimKiem.Text + "` LIKE '%" + txtGiaTriTK.Text + "%'";
                     this.Close();
                 }
-                
+
             }
         }
 
@@ -131,33 +132,34 @@ namespace QuanLyNhanSuApp
 
         private void cbbTruongTimKiem_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(listDateIndex.Contains(cbbTruongTimKiem.SelectedIndex))
+            if (listDateIndex.Contains(cbbTruongTimKiem.SelectedIndex))
             {
-                lblFrom.Visible = true;
-                lblTo.Visible = true;
+                lblStart.Visible = true;
+                lblEnd.Visible = true;
 
-                dateTimePickerFrom.Visible = true;
-                dateTimePickerTo.Visible = true;
+                dateTimePickerStart.Visible = true;
+                dateTimePickerEnd.Visible = true;
 
                 lblValueSearch.Visible = false;
                 txtGiaTriTK.Visible = false;
 
-                dateTimePickerFrom.Format = DateTimePickerFormat.Custom;
-                dateTimePickerFrom.CustomFormat = "yyyy-MM-dd";
+                // Thiết lập định dạng hiển thị thành 24 giờ
+                dateTimePickerStart.Format = DateTimePickerFormat.Custom;
+                dateTimePickerStart.CustomFormat = "HH:mm:ss";
 
-                dateTimePickerTo.Format = DateTimePickerFormat.Custom;
-                dateTimePickerTo.CustomFormat = "yyyy-MM-dd";
+                dateTimePickerEnd.Format = DateTimePickerFormat.Custom;
+                dateTimePickerEnd.CustomFormat = "HH:mm:ss";
 
-                /*dateTimePickerFrom.Value = DateTime.ParseExact(DateTime.Now.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
-                dateTimePickerTo.Value = DateTime.ParseExact(DateTime.Now.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture);*/
+                /*dateTimePickerStart.Value = DateTime.ParseExact("00:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                dateTimePickerEnd.Value = DateTime.ParseExact("00:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);*/
             }
             else
             {
-                lblFrom.Visible = false;
-                lblTo.Visible = false;
+                lblStart.Visible = false;
+                lblEnd.Visible = false;
 
-                dateTimePickerFrom.Visible = false;
-                dateTimePickerTo.Visible = false;
+                dateTimePickerStart.Visible = false;
+                dateTimePickerEnd.Visible = false;
 
                 lblValueSearch.Visible = true;
                 txtGiaTriTK.Visible = true;

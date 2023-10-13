@@ -13,6 +13,7 @@ namespace QuanLyNhanSuApp
 {
     public partial class FormQuanLyHopDong : Form
     {
+        private string fieldValue = string.Empty;
         public FormQuanLyHopDong()
         {
             InitializeComponent();
@@ -45,7 +46,14 @@ namespace QuanLyNhanSuApp
         {
             DataAccess dataAccess = new DataAccess();
             string query = "SELECT * FROM hopdong";
-            dgvFormQuanLyHopDong.DataSource = dataAccess.GetData(query);
+            DataTable dataTable = dataAccess.GetData(query);
+            if (dataTable != null)
+            {
+                dgvFormQuanLyHopDong.DataSource = dataTable;
+                // Đặt định dạng hiển thị cho cột ngày (indexColumn là chỉ số cột trong DataGridView)
+                dgvFormQuanLyHopDong.Columns[3].DefaultCellStyle.Format = "dd/MM/yyyy";
+                dgvFormQuanLyHopDong.Columns[4].DefaultCellStyle.Format = "dd/MM/yyyy";
+            }
         }
 
         private void ResetTextBox()
@@ -61,15 +69,15 @@ namespace QuanLyNhanSuApp
 
         private bool checkDateIsEmpty(DataGridViewRow currentRow)
         {
-            if (currentRow.Cells[3] != null && currentRow.Cells[4] != null)
+            if (currentRow.Cells[3].Value.ToString().Equals(string.Empty) && currentRow.Cells[4].Value.ToString().Equals(string.Empty))
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
         private void dgvFormQuanLyHopDong_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvFormQuanLyHopDong.Rows.Count > 0 && checkDateIsEmpty(dgvFormQuanLyHopDong.SelectedRows[0]))
+            if (dgvFormQuanLyHopDong.Rows.Count > 0 && !checkDateIsEmpty(dgvFormQuanLyHopDong.SelectedRows[0]))
             {
                 txtMaNV.Text = dgvFormQuanLyHopDong.SelectedRows[0].Cells[0].Value.ToString();
                 txtChucVu.Text = dgvFormQuanLyHopDong.SelectedRows[0].Cells[1].Value.ToString();
@@ -157,9 +165,10 @@ namespace QuanLyNhanSuApp
             {
                 TimeSpan timeDiff = dateTimePickerNgayHetHan.Value - dateTimePickerNgayKiKet.Value;
                 double daysDiff = timeDiff.TotalDays/365;
+                int conditionDaysDiff = (int)Math.Floor(daysDiff);
                 double thoiGianLamViec;
                 double.TryParse(txtThoiHanLamViec.Text, out thoiGianLamViec);
-                if (daysDiff < thoiGianLamViec)
+                if (daysDiff >= thoiGianLamViec && thoiGianLamViec >= conditionDaysDiff)
                 {
                     message += "Thời gian làm việc không hợp lệ!\n";
                 }
@@ -283,6 +292,48 @@ namespace QuanLyNhanSuApp
                     MessageBox.Show(isValid(), "Cảnh báo");
                 }
             }
+        }
+
+        //Chuc nang tra cuu
+        private void BindToDataGridView(string queryCondition)
+        {
+            DataAccess dataAccess = new DataAccess();
+            string query = "SELECT * FROM hopdong WHERE " + queryCondition;
+            DataTable dataTable = dataAccess.GetData(query);
+            if (dataTable != null)
+            {
+                dgvFormQuanLyHopDong.DataSource = dataTable;
+                // Đặt định dạng hiển thị cho cột ngày (indexColumn là chỉ số cột trong DataGridView)
+                dgvFormQuanLyHopDong.Columns[3].DefaultCellStyle.Format = "dd/MM/yyyy";
+                dgvFormQuanLyHopDong.Columns[4].DefaultCellStyle.Format = "dd/MM/yyyy";
+            }
+        }
+        private void FormSearchClosed(object sender, FormClosedEventArgs e)
+        {
+            FormSearching fsearch = sender as FormSearching;
+            if (fsearch != null)
+            {
+                fieldValue = fsearch.ResultSearching();
+            }
+
+            if (fieldValue.Equals(string.Empty))
+            {
+                BindToDataGridView();
+            }
+            else
+            {
+                Console.WriteLine(fieldValue.ToString());
+                BindToDataGridView(fieldValue);
+            }
+        }
+       
+        private void btnTraCuu_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` " +
+                "WHERE `TABLE_SCHEMA`='employeems' AND `TABLE_NAME`='hopdong'";
+            FormSearching fsearch = new FormSearching(query, 4, 5);
+            fsearch.FormClosed += FormSearchClosed;
+            fsearch.ShowDialog();
         }
     }
 }

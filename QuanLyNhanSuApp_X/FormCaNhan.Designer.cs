@@ -34,15 +34,8 @@
             this.luongToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thongTinCaNhanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.khoaDaoTaoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dgvFormCaNhan = new System.Windows.Forms.DataGridView();
-            this.dataGridViewBaoHiem = new System.Windows.Forms.DataGridView();
-            this.dataGridViewThaiSan = new System.Windows.Forms.DataGridView();
-            this.lblBaoHiem = new System.Windows.Forms.Label();
-            this.lblThaiSan = new System.Windows.Forms.Label();
+            this.panelFormCaNhan = new System.Windows.Forms.Panel();
             this.menuStripCaNhan.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFormCaNhan)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBaoHiem)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewThaiSan)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStripCaNhan
@@ -96,66 +89,20 @@
             this.khoaDaoTaoToolStripMenuItem.Text = "Khóa đào tạo";
             this.khoaDaoTaoToolStripMenuItem.Click += new System.EventHandler(this.khoaDaoTaoToolStripMenuItem_Click);
             // 
-            // dgvFormCaNhan
+            // panelFormCaNhan
             // 
-            this.dgvFormCaNhan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFormCaNhan.Location = new System.Drawing.Point(29, 50);
-            this.dgvFormCaNhan.Name = "dgvFormCaNhan";
-            this.dgvFormCaNhan.RowHeadersWidth = 51;
-            this.dgvFormCaNhan.RowTemplate.Height = 24;
-            this.dgvFormCaNhan.Size = new System.Drawing.Size(1187, 574);
-            this.dgvFormCaNhan.TabIndex = 1;
-            // 
-            // dataGridViewBaoHiem
-            // 
-            this.dataGridViewBaoHiem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewBaoHiem.Location = new System.Drawing.Point(29, 144);
-            this.dataGridViewBaoHiem.Name = "dataGridViewBaoHiem";
-            this.dataGridViewBaoHiem.RowHeadersWidth = 51;
-            this.dataGridViewBaoHiem.RowTemplate.Height = 24;
-            this.dataGridViewBaoHiem.Size = new System.Drawing.Size(1187, 182);
-            this.dataGridViewBaoHiem.TabIndex = 2;
-            // 
-            // dataGridViewThaiSan
-            // 
-            this.dataGridViewThaiSan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewThaiSan.Location = new System.Drawing.Point(29, 442);
-            this.dataGridViewThaiSan.Name = "dataGridViewThaiSan";
-            this.dataGridViewThaiSan.RowHeadersWidth = 51;
-            this.dataGridViewThaiSan.RowTemplate.Height = 24;
-            this.dataGridViewThaiSan.Size = new System.Drawing.Size(1187, 182);
-            this.dataGridViewThaiSan.TabIndex = 2;
-            // 
-            // lblBaoHiem
-            // 
-            this.lblBaoHiem.AutoSize = true;
-            this.lblBaoHiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBaoHiem.Location = new System.Drawing.Point(24, 80);
-            this.lblBaoHiem.Name = "lblBaoHiem";
-            this.lblBaoHiem.Size = new System.Drawing.Size(123, 29);
-            this.lblBaoHiem.TabIndex = 3;
-            this.lblBaoHiem.Text = "Bảo hiểm";
-            // 
-            // lblThaiSan
-            // 
-            this.lblThaiSan.AutoSize = true;
-            this.lblThaiSan.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblThaiSan.Location = new System.Drawing.Point(24, 371);
-            this.lblThaiSan.Name = "lblThaiSan";
-            this.lblThaiSan.Size = new System.Drawing.Size(113, 29);
-            this.lblThaiSan.TabIndex = 3;
-            this.lblThaiSan.Text = "Thai sản";
+            this.panelFormCaNhan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelFormCaNhan.Location = new System.Drawing.Point(0, 33);
+            this.panelFormCaNhan.Name = "panelFormCaNhan";
+            this.panelFormCaNhan.Size = new System.Drawing.Size(1244, 642);
+            this.panelFormCaNhan.TabIndex = 1;
             // 
             // FormCaNhan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1244, 675);
-            this.Controls.Add(this.lblThaiSan);
-            this.Controls.Add(this.lblBaoHiem);
-            this.Controls.Add(this.dataGridViewThaiSan);
-            this.Controls.Add(this.dataGridViewBaoHiem);
-            this.Controls.Add(this.dgvFormCaNhan);
+            this.Controls.Add(this.panelFormCaNhan);
             this.Controls.Add(this.menuStripCaNhan);
             this.Location = new System.Drawing.Point(0, 31);
             this.MainMenuStrip = this.menuStripCaNhan;
@@ -164,9 +111,6 @@
             this.Load += new System.EventHandler(this.FormCaNhan_Load);
             this.menuStripCaNhan.ResumeLayout(false);
             this.menuStripCaNhan.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFormCaNhan)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBaoHiem)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewThaiSan)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,10 +124,6 @@
         private System.Windows.Forms.ToolStripMenuItem luongToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thongTinCaNhanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem khoaDaoTaoToolStripMenuItem;
-        private System.Windows.Forms.DataGridView dgvFormCaNhan;
-        private System.Windows.Forms.DataGridView dataGridViewBaoHiem;
-        private System.Windows.Forms.DataGridView dataGridViewThaiSan;
-        private System.Windows.Forms.Label lblBaoHiem;
-        private System.Windows.Forms.Label lblThaiSan;
+        private System.Windows.Forms.Panel panelFormCaNhan;
     }
 }

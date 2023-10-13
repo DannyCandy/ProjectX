@@ -59,6 +59,7 @@
             this.btnTraCuu.TabIndex = 35;
             this.btnTraCuu.Text = "Tra cứu";
             this.btnTraCuu.UseVisualStyleBackColor = true;
+            this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
             // 
             // btnSua
             // 
@@ -201,7 +202,6 @@
             this.txtMaKhoaDaoTao.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaKhoaDaoTao.Location = new System.Drawing.Point(324, 72);
             this.txtMaKhoaDaoTao.Name = "txtMaKhoaDaoTao";
-            this.txtMaKhoaDaoTao.ReadOnly = true;
             this.txtMaKhoaDaoTao.Size = new System.Drawing.Size(274, 34);
             this.txtMaKhoaDaoTao.TabIndex = 21;
             // 

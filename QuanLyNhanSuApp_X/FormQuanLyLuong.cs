@@ -54,7 +54,13 @@ namespace QuanLyNhanSuApp
         {
             DataAccess dataAccess = new DataAccess();
             string query = "SELECT * FROM bangluongcty";
-            dgvFormQuanLyLuong.DataSource = dataAccess.GetData(query);
+            DataTable dataTable = dataAccess.GetData(query);
+            if (dataTable != null)
+            {
+                dgvFormQuanLyLuong.DataSource = dataTable;
+                // Đặt định dạng hiển thị cho cột ngày (indexColumn là chỉ số cột trong DataGridView)
+                dgvFormQuanLyLuong.Columns[2].DefaultCellStyle.Format = "dd/MM/yyyy";
+            }
         }
         private bool isRequire()
         {
@@ -98,7 +104,7 @@ namespace QuanLyNhanSuApp
             {
                 txtPhuCapChucVu.Text = 0.ToString();
             }
-            txtNgayNhap.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); 
+            txtNgayNhap.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
         private void txtLuongCoBan_KeyPress(object sender, KeyPressEventArgs e)
@@ -243,7 +249,13 @@ namespace QuanLyNhanSuApp
         {
             DataAccess dataAccess = new DataAccess();
             string query = "SELECT * FROM bangluongcty WHERE " + queryCondition;
-            dgvFormQuanLyLuong.DataSource = dataAccess.GetData(query);
+            DataTable dataTable = dataAccess.GetData(query);
+            if (dataTable != null)
+            {
+                dgvFormQuanLyLuong.DataSource = dataTable;
+                // Đặt định dạng hiển thị cho cột ngày (indexColumn là chỉ số cột trong DataGridView)
+                dgvFormQuanLyLuong.Columns[2].DefaultCellStyle.Format = "dd/MM/yyyy";
+            }
         }
         private void FormSearchClosed(object sender, FormClosedEventArgs e)
         {
@@ -259,18 +271,17 @@ namespace QuanLyNhanSuApp
             }
             else
             {
+                Console.WriteLine(fieldValue.ToString());
                 BindToDataGridView(fieldValue);
             }
         }
         private void btnTraCuu_Click(object sender, EventArgs e)
         {
             string query = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` " +
-                "WHERE `TABLE_SCHEMA`='employeems' AND `TABLE_NAME`='bangluongcty' AND `COLUMN_NAME` NOT LIKE '%ngayNhap%';";
-            FormSearching fsearch = new FormSearching(query);
+                "WHERE `TABLE_SCHEMA`='employeems' AND `TABLE_NAME`='bangluongcty'";
+            FormSearching fsearch = new FormSearching(query,4);
             fsearch.FormClosed += FormSearchClosed;
             fsearch.ShowDialog();
-            
-
         }
     }
 }

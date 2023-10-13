@@ -191,7 +191,6 @@
             this.txtMaLuong.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaLuong.Location = new System.Drawing.Point(356, 86);
             this.txtMaLuong.Name = "txtMaLuong";
-            this.txtMaLuong.ReadOnly = true;
             this.txtMaLuong.Size = new System.Drawing.Size(253, 34);
             this.txtMaLuong.TabIndex = 21;
             // 

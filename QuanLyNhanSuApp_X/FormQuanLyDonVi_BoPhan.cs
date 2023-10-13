@@ -22,7 +22,13 @@ namespace QuanLyNhanSuApp
         {
             DataAccess dataAccess = new DataAccess();
             string query = "SELECT * FROM bophan";
-            dgvFormQuanLyDonVi_BoPhan.DataSource = dataAccess.GetData(query);
+            DataTable dataTable = dataAccess.GetData(query);
+            if (dataTable != null)
+            {
+                dgvFormQuanLyDonVi_BoPhan.DataSource = dataTable;
+                // Đặt định dạng hiển thị cho cột ngày (indexColumn là chỉ số cột trong DataGridView)
+                dgvFormQuanLyDonVi_BoPhan.Columns[2].DefaultCellStyle.Format = "dd/MM/yyyy";
+            }
         }
 
         private void ResetTextBox()
@@ -55,11 +61,11 @@ namespace QuanLyNhanSuApp
 
         private bool checkDateIsEmpty(DataGridViewRow currentRow)
         {
-            if (currentRow.Cells[2] != null)
+            if (currentRow.Cells[2].Value.ToString().Equals(string.Empty))
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
 
         private bool isRequire()
@@ -120,7 +126,7 @@ namespace QuanLyNhanSuApp
         }
         private void dgvFormQuanLyDonVi_BoPhan_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvFormQuanLyDonVi_BoPhan.Rows.Count > 0 && checkDateIsEmpty(dgvFormQuanLyDonVi_BoPhan.SelectedRows[0]))
+            if (dgvFormQuanLyDonVi_BoPhan.Rows.Count > 0 && !checkDateIsEmpty(dgvFormQuanLyDonVi_BoPhan.SelectedRows[0]))
             {
                 txtMaBoPhan.Text = dgvFormQuanLyDonVi_BoPhan.SelectedRows[0].Cells[0].Value.ToString();
 
@@ -195,6 +201,49 @@ namespace QuanLyNhanSuApp
                 }
 
             }
+        }
+
+        //Chuc nang tra cuu
+        private string fieldValue = string.Empty;
+
+        private void BindToDataGridView(string queryCondition)
+        {
+            DataAccess dataAccess = new DataAccess();
+            string query = "SELECT * FROM bophan WHERE " + queryCondition;
+            DataTable dataTable = dataAccess.GetData(query);
+            if (dataTable != null)
+            {
+                dgvFormQuanLyDonVi_BoPhan.DataSource = dataTable;
+                // Đặt định dạng hiển thị cho cột ngày (indexColumn là chỉ số cột trong DataGridView)
+                dgvFormQuanLyDonVi_BoPhan.Columns[2].DefaultCellStyle.Format = "dd/MM/yyyy";
+            }
+        }
+        private void FormSearchClosed(object sender, FormClosedEventArgs e)
+        {
+            FormSearching fsearch = sender as FormSearching;
+            if (fsearch != null)
+            {
+                fieldValue = fsearch.ResultSearching();
+            }
+
+            if (fieldValue.Equals(string.Empty))
+            {
+                BindToDataGridView();
+            }
+            else
+            {
+                Console.WriteLine(fieldValue.ToString());
+                BindToDataGridView(fieldValue);
+            }
+        }
+
+        private void btnTraCuu_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` " +
+                "WHERE `TABLE_SCHEMA`='employeems' AND `TABLE_NAME`='bophan'";
+            FormSearching fsearch = new FormSearching(query, 2);
+            fsearch.FormClosed += FormSearchClosed;
+            fsearch.ShowDialog();
         }
     }
 }

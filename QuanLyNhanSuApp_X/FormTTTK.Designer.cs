@@ -37,7 +37,7 @@
             // txtQuyen
             // 
             this.txtQuyen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuyen.Location = new System.Drawing.Point(314, 243);
+            this.txtQuyen.Location = new System.Drawing.Point(545, 354);
             this.txtQuyen.Name = "txtQuyen";
             this.txtQuyen.Size = new System.Drawing.Size(323, 30);
             this.txtQuyen.TabIndex = 5;
@@ -45,7 +45,7 @@
             // txtTenTaiKhoan
             // 
             this.txtTenTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenTaiKhoan.Location = new System.Drawing.Point(314, 179);
+            this.txtTenTaiKhoan.Location = new System.Drawing.Point(545, 290);
             this.txtTenTaiKhoan.Name = "txtTenTaiKhoan";
             this.txtTenTaiKhoan.Size = new System.Drawing.Size(323, 30);
             this.txtTenTaiKhoan.TabIndex = 6;
@@ -54,7 +54,7 @@
             // 
             this.lblQuyen.AutoSize = true;
             this.lblQuyen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuyen.Location = new System.Drawing.Point(146, 246);
+            this.lblQuyen.Location = new System.Drawing.Point(377, 357);
             this.lblQuyen.Name = "lblQuyen";
             this.lblQuyen.Size = new System.Drawing.Size(71, 25);
             this.lblQuyen.TabIndex = 3;
@@ -64,7 +64,7 @@
             // 
             this.lblTenTaiKhoan.AutoSize = true;
             this.lblTenTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTenTaiKhoan.Location = new System.Drawing.Point(146, 182);
+            this.lblTenTaiKhoan.Location = new System.Drawing.Point(377, 293);
             this.lblTenTaiKhoan.Name = "lblTenTaiKhoan";
             this.lblTenTaiKhoan.Size = new System.Drawing.Size(131, 25);
             this.lblTenTaiKhoan.TabIndex = 4;
@@ -74,11 +74,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 453);
+            this.ClientSize = new System.Drawing.Size(1244, 675);
             this.Controls.Add(this.txtQuyen);
             this.Controls.Add(this.txtTenTaiKhoan);
             this.Controls.Add(this.lblQuyen);
             this.Controls.Add(this.lblTenTaiKhoan);
+            this.Location = new System.Drawing.Point(0, 31);
             this.Name = "FormTTTK";
             this.Text = "FormTTTK";
             this.ResumeLayout(false);
