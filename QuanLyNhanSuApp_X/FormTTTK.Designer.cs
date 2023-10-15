@@ -81,7 +81,8 @@
             this.Controls.Add(this.lblTenTaiKhoan);
             this.Location = new System.Drawing.Point(0, 31);
             this.Name = "FormTTTK";
-            this.Text = "FormTTTK";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Thông tin tài khoản";
             this.ResumeLayout(false);
             this.PerformLayout();
 

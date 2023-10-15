@@ -37,37 +37,37 @@
             // 
             // menuStripQuanLyDonVi
             // 
-            this.menuStripQuanLyDonVi.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStripQuanLyDonVi.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuStripQuanLyDonVi.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStripQuanLyDonVi.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.phongBanToolStripMenuItem,
             this.boPhanToolStripMenuItem});
             this.menuStripQuanLyDonVi.Location = new System.Drawing.Point(0, 0);
             this.menuStripQuanLyDonVi.Name = "menuStripQuanLyDonVi";
-            this.menuStripQuanLyDonVi.Size = new System.Drawing.Size(1244, 33);
+            this.menuStripQuanLyDonVi.Size = new System.Drawing.Size(1244, 28);
             this.menuStripQuanLyDonVi.TabIndex = 4;
             this.menuStripQuanLyDonVi.Text = "menuStrip1";
             // 
             // phongBanToolStripMenuItem
             // 
             this.phongBanToolStripMenuItem.Name = "phongBanToolStripMenuItem";
-            this.phongBanToolStripMenuItem.Size = new System.Drawing.Size(118, 29);
+            this.phongBanToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
             this.phongBanToolStripMenuItem.Text = "Phòng ban";
             this.phongBanToolStripMenuItem.Click += new System.EventHandler(this.phongBanToolStripMenuItem_Click);
             // 
             // boPhanToolStripMenuItem
             // 
             this.boPhanToolStripMenuItem.Name = "boPhanToolStripMenuItem";
-            this.boPhanToolStripMenuItem.Size = new System.Drawing.Size(97, 29);
+            this.boPhanToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
             this.boPhanToolStripMenuItem.Text = "Bộ phận";
             this.boPhanToolStripMenuItem.Click += new System.EventHandler(this.boPhanToolStripMenuItem_Click);
             // 
             // panelQuanLyDonVi
             // 
             this.panelQuanLyDonVi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelQuanLyDonVi.Location = new System.Drawing.Point(0, 33);
+            this.panelQuanLyDonVi.Location = new System.Drawing.Point(0, 28);
             this.panelQuanLyDonVi.Name = "panelQuanLyDonVi";
-            this.panelQuanLyDonVi.Size = new System.Drawing.Size(1244, 642);
+            this.panelQuanLyDonVi.Size = new System.Drawing.Size(1244, 647);
             this.panelQuanLyDonVi.TabIndex = 5;
             // 
             // FormQuanLyDonVi
@@ -80,7 +80,8 @@
             this.Location = new System.Drawing.Point(0, 31);
             this.MainMenuStrip = this.menuStripQuanLyDonVi;
             this.Name = "FormQuanLyDonVi";
-            this.Text = "FormQuanLyDonVi";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Quản lý đơn vị";
             this.Load += new System.EventHandler(this.FormQuanLyDonVi_Load);
             this.menuStripQuanLyDonVi.ResumeLayout(false);
             this.menuStripQuanLyDonVi.PerformLayout();

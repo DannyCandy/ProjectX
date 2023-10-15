@@ -48,7 +48,8 @@
             this.Controls.Add(this.reportViewerBCCT);
             this.Location = new System.Drawing.Point(0, 31);
             this.Name = "FormBaoCao";
-            this.Text = "FormBaoCao";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Báo cáo";
             this.Load += new System.EventHandler(this.FormBaoCao_Load);
             this.ResumeLayout(false);
 

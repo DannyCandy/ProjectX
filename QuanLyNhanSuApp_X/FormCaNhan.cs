@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComponentFactory.Krypton.Toolkit;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,15 +18,18 @@ namespace QuanLyNhanSuApp
         public FormCaNhan()
         {
             InitializeComponent();
-        }
-
-        private void FormCaNhan_Load(object sender, EventArgs e)
-        {
             defaultFont = menuStripCaNhan.Font;
             menuStripCaNhan.Items[0].Select();
             menuStripCaNhan.Items[0].Font = new Font(FontFamily.GenericSansSerif,
     12.0F, FontStyle.Bold);
+            menuStripCaNhan.Items[1].Font = defaultFont;
+            menuStripCaNhan.Items[2].Font = defaultFont;
+            menuStripCaNhan.Items[3].Font = defaultFont;
+            menuStripCaNhan.Items[4].Font = defaultFont;
+        }
 
+        private void FormCaNhan_Load(object sender, EventArgs e)
+        {
             string query = "`maNV` = '" + FormTTTK.maNV + "'";
 
             FormQuanLyLichLamViec fqlllv = new FormQuanLyLichLamViec(query);
@@ -41,6 +45,7 @@ namespace QuanLyNhanSuApp
 
         private void lichLamViecToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            menuStripCaNhan.Items[0].Select();
             menuStripCaNhan.Items[0].Font = new Font(FontFamily.GenericSansSerif,
     12.0F, FontStyle.Bold);
             menuStripCaNhan.Items[1].Font = defaultFont;
@@ -64,6 +69,7 @@ namespace QuanLyNhanSuApp
         private void cheDoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             menuStripCaNhan.Items[0].Font = defaultFont;
+            menuStripCaNhan.Items[1].Select();
             menuStripCaNhan.Items[1].Font = new Font(FontFamily.GenericSansSerif,
     12.0F, FontStyle.Bold);
             menuStripCaNhan.Items[2].Font = defaultFont;
@@ -87,6 +93,7 @@ namespace QuanLyNhanSuApp
         {
             menuStripCaNhan.Items[0].Font = defaultFont;
             menuStripCaNhan.Items[1].Font = defaultFont;
+            menuStripCaNhan.Items[2].Select();
             menuStripCaNhan.Items[2].Font = new Font(FontFamily.GenericSansSerif,
     12.0F, FontStyle.Bold);
             menuStripCaNhan.Items[3].Font = defaultFont;
@@ -110,6 +117,7 @@ namespace QuanLyNhanSuApp
             menuStripCaNhan.Items[0].Font = defaultFont;
             menuStripCaNhan.Items[1].Font = defaultFont;
             menuStripCaNhan.Items[2].Font = defaultFont;
+            menuStripCaNhan.Items[3].Select();
             menuStripCaNhan.Items[3].Font = new Font(FontFamily.GenericSansSerif,
     12.0F, FontStyle.Bold);
             menuStripCaNhan.Items[4].Font = defaultFont;
@@ -133,6 +141,7 @@ namespace QuanLyNhanSuApp
             menuStripCaNhan.Items[1].Font = defaultFont;
             menuStripCaNhan.Items[2].Font = defaultFont;
             menuStripCaNhan.Items[3].Font = defaultFont;
+            menuStripCaNhan.Items[4].Select();
             menuStripCaNhan.Items[4].Font = new Font(FontFamily.GenericSansSerif,
     12.0F, FontStyle.Bold);
 
