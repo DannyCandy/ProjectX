@@ -103,6 +103,7 @@
             this.txtMaNhanVien.Name = "txtMaNhanVien";
             this.txtMaNhanVien.Size = new System.Drawing.Size(229, 34);
             this.txtMaNhanVien.TabIndex = 27;
+            this.txtMaNhanVien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaNhanVien_KeyPress);
             // 
             // txtCaLamViec
             // 
@@ -217,6 +218,7 @@
             this.txtMaLichLamViec.Name = "txtMaLichLamViec";
             this.txtMaLichLamViec.Size = new System.Drawing.Size(292, 34);
             this.txtMaLichLamViec.TabIndex = 21;
+            this.txtMaLichLamViec.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaLichLamViec_KeyPress);
             // 
             // lblMaLichLamViec
             // 

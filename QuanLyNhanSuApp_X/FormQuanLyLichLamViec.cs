@@ -263,6 +263,22 @@ namespace QuanLyNhanSuApp
             {
                 message += "Giá trị của năm chưa phù hợp!\n";
             }
+            if (txtMaLichLamViec.Text.Length > 10)
+            {
+                message += "Mã lịch làm việc chỉ chứa tối đa 10 ký tự\n";
+            }
+            if (txtMaNhanVien.Text.Length > 10)
+            {
+                message += "Mã nhân viên chỉ chứa tối đa 10 ký tự\n";
+            }
+            if (txtNgayLamViec.Text.Length > 50)
+            {
+                message += "Quá nhiều ký tự trong textbox ngày làm việc\n";
+            }
+            if (txtCaLamViec.Text.Length > 20)
+            {
+                message += "Quá nhiều ký tự trong textbox ca làm việc\n";
+            }
             return message;
         }
 
@@ -277,28 +293,37 @@ namespace QuanLyNhanSuApp
             {
                 if (isValid() == "")
                 {
-                    try
+                    DataAccess dataAccess = new DataAccess();
+                    DataTable dataTable = dataAccess.GetData("SELECT maLichLamViec FROM lichlamviec WHERE maLichLamViec = '" + txtMaLichLamViec.Text + "'");
+                    if (dataTable.Rows.Count != 0)
                     {
-                        // Lấy giá trị ngày giờ không chứa AM/PM
-
-                        string timeInString = dateTimePickerGioVao.Value.ToString("HH:mm:ss");
-             
-                        string timeOutString = dateTimePickerGioRa.Value.ToString("HH:mm:ss");
-
-                        DataAccess dataAccess = new DataAccess();
-                        string query = "INSERT INTO `employeems`.`lichlamviec` (`maLichLamViec`, `thang`, `nam`, `gioVao`, `gioRa`, `caLamViec`, `maNV`) " +
-                            "VALUES ('"+txtMaLichLamViec.Text+"', '"+txtThang.Text+"', '"+txtNam.Text+"', '"+timeInString+"', '"+timeOutString+"', '"+txtCaLamViec.Text+"', '"+txtMaNhanVien.Text+"');";
-                        dataAccess.InsertData(query);
-                        MessageBox.Show("Thêm thành công!", "Thông báo");
-                        BindToDataGridView();
-
-
+                        MessageBox.Show("Mã lịch làm việc đã tồn tại!", "Cảnh báo");
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                        try
+                        {
+                            // Lấy giá trị ngày giờ không chứa AM/PM
 
-                    }
+                            string timeInString = dateTimePickerGioVao.Value.ToString("HH:mm:ss");
+
+                            string timeOutString = dateTimePickerGioRa.Value.ToString("HH:mm:ss");
+
+                            dataAccess = new DataAccess();
+                            string query = "INSERT INTO `employeems`.`lichlamviec` (`maLichLamViec`, `thang`, `nam`, `gioVao`, `gioRa`, `caLamViec`, `maNV`) " +
+                                "VALUES ('" + txtMaLichLamViec.Text + "', '" + txtThang.Text + "', '" + txtNam.Text + "', '" + timeInString + "', '" + timeOutString + "', '" + txtCaLamViec.Text + "', '" + txtMaNhanVien.Text + "');";
+                            dataAccess.InsertData(query);
+                            MessageBox.Show("Thêm thành công!", "Thông báo");
+                            BindToDataGridView();
+
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi: " + ex, "Thông báo");
+
+                        }
+                    }  
                 }
                 else
                 {
@@ -316,20 +341,34 @@ namespace QuanLyNhanSuApp
             }
             else
             {
-                try
+                DataAccess dataAccess = new DataAccess();
+                DataTable dataTable = dataAccess.GetData("SELECT maLichLamViec FROM lichlamviec WHERE maLichLamViec = '" + txtMaLichLamViec.Text + "'");
+                if (dataTable.Rows.Count == 0)
                 {
-                    txtMaLichLamViec.BackColor = SystemColors.Window;
-                    DataAccess dataAccess = new DataAccess();
-                    string query = "DELETE FROM `employeems`.`lichlamviec` WHERE (`maLichLamViec` = '"+txtMaLichLamViec.Text+"');";
-                    dataAccess.DeleteData(query);
-                    MessageBox.Show("Xóa thành công", "Thông báo");
-                    BindToDataGridView();
-                    ResetTextBox();
-
+                    MessageBox.Show("Mã lịch làm việc không tồn tại!", "Cảnh báo");
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                    DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            txtMaLichLamViec.BackColor = SystemColors.Window;
+                            dataAccess = new DataAccess();
+                            string query = "DELETE FROM `employeems`.`lichlamviec` WHERE (`maLichLamViec` = '" + txtMaLichLamViec.Text + "');";
+                            dataAccess.DeleteData(query);
+                            MessageBox.Show("Xóa thành công", "Thông báo");
+                            BindToDataGridView();
+                            ResetTextBox();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                        }
+                    }
                 }
             }
         }
@@ -344,27 +383,40 @@ namespace QuanLyNhanSuApp
             {
                 if (isValid() == "")
                 {
-                    try
+                    DataAccess dataAccess = new DataAccess();
+                    DataTable dataTable = dataAccess.GetData("SELECT maLichLamViec FROM lichlamviec WHERE maLichLamViec = '" + txtMaLichLamViec.Text + "'");
+                    if (dataTable.Rows.Count == 0)
                     {
-                        // Lấy giá trị ngày giờ không chứa AM/PM
-
-                        string timeInString = dateTimePickerGioVao.Value.ToString("HH:mm:ss");
-
-                        string timeOutString = dateTimePickerGioRa.Value.ToString("HH:mm:ss");
-
-                        DataAccess dataAccess = new DataAccess();
-                        string query = "UPDATE `employeems`.`lichlamviec` SET `maLichLamViec` = '"+txtMaLichLamViec.Text+"', `thang` = '"+txtThang.Text+"', `nam` = '"+txtNam.Text+"', `ngayLamViec` = '"+
-                            txtNgayLamViec.Text+"', `gioVao` = '"+timeInString+"', `gioRa` = '"+timeOutString+"', `caLamViec` = '"+txtCaLamViec.Text+"', `maNV` = '"+txtMaNhanVien.Text+"' WHERE (`maLichLamViec` = '"+txtMaLichLamViec.Text+"');";
-                        dataAccess.UpdateData(query);
-                        MessageBox.Show("Cập nhật thành công!", "Thông báo");
-                        BindToDataGridView();
-
-
+                        MessageBox.Show("Mã lịch làm việc không tồn tại!", "Cảnh báo");
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                        DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn cập nhật không?", "Xác nhận cập nhật", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+                        if (result == DialogResult.Yes)
+                        {
+                            try
+                            {
+                                // Lấy giá trị ngày giờ không chứa AM/PM
+
+                                string timeInString = dateTimePickerGioVao.Value.ToString("HH:mm:ss");
+
+                                string timeOutString = dateTimePickerGioRa.Value.ToString("HH:mm:ss");
+
+                                dataAccess = new DataAccess();
+                                string query = "UPDATE `employeems`.`lichlamviec` SET `maLichLamViec` = '" + txtMaLichLamViec.Text + "', `thang` = '" + txtThang.Text + "', `nam` = '" + txtNam.Text + "', `ngayLamViec` = '" +
+                                    txtNgayLamViec.Text + "', `gioVao` = '" + timeInString + "', `gioRa` = '" + timeOutString + "', `caLamViec` = '" + txtCaLamViec.Text + "', `maNV` = '" + txtMaNhanVien.Text + "' WHERE (`maLichLamViec` = '" + txtMaLichLamViec.Text + "');";
+                                dataAccess.UpdateData(query);
+                                MessageBox.Show("Cập nhật thành công!", "Thông báo");
+                                BindToDataGridView();
+
+
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                            }
+                        }
                     }
                 }
                 else
@@ -445,6 +497,22 @@ namespace QuanLyNhanSuApp
             FormSearching_LichLamViec fsearch = new FormSearching_LichLamViec(query, 1,2);
             fsearch.FormClosed += FormSearchClosed;
             fsearch.ShowDialog();
+        }
+
+        private void txtMaLichLamViec_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Không cho phép ký tự được nhập vào
+            }
+        }
+
+        private void txtMaNhanVien_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Không cho phép ký tự được nhập vào
+            }
         }
     }
 }

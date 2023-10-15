@@ -111,6 +111,7 @@
             this.txtMaBaoHiem.Name = "txtMaBaoHiem";
             this.txtMaBaoHiem.Size = new System.Drawing.Size(297, 34);
             this.txtMaBaoHiem.TabIndex = 26;
+            this.txtMaBaoHiem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaBaoHiem_KeyPress);
             // 
             // txtMaSoBaoHiem
             // 
@@ -119,6 +120,7 @@
             this.txtMaSoBaoHiem.Name = "txtMaSoBaoHiem";
             this.txtMaSoBaoHiem.Size = new System.Drawing.Size(297, 34);
             this.txtMaSoBaoHiem.TabIndex = 31;
+            this.txtMaSoBaoHiem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaSoBaoHiem_KeyPress);
             // 
             // lblNgayKetThuc
             // 
@@ -214,6 +216,7 @@
             this.txtMaNV.Name = "txtMaNV";
             this.txtMaNV.Size = new System.Drawing.Size(284, 34);
             this.txtMaNV.TabIndex = 21;
+            this.txtMaNV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaNV_KeyPress);
             // 
             // lblMaNV
             // 

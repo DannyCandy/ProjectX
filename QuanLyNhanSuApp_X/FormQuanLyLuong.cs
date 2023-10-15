@@ -123,6 +123,32 @@ namespace QuanLyNhanSuApp
             }
         }
 
+        private string isValid()
+        {
+            string message = string.Empty;
+            if (txtMaLuong.Text.Length > 10)
+            {
+                message += "Mã lương chỉ chứa tối đa 10 chữ số\n";
+            }
+            if (txtChucVu.Text.Length > 50)
+            {
+                message += "Chức vụ quá dài\n";
+            }
+            if (txtLuongCoBan.Text.Length > 9)
+            {
+                message += "Mức lương cơ bản không hợp lệ\n";
+            }
+            if (txtPhuCapChucVu.Text.Length > 9)
+            {
+                message += "Phụ cấp chức vụ không hợp lệ\n";
+            }
+            if (txtGhiChu.Text.Length > 50)
+            {
+                message += "Ghi chú quá dài\n";
+            }
+            return message;
+        }
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             SetDefault();
@@ -133,19 +159,33 @@ namespace QuanLyNhanSuApp
             }
             else
             {
-                 try
+                if (isValid() == "")
+                {
+                    DataAccess dataAccess = new DataAccess();
+                    DataTable dataTable = dataAccess.GetData("SELECT maLuong FROM bangluongcty WHERE maLuong = '" + txtMaLuong.Text + "'");
+                    if (dataTable.Rows.Count != 0)
                     {
-                        DataAccess dataAccess = new DataAccess();
-                        string query = "INSERT INTO `employeems`.`bangluongcty` (`maLuong`, `luongCoBan`, `ngayNhap`, `ghiChu`, `chucVu`, `phuCapChucVu`) " +
-                        "VALUES ('"+txtMaLuong.Text+"', '"+txtLuongCoBan.Text+"', '"+txtNgayNhap.Text+"', '"+txtGhiChu.Text+"', '"+txtChucVu.Text+"', '"+txtPhuCapChucVu.Text+"');";
-                        dataAccess.InsertData(query);
-                        MessageBox.Show("Thêm thành công!", "Thông báo");
+                        MessageBox.Show("Mã lương đã tồn tại!", "Cảnh báo");
                     }
-                 catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                        try
+                        {
+                            dataAccess = new DataAccess();
+                            string query = "INSERT INTO `employeems`.`bangluongcty` (`maLuong`, `luongCoBan`, `ngayNhap`, `ghiChu`, `chucVu`, `phuCapChucVu`) " +
+                            "VALUES ('" + txtMaLuong.Text + "', '" + txtLuongCoBan.Text + "', '" + txtNgayNhap.Text + "', '" + txtGhiChu.Text + "', '" + txtChucVu.Text + "', '" + txtPhuCapChucVu.Text + "');";
+                            dataAccess.InsertData(query);
+                            MessageBox.Show("Thêm thành công!", "Thông báo");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                        }
                     }
-               
+                }
+                else {
+                    MessageBox.Show(isValid(), "Cảnh báo");
+                }      
             }
 
             if (fieldValue.Equals(string.Empty))
@@ -167,20 +207,35 @@ namespace QuanLyNhanSuApp
             }
             else
             {
-                try
-                {
-                    txtMaLuong.BackColor = SystemColors.Window;
-                    DataAccess dataAccess = new DataAccess();
-                    string query = "DELETE FROM `employeems`.`bangluongcty` WHERE(`maLuong` = '" + txtMaLuong.Text + "')";
-                    dataAccess.DeleteData(query);
-                    MessageBox.Show("Xóa thành công", "Thông báo");
-                    BindToDataGridView();
-                    ResetTextBox();
 
-                }
-                catch (Exception ex)
+                DataAccess dataAccess = new DataAccess();
+                DataTable dataTable = dataAccess.GetData("SELECT maLuong FROM bangluongcty WHERE maLuong = '" + txtMaLuong.Text + "'");
+                if (dataTable.Rows.Count == 0)
                 {
-                    MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                    MessageBox.Show("Mã lương không tồn tại!", "Cảnh báo");
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            txtMaLuong.BackColor = SystemColors.Window;
+                            dataAccess = new DataAccess();
+                            string query = "DELETE FROM `employeems`.`bangluongcty` WHERE(`maLuong` = '" + txtMaLuong.Text + "')";
+                            dataAccess.DeleteData(query);
+                            MessageBox.Show("Xóa thành công", "Thông báo");
+                            BindToDataGridView();
+                            ResetTextBox();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                        }
+                    }
                 }
             }
 
@@ -202,22 +257,41 @@ namespace QuanLyNhanSuApp
             }
             else
             {
-               
-                    try
+                if (isValid() == "")
+                {
+                    DataAccess dataAccess = new DataAccess();
+                    DataTable dataTable = dataAccess.GetData("SELECT maLuong FROM bangluongcty WHERE maLuong = '" + txtMaLuong.Text + "'");
+                    if (dataTable.Rows.Count == 0)
                     {
-                        DataAccess dataAccess = new DataAccess();
-                        string query = "UPDATE `employeems`.`bangluongcty` SET `maLuong` = '"+txtMaLuong.Text+"', `luongCoBan` = '"+txtLuongCoBan.Text+"'," +
-                        " `ghiChu` = '"+txtGhiChu.Text+"', `chucVu` = '"+txtChucVu.Text+"', `phuCapChucVu` = '"+txtPhuCapChucVu.Text+"' WHERE (`maLuong` = '"+txtMaLuong.Text+"');";
-                        dataAccess.UpdateData(query);
-                        MessageBox.Show("Cập nhật thành công!", "Thông báo");
-                        BindToDataGridView();
-
+                        MessageBox.Show("Mã khóa đào tạo không tồn tại!", "Cảnh báo");
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                        DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn cập nhật không?", "Xác nhận cập nhật", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+                        if (result == DialogResult.Yes)
+                        {
+                            try
+                            {
+                                dataAccess = new DataAccess();
+                                string query = "UPDATE `employeems`.`bangluongcty` SET `maLuong` = '" + txtMaLuong.Text + "', `luongCoBan` = '" + txtLuongCoBan.Text + "'," +
+                                " `ghiChu` = '" + txtGhiChu.Text + "', `chucVu` = '" + txtChucVu.Text + "', `phuCapChucVu` = '" + txtPhuCapChucVu.Text + "' WHERE (`maLuong` = '" + txtMaLuong.Text + "');";
+                                dataAccess.UpdateData(query);
+                                MessageBox.Show("Cập nhật thành công!", "Thông báo");
+                                BindToDataGridView();
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Lỗi: " + ex, "Thông báo");
+
+                            }
+                        }
                     }
+                }
+                else
+                {
+                    MessageBox.Show(isValid(), "Cảnh báo");
+                }
             }
 
             if (fieldValue.Equals(string.Empty))
@@ -282,6 +356,14 @@ namespace QuanLyNhanSuApp
             FormSearching fsearch = new FormSearching(query,4);
             fsearch.FormClosed += FormSearchClosed;
             fsearch.ShowDialog();
+        }
+
+        private void txtMaLuong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Không cho phép ký tự được nhập vào
+            }
         }
     }
 }

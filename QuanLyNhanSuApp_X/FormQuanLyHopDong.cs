@@ -177,6 +177,26 @@ namespace QuanLyNhanSuApp
             {
                 message += "Ngày hết hạn phải lớn hơn ngày kí kết!\n";
             }
+            if (txtMaHopDong.Text.Length > 10)
+            {
+                message += "Mã hợp đồng chỉ chứa tối đa 10 chữ số\n";
+            }
+            if (txtMaNV.Text.Length > 10)
+            {
+                message += "Mã nhân viên chỉ chứa tối đa 10 chữ số\n";
+            }
+            if (txtChucVu.Text.Length > 50)
+            {
+                message += "Chức vụ quá dài\n";
+            }
+            if (txtThoiHanLamViec.Text.Length > 2)
+            {
+                message += "Thời hạn làm việc không hợp lệ\n";
+            }
+            if (txtLoaiHopDong.Text.Length > 50)
+            {
+                message += "Loại hợp đồng quá dài\n";
+            }
             return message;
         }
 
@@ -198,27 +218,34 @@ namespace QuanLyNhanSuApp
             {
                 if (isValid() == "")
                 {
-                    try
+                    DataAccess dataAccess = new DataAccess();
+                    DataTable dataTable = dataAccess.GetData("SELECT maHopDong FROM hopdong WHERE maHopDong = '" + txtMaHopDong.Text + "'");
+                    if (dataTable.Rows.Count != 0)
                     {
-                        
-
-                        string timeInString = dateTimePickerNgayKiKet.Value.ToString("yyyy-MM-dd");
-
-                        string timeOutString = dateTimePickerNgayHetHan.Value.ToString("yyyy-MM-dd");
-
-                        DataAccess dataAccess = new DataAccess();
-                        string query = "INSERT INTO `employeems`.`hopdong` (`maNV`, `chucVu`, `thoiHanLamViec`, `ngayKiKet`, `ngayHetHan`, `maHopDong`, `loaiHopDong`) " +
-                            "VALUES ('"+txtMaNV.Text+"', '"+txtChucVu.Text+"', '"+txtThoiHanLamViec.Text+"', '"+timeInString+"', '"+timeOutString+"', '"+txtMaHopDong.Text+"', '"+txtLoaiHopDong.Text+"');";
-                        dataAccess.InsertData(query);
-                        MessageBox.Show("Thêm thành công!", "Thông báo");
-                        BindToDataGridView();
-
-
+                        MessageBox.Show("Mã hợp đồng đã tồn tại!", "Cảnh báo");
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                        try
+                        {
+                            string timeInString = dateTimePickerNgayKiKet.Value.ToString("yyyy-MM-dd");
 
+                            string timeOutString = dateTimePickerNgayHetHan.Value.ToString("yyyy-MM-dd");
+
+                            dataAccess = new DataAccess();
+                            string query = "INSERT INTO `employeems`.`hopdong` (`maNV`, `chucVu`, `thoiHanLamViec`, `ngayKiKet`, `ngayHetHan`, `maHopDong`, `loaiHopDong`) " +
+                                "VALUES ('" + txtMaNV.Text + "', '" + txtChucVu.Text + "', '" + txtThoiHanLamViec.Text + "', '" + timeInString + "', '" + timeOutString + "', '" + txtMaHopDong.Text + "', '" + txtLoaiHopDong.Text + "');";
+                            dataAccess.InsertData(query);
+                            MessageBox.Show("Thêm thành công!", "Thông báo");
+                            BindToDataGridView();
+
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi: " + ex, "Thông báo");
+
+                        }
                     }
                 }
                 else
@@ -237,20 +264,34 @@ namespace QuanLyNhanSuApp
             }
             else
             {
-                try
+                DataAccess dataAccess = new DataAccess();
+                DataTable dataTable = dataAccess.GetData("SELECT maHopDong FROM hopdong WHERE maHopDong = '" + txtMaHopDong.Text + "'");
+                if (dataTable.Rows.Count == 0)
                 {
-                    txtMaHopDong.BackColor = SystemColors.Window;
-                    DataAccess dataAccess = new DataAccess();
-                    string query = "DELETE FROM `employeems`.`hopdong` WHERE (`maHopDong` = '"+txtMaHopDong.Text+"');";
-                    dataAccess.DeleteData(query);
-                    MessageBox.Show("Xóa thành công", "Thông báo");
-                    BindToDataGridView();
-                    ResetTextBox();
-
+                    MessageBox.Show("Mã hợp đồng không tồn tại!", "Cảnh báo");
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                    DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            txtMaHopDong.BackColor = SystemColors.Window;
+                            dataAccess = new DataAccess();
+                            string query = "DELETE FROM `employeems`.`hopdong` WHERE (`maHopDong` = '" + txtMaHopDong.Text + "');";
+                            dataAccess.DeleteData(query);
+                            MessageBox.Show("Xóa thành công", "Thông báo");
+                            BindToDataGridView();
+                            ResetTextBox();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                        }
+                    }
                 }
             }
         }
@@ -265,26 +306,38 @@ namespace QuanLyNhanSuApp
             {
                 if (isValid() == "")
                 {
-                    try
+                    DataAccess dataAccess = new DataAccess();
+                    DataTable dataTable = dataAccess.GetData("SELECT maHopDong FROM hopdong WHERE maHopDong = '" + txtMaHopDong.Text + "'");
+                    if (dataTable.Rows.Count == 0)
                     {
-                       
-
-                        string timeInString = dateTimePickerNgayKiKet.Value.ToString("yyyy-MM-dd");
-
-                        string timeOutString = dateTimePickerNgayHetHan.Value.ToString("yyyy-MM-dd");
-
-                        DataAccess dataAccess = new DataAccess();
-                        string query = "UPDATE `employeems`.`hopdong` SET `maNV` = '"+txtMaNV.Text+"', `chucVu` = '"+txtChucVu.Text+"', `thoiHanLamViec` = '"+txtThoiHanLamViec.Text+"', `ngayKiKet` = '"+timeInString+"', `ngayHetHan` = '"+timeOutString+"', `maHopDong` = '"+txtMaHopDong.Text+"', `loaiHopDong` = '"+txtLoaiHopDong.Text+"' WHERE (`maHopDong` = '"+txtMaHopDong.Text+"');";
-                        dataAccess.UpdateData(query);
-                        MessageBox.Show("Cập nhật thành công!", "Thông báo");
-                        BindToDataGridView();
-
-
+                        MessageBox.Show("Mã hợp đồng không tồn tại!", "Cảnh báo");
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                        DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn cập nhật không?", "Xác nhận cập nhật", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+                        if (result == DialogResult.Yes)
+                        {
+                            try
+                            {
+                                string timeInString = dateTimePickerNgayKiKet.Value.ToString("yyyy-MM-dd");
+
+                                string timeOutString = dateTimePickerNgayHetHan.Value.ToString("yyyy-MM-dd");
+
+                                dataAccess = new DataAccess();
+                                string query = "UPDATE `employeems`.`hopdong` SET `maNV` = '" + txtMaNV.Text + "', `chucVu` = '" + txtChucVu.Text + "', `thoiHanLamViec` = '" + txtThoiHanLamViec.Text + "', `ngayKiKet` = '" + timeInString + "', `ngayHetHan` = '" + timeOutString + "', `maHopDong` = '" + txtMaHopDong.Text + "', `loaiHopDong` = '" + txtLoaiHopDong.Text + "' WHERE (`maHopDong` = '" + txtMaHopDong.Text + "');";
+                                dataAccess.UpdateData(query);
+                                MessageBox.Show("Cập nhật thành công!", "Thông báo");
+                                BindToDataGridView();
+
+
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Lỗi: " + ex, "Thông báo");
+
+                            }
+                        }
                     }
                 }
                 else
@@ -334,6 +387,22 @@ namespace QuanLyNhanSuApp
             FormSearching fsearch = new FormSearching(query, 4, 5);
             fsearch.FormClosed += FormSearchClosed;
             fsearch.ShowDialog();
+        }
+
+        private void txtMaNV_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Không cho phép ký tự được nhập vào
+            }
+        }
+
+        private void txtMaHopDong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Không cho phép ký tự được nhập vào
+            }
         }
     }
 }

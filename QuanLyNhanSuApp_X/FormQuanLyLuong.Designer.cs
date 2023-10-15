@@ -193,6 +193,7 @@
             this.txtMaLuong.Name = "txtMaLuong";
             this.txtMaLuong.Size = new System.Drawing.Size(253, 34);
             this.txtMaLuong.TabIndex = 21;
+            this.txtMaLuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaLuong_KeyPress);
             // 
             // lblMaLuong
             // 

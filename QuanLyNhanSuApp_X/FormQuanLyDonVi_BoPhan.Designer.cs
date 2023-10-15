@@ -151,6 +151,7 @@
             this.txtMaBoPhan.Name = "txtMaBoPhan";
             this.txtMaBoPhan.Size = new System.Drawing.Size(284, 34);
             this.txtMaBoPhan.TabIndex = 64;
+            this.txtMaBoPhan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaBoPhan_KeyPress);
             // 
             // lblMaBoPhan
             // 

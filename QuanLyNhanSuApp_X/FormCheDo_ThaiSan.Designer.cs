@@ -119,6 +119,7 @@
             this.txtMaThaiSan.Name = "txtMaThaiSan";
             this.txtMaThaiSan.Size = new System.Drawing.Size(297, 34);
             this.txtMaThaiSan.TabIndex = 50;
+            this.txtMaThaiSan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaThaiSan_KeyPress);
             // 
             // lblNgayTroLaiLam
             // 
@@ -205,6 +206,7 @@
             this.txtMaNV.Name = "txtMaNV";
             this.txtMaNV.Size = new System.Drawing.Size(284, 34);
             this.txtMaNV.TabIndex = 47;
+            this.txtMaNV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaNV_KeyPress);
             // 
             // lblMaNV
             // 

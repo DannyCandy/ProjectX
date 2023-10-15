@@ -195,6 +195,60 @@ namespace QuanLyNhanSuApp
             return isRequire;
         }
 
+        private string isValid()
+        {
+            string message = string.Empty;
+            if (txtMaNV.Text.Length > 10)
+            {
+                message += "Mã nhân viên chỉ chứa tối đa 10 chữ số\n";
+            }
+            if (txtHoTen.Text.Length > 50)
+            {
+                message += "Họ tên nhân viên quá dài\n";
+            }
+            if (txtTonGiao.Text.Length > 50)
+            {
+                message += "Quá nhiều ký tự trong textbox tôn giáo\n";
+            }
+            if (txtQuocTich.Text.Length > 50)
+            {
+                message += "Quá nhiều ký tự trong textbox quốc tịch\n";
+            }
+            if (txtNoiSinh.Text.Length > 50)
+            {
+                message += "Quá nhiều ký tự trong textbox nơi sinh\n";
+            }
+            if (txtSDT.Text.Length != 10)
+            {
+                message += "Số điện thoại không hợp lệ\n";
+            }
+            if (txtDanToc.Text.Length > 20)
+            {
+                message += "Quá nhiều ký tự trong textbox dân tộc\n";
+            }
+            if (txtDcThuongTru.Text.Length > 50)
+            {
+                message += "Quá nhiều ký tự trong textbox DC thường trú\n";
+            }
+            if (txtDcTamTru.Text.Length > 50)
+            {
+                message += "Quá nhiều ký tự trong textbox DC tạm trú\n";
+            }
+            if (txtHocVan.Text.Length > 50)
+            {
+                message += "Quá nhiều ký tự trong textbox học vấn\n";
+            }
+            if (txtNguyenQuan.Text.Length > 50)
+            {
+                message += "Quá nhiều ký tự trong textbox nguyên quán\n";
+            }
+            if (txtGhiChu.Text.Length > 50)
+            {
+                message += "Quá nhiều ký tự trong textbox ghi chú\n";
+            }
+            return message;
+        }
+
         private void txtSDT_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -211,66 +265,80 @@ namespace QuanLyNhanSuApp
             }
             else
             {
-
-                try
+                if (isValid() == "")
                 {
-                    if(ImageSrc == string.Empty)
+                    DataAccess dataAccess = new DataAccess();
+                    DataTable dataTable = dataAccess.GetData("SELECT maNV FROM ttcanhan WHERE maNV = '" + txtMaNV.Text + "'");
+                    if (dataTable.Rows.Count != 0)
                     {
-                        if (viewMode)
-                        {
-                            MessageBox.Show("Bạn đang xử dụng lại ảnh của đối tượng khác!","Cảnh báo");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Vui lòng chọn ảnh đại diện!","Cảnh báo");
-                        }
-                        
+                        MessageBox.Show("Mã nhân viên đã tồn tại!", "Cảnh báo");
                     }
                     else
                     {
-                        pictureBoxAvt.ImageLocation = ImageSrc;
-                        /*byte[] img = null;
-                        FileStream stream = new FileStream(ImageSrc, FileMode.Open, FileAccess.Read);
-                        BinaryReader br = new BinaryReader(stream);
-                        img = br.ReadBytes((int)stream.Length);*/
-                        byte[] img;
-                        using (FileStream stream = new FileStream(ImageSrc, FileMode.Open, FileAccess.Read))
+                        try
                         {
-                            using (MemoryStream memoryStream = new MemoryStream())
+                            if (ImageSrc == string.Empty)
                             {
-                                stream.CopyTo(memoryStream);
-                                img = memoryStream.ToArray();
+                                if (viewMode)
+                                {
+                                    MessageBox.Show("Bạn đang xử dụng lại ảnh của đối tượng khác!", "Cảnh báo");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Vui lòng chọn ảnh đại diện!", "Cảnh báo");
+                                }
+
+                            }
+                            else
+                            {
+                                pictureBoxAvt.ImageLocation = ImageSrc;
+                                /*byte[] img = null;
+                                FileStream stream = new FileStream(ImageSrc, FileMode.Open, FileAccess.Read);
+                                BinaryReader br = new BinaryReader(stream);
+                                img = br.ReadBytes((int)stream.Length);*/
+                                byte[] img;
+                                using (FileStream stream = new FileStream(ImageSrc, FileMode.Open, FileAccess.Read))
+                                {
+                                    using (MemoryStream memoryStream = new MemoryStream())
+                                    {
+                                        stream.CopyTo(memoryStream);
+                                        img = memoryStream.ToArray();
+                                    }
+                                }
+                                string query = "INSERT INTO `employeems`.`ttcanhan` (`maNV`, `hoTen`, `noiSinh`, `nguyenQuan`, `dCThuongTru`, `dcTamTru`, `sdt`, `danToc`, `tonGiao`, `quocTich`, `hocVan`, `ghiChu`,`anhDaiDien`) " +
+                                    "VALUES ('" + txtMaNV.Text + "', " +
+                                    "'" + txtHoTen.Text + "', '" + txtNoiSinh.Text + "', " +
+                                    "'" + txtNguyenQuan.Text + "', '" + txtDcThuongTru.Text + "', " +
+                                    "'" + txtDcTamTru.Text + "', '" + txtSDT.Text + "', " +
+                                    "'" + txtDanToc.Text + "', '" + txtTonGiao.Text + "', " +
+                                    "'" + txtQuocTich.Text + "', '" + txtHocVan.Text + "', '" + txtGhiChu.Text + "',@pic);";
+
+
+                                MySqlConnection connection = new MySqlConnection("Server=localhost;Database=employeems;Uid=root;Pwd=123;");
+                                MySqlCommand cmd = new MySqlCommand(query, connection);
+                                connection.Open();
+                                cmd.Parameters.AddWithValue("@pic", img);
+                                cmd.ExecuteNonQuery();
+                                connection.Close();
+                                MessageBox.Show("Thêm thành công!", "Thông báo");
+                                BindToDataGridView();
                             }
                         }
-                        string query = "INSERT INTO `employeems`.`ttcanhan` (`maNV`, `hoTen`, `noiSinh`, `nguyenQuan`, `dCThuongTru`, `dcTamTru`, `sdt`, `danToc`, `tonGiao`, `quocTich`, `hocVan`, `ghiChu`,`anhDaiDien`) " +
-                            "VALUES ('" + txtMaNV.Text + "', " +
-                            "'" + txtHoTen.Text + "', '" + txtNoiSinh.Text + "', " +
-                            "'" + txtNguyenQuan.Text + "', '" + txtDcThuongTru.Text + "', " +
-                            "'" + txtDcTamTru.Text + "', '" + txtSDT.Text + "', " +
-                            "'" + txtDanToc.Text + "', '" + txtTonGiao.Text + "', " +
-                            "'" + txtQuocTich.Text + "', '" + txtHocVan.Text + "', '" + txtGhiChu.Text + "',@pic);";
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi: " + ex, "Thông báo");
 
-
-                        MySqlConnection connection = new MySqlConnection("Server=localhost;Database=employeems;Uid=root;Pwd=123;");
-                        MySqlCommand cmd = new MySqlCommand(query, connection);
-                        connection.Open();
-                        cmd.Parameters.AddWithValue("@pic", img);
-                        cmd.ExecuteNonQuery();
-                        connection.Close();
-                        MessageBox.Show("Thêm thành công!", "Thông báo");
-                        BindToDataGridView();
+                        }
+                        finally
+                        {
+                            ImageSrc = string.Empty;
+                        }
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Lỗi: " + ex, "Thông báo");
-
+                    MessageBox.Show(isValid(), "Cảnh báo");
                 }
-                finally
-                {
-                    ImageSrc = string.Empty;
-                }
-
             }
         }
 
@@ -283,20 +351,34 @@ namespace QuanLyNhanSuApp
             }
             else
             {
-                try
+                DataAccess dataAccess = new DataAccess();
+                DataTable dataTable = dataAccess.GetData("SELECT maNV FROM ttcanhan WHERE maNV = '" + txtMaNV.Text + "'");
+                if (dataTable.Rows.Count == 0)
                 {
-                    txtMaNV.BackColor = SystemColors.Window;
-                    DataAccess dataAccess = new DataAccess();
-                    string query = "DELETE FROM `employeems`.`ttcanhan` WHERE (`maNV` = '" + txtMaNV.Text + "');";
-                    dataAccess.DeleteData(query);
-                    MessageBox.Show("Xóa thành công", "Thông báo");
-                    BindToDataGridView();
-                    ResetTextBox();
-
+                    MessageBox.Show("Mã nhân viên không tồn tại!", "Cảnh báo");
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                    DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            txtMaNV.BackColor = SystemColors.Window;
+                            dataAccess = new DataAccess();
+                            string query = "DELETE FROM `employeems`.`ttcanhan` WHERE (`maNV` = '" + txtMaNV.Text + "');";
+                            dataAccess.DeleteData(query);
+                            MessageBox.Show("Xóa thành công", "Thông báo");
+                            BindToDataGridView();
+                            ResetTextBox();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                        }
+                    }
                 }
             }
         }
@@ -309,102 +391,123 @@ namespace QuanLyNhanSuApp
             }
             else
             {
-                if(ImageSrc == string.Empty)
+                if (isValid() == "")
                 {
-                    try
+                    DataAccess dataAccess = new DataAccess();
+                    DataTable dataTable = dataAccess.GetData("SELECT maNV FROM ttcanhan WHERE maNV = '" + txtMaNV.Text + "'");
+                    if (dataTable.Rows.Count == 0)
                     {
-                        DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhật thông tin chứ?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            string query = "UPDATE `employeems`.`ttcanhan` SET " +
-                                "`maNV` = '" + txtMaNV.Text + "', " +
-                                "`hoTen` = '" + txtHoTen.Text + "', " +
-                                "`noiSinh` = '" + txtNoiSinh.Text + "', " +
-                                "`nguyenQuan` = '" + txtNguyenQuan.Text + "', " +
-                                "`dCThuongTru` = '" + txtDcThuongTru.Text + "', " +
-                                "`dcTamTru` = '" + txtDcTamTru.Text + "', " +
-                                "`sdt` = '" + txtSDT.Text + "', " +
-                                "`danToc` = '" + txtDanToc.Text + "', " +
-                                "`tonGiao` = '" + txtTonGiao.Text + "', " +
-                                "`quocTich` = '" + txtQuocTich.Text + "', " +
-                                "`hocVan` = '" + txtHocVan.Text + "', " +
-                                "`ghiChu` = '" + txtGhiChu.Text + "' " +
-                                "WHERE (`maNV` = '" + txtMaNV.Text + "');";
-
-                            MySqlConnection connection = new MySqlConnection("Server=localhost;Database=employeems;Uid=root;Pwd=123;");
-                            connection.Open();
-                            MySqlCommand cmd = new MySqlCommand(query, connection);
-                            cmd.ExecuteNonQuery();
-                            connection.Close();
-                            MessageBox.Show("Cập nhật thành công!", "Thông báo");
-                            BindToDataGridView();
-                        }
+                        MessageBox.Show("Mã nhân viên không tồn tại!", "Cảnh báo");
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                        DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn cập nhật không?", "Xác nhận cập nhật", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+                        if (result == DialogResult.Yes)
+                        {
+                            if (ImageSrc == string.Empty)
+                            {
+                                try
+                                {
+                                    DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhật thông tin chứ?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                    if (dialogResult == DialogResult.Yes)
+                                    {
+                                        string query = "UPDATE `employeems`.`ttcanhan` SET " +
+                                            "`maNV` = '" + txtMaNV.Text + "', " +
+                                            "`hoTen` = '" + txtHoTen.Text + "', " +
+                                            "`noiSinh` = '" + txtNoiSinh.Text + "', " +
+                                            "`nguyenQuan` = '" + txtNguyenQuan.Text + "', " +
+                                            "`dCThuongTru` = '" + txtDcThuongTru.Text + "', " +
+                                            "`dcTamTru` = '" + txtDcTamTru.Text + "', " +
+                                            "`sdt` = '" + txtSDT.Text + "', " +
+                                            "`danToc` = '" + txtDanToc.Text + "', " +
+                                            "`tonGiao` = '" + txtTonGiao.Text + "', " +
+                                            "`quocTich` = '" + txtQuocTich.Text + "', " +
+                                            "`hocVan` = '" + txtHocVan.Text + "', " +
+                                            "`ghiChu` = '" + txtGhiChu.Text + "' " +
+                                            "WHERE (`maNV` = '" + txtMaNV.Text + "');";
+
+                                        MySqlConnection connection = new MySqlConnection("Server=localhost;Database=employeems;Uid=root;Pwd=123;");
+                                        connection.Open();
+                                        MySqlCommand cmd = new MySqlCommand(query, connection);
+                                        cmd.ExecuteNonQuery();
+                                        connection.Close();
+                                        MessageBox.Show("Cập nhật thành công!", "Thông báo");
+                                        BindToDataGridView();
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show("Lỗi: " + ex, "Thông báo");
+
+                                }
+                            }
+                            else
+                            {
+                                try
+                                {
+                                    DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhật thông tin chứ?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                    if (dialogResult == DialogResult.Yes)
+                                    {
+                                        pictureBoxAvt.ImageLocation = ImageSrc;
+                                        /*byte[] img = null;
+                                        FileStream stream = new FileStream(ImageSrc, FileMode.Open, FileAccess.Read);
+                                        BinaryReader br = new BinaryReader(stream);
+                                        img = br.ReadBytes((int)stream.Length);*/
+                                        byte[] img;
+                                        using (FileStream stream = new FileStream(ImageSrc, FileMode.Open, FileAccess.Read))
+                                        {
+                                            using (MemoryStream memoryStream = new MemoryStream())
+                                            {
+                                                stream.CopyTo(memoryStream);
+                                                img = memoryStream.ToArray();
+                                            }
+                                        }
+
+                                        string query = "UPDATE `employeems`.`ttcanhan` SET " +
+                                            "`maNV` = '" + txtMaNV.Text + "', " +
+                                            "`hoTen` = '" + txtHoTen.Text + "', " +
+                                            "`noiSinh` = '" + txtNoiSinh.Text + "', " +
+                                            "`nguyenQuan` = '" + txtNguyenQuan.Text + "', " +
+                                            "`dCThuongTru` = '" + txtDcThuongTru.Text + "', " +
+                                            "`dcTamTru` = '" + txtDcTamTru.Text + "', " +
+                                            "`sdt` = '" + txtSDT.Text + "', " +
+                                            "`danToc` = '" + txtDanToc.Text + "', " +
+                                            "`tonGiao` = '" + txtTonGiao.Text + "', " +
+                                            "`quocTich` = '" + txtQuocTich.Text + "', " +
+                                            "`hocVan` = '" + txtHocVan.Text + "', " +
+                                            "`ghiChu` = '" + txtGhiChu.Text + "', " +
+                                            "`anhDaiDien` = @pic " +
+                                            "WHERE (`maNV` = '" + txtMaNV.Text + "');";
+
+                                        MySqlConnection connection = new MySqlConnection("Server=localhost;Database=employeems;Uid=root;Pwd=123;");
+                                        connection.Open();
+                                        MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                                        cmd.Parameters.AddWithValue("@pic", img);
+                                        cmd.ExecuteNonQuery();
+                                        connection.Close();
+                                        MessageBox.Show("Cập nhật thành công!", "Thông báo");
+                                        BindToDataGridView();
+
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show("Lỗi: " + ex, "Thông báo");
+
+                                }
+                                finally
+                                {
+                                    ImageSrc = string.Empty;
+                                }
+                            }
+                        }
                     }
                 }
                 else
                 {
-                    try
-                    {
-                        DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhật thông tin chứ?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            pictureBoxAvt.ImageLocation = ImageSrc;
-                            /*byte[] img = null;
-                            FileStream stream = new FileStream(ImageSrc, FileMode.Open, FileAccess.Read);
-                            BinaryReader br = new BinaryReader(stream);
-                            img = br.ReadBytes((int)stream.Length);*/
-                            byte[] img;
-                            using (FileStream stream = new FileStream(ImageSrc, FileMode.Open, FileAccess.Read))
-                            {
-                                using (MemoryStream memoryStream = new MemoryStream())
-                                {
-                                    stream.CopyTo(memoryStream);
-                                    img = memoryStream.ToArray();
-                                }
-                            }
-
-                            string query = "UPDATE `employeems`.`ttcanhan` SET " +
-                                "`maNV` = '" + txtMaNV.Text + "', " +
-                                "`hoTen` = '" + txtHoTen.Text + "', " +
-                                "`noiSinh` = '" + txtNoiSinh.Text + "', " +
-                                "`nguyenQuan` = '" + txtNguyenQuan.Text + "', " +
-                                "`dCThuongTru` = '" + txtDcThuongTru.Text + "', " +
-                                "`dcTamTru` = '" + txtDcTamTru.Text + "', " +
-                                "`sdt` = '" + txtSDT.Text + "', " +
-                                "`danToc` = '" + txtDanToc.Text + "', " +
-                                "`tonGiao` = '" + txtTonGiao.Text + "', " +
-                                "`quocTich` = '" + txtQuocTich.Text + "', " +
-                                "`hocVan` = '" + txtHocVan.Text + "', " +
-                                "`ghiChu` = '" + txtGhiChu.Text + "', " +
-                                "`anhDaiDien` = @pic " +
-                                "WHERE (`maNV` = '" + txtMaNV.Text + "');";
-
-                            MySqlConnection connection = new MySqlConnection("Server=localhost;Database=employeems;Uid=root;Pwd=123;");
-                            connection.Open();
-                            MySqlCommand cmd = new MySqlCommand(query, connection);
-
-                            cmd.Parameters.AddWithValue("@pic", img);
-                            cmd.ExecuteNonQuery();
-                            connection.Close();
-                            MessageBox.Show("Cập nhật thành công!", "Thông báo");
-                            BindToDataGridView();
-
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Lỗi: " + ex, "Thông báo");
-
-                    }
-                    finally
-                    {
-                        ImageSrc = string.Empty;
-                    }
+                    MessageBox.Show(isValid(), "Cảnh báo");
                 }
             }
         }
@@ -496,6 +599,14 @@ namespace QuanLyNhanSuApp
             FormSearching fsearch = new FormSearching(query);
             fsearch.FormClosed += FormSearchClosed;
             fsearch.ShowDialog();
+        }
+
+        private void txtMaNV_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Không cho phép ký tự được nhập vào
+            }
         }
     }
 }

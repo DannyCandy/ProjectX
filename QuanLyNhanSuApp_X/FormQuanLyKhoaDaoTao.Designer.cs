@@ -119,6 +119,7 @@
             this.txtMaNhanVien.Name = "txtMaNhanVien";
             this.txtMaNhanVien.Size = new System.Drawing.Size(245, 34);
             this.txtMaNhanVien.TabIndex = 26;
+            this.txtMaNhanVien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaNhanVien_KeyPress);
             // 
             // txtThoiGian
             // 
@@ -204,6 +205,7 @@
             this.txtMaKhoaDaoTao.Name = "txtMaKhoaDaoTao";
             this.txtMaKhoaDaoTao.Size = new System.Drawing.Size(274, 34);
             this.txtMaKhoaDaoTao.TabIndex = 21;
+            this.txtMaKhoaDaoTao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaKhoaDaoTao_KeyPress);
             // 
             // lblMaNV
             // 

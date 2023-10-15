@@ -158,6 +158,31 @@ namespace QuanLyNhanSuApp
             return isRequire;
         }
 
+        private string isValid()
+        {
+            string message = string.Empty;
+            if (txtUsername.Text.Length > 50)
+            {
+                message += "Username quá dài\n";
+            }
+            if (txtHoTen.Text.Length > 10)
+            {
+                message += "Họ tên quá dài\n";
+            }
+            if (txtIDUser.Text.Length > 10)
+            {
+                message += "IDUser chí chứa tối đa 10 ký tự\n";
+            }
+            if (txtMaNV.Text.Length > 10)
+            {
+                message += "Mã nhân viên chỉ chứa tối đa 10 ký tự\n";
+            }
+            if (txtPassword.Text.Length > 20)
+            {
+                message += "Mật khẩu quá dài\n";
+            }
+            return message;
+        }
         private void btnThem_Click(object sender, EventArgs e)
         {
             setDefault();
@@ -168,25 +193,38 @@ namespace QuanLyNhanSuApp
             }
             else
             {
-                
-                    try
+                if (isValid() == "")
+                {
+                    DataAccess dataAccess = new DataAccess();
+                    DataTable dataTable = dataAccess.GetData("SELECT idUser FROM user WHERE idUser = '" + txtIDUser.Text + "'");
+                    if (dataTable.Rows.Count != 0)
                     {
-                        DataAccess dataAccess = new DataAccess();
-                        string query = "INSERT INTO `employeems`.`user` (`userName`, `pass`, `hoTen`, `maQuyen`, `idUser`, `maNV`) " +
-                        "VALUES ('"+txtUsername.Text+"', '"+txtPassword.Text+"', '"+txtHoTen.Text+"', '"+cbbMaQuyen.SelectedValue.ToString()+"', '"+txtIDUser.Text+"', '"+txtMaNV.Text+"');";
-                        dataAccess.InsertData(query);
-                        MessageBox.Show("Thêm thành công!", "Thông báo");
-                        BindToDataGridView();
-
-
+                        MessageBox.Show("IdUser đã tồn tại!", "Cảnh báo");
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                        try
+                        {
+                            dataAccess = new DataAccess();
+                            string query = "INSERT INTO `employeems`.`user` (`userName`, `pass`, `hoTen`, `maQuyen`, `idUser`, `maNV`) " +
+                            "VALUES ('" + txtUsername.Text + "', '" + txtPassword.Text + "', '" + txtHoTen.Text + "', '" + cbbMaQuyen.SelectedValue.ToString() + "', '" + txtIDUser.Text + "', '" + txtMaNV.Text + "');";
+                            dataAccess.InsertData(query);
+                            MessageBox.Show("Thêm thành công!", "Thông báo");
+                            BindToDataGridView();
 
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi: " + ex, "Thông báo");
+
+                        }
                     }
-                
-                
+                }
+                else
+                {
+                    MessageBox.Show(isValid(), "Cảnh báo");
+                }
             }
         }
 
@@ -199,20 +237,34 @@ namespace QuanLyNhanSuApp
             }
             else
             {
-                try
+                DataAccess dataAccess = new DataAccess();
+                DataTable dataTable = dataAccess.GetData("SELECT idUser FROM user WHERE idUser = '" + txtIDUser.Text + "'");
+                if (dataTable.Rows.Count == 0)
                 {
-                    txtMaNV.BackColor = SystemColors.Window;
-                    DataAccess dataAccess = new DataAccess();
-                    string query = "DELETE FROM `employeems`.`user` WHERE(`maNV` = '" + txtIDUser.Text + "')";
-                    dataAccess.DeleteData(query);
-                    MessageBox.Show("Xóa thành công", "Thông báo");
-                    BindToDataGridView();
-                    ResetTextBox();
-
+                    MessageBox.Show("IdUser không tồn tại!", "Cảnh báo");
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                    DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            txtMaNV.BackColor = SystemColors.Window;
+                            dataAccess = new DataAccess();
+                            string query = "DELETE FROM `employeems`.`user` WHERE(`maNV` = '" + txtIDUser.Text + "')";
+                            dataAccess.DeleteData(query);
+                            MessageBox.Show("Xóa thành công", "Thông báo");
+                            BindToDataGridView();
+                            ResetTextBox();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                        }
+                    }
                 }
             }
         }
@@ -225,25 +277,45 @@ namespace QuanLyNhanSuApp
             }
             else
             {
-                
-                    try
+                if (isValid() == "")
+                {
+                    DataAccess dataAccess = new DataAccess();
+                    DataTable dataTable = dataAccess.GetData("SELECT idUser FROM user WHERE idUser = '" + txtIDUser.Text + "'");
+                    if (dataTable.Rows.Count == 0)
                     {
-                        DataAccess dataAccess = new DataAccess();
-                        
-                        string query = "UPDATE `employeems`.`user` SET `userName` = '"+txtUsername.Text+"', `pass` = '"+txtPassword.Text+"', `hoTen` = '"+txtHoTen.Text+"', `maQuyen` = '"+cbbMaQuyen.SelectedValue.ToString()+"', `idUser` = '"+txtIDUser.Text+"', `maNV` = '"+txtMaNV.Text+"' WHERE (`idUser` = '"+txtIDUser.Text+"');";
-                        dataAccess.UpdateData(query);
-                        MessageBox.Show("Cập nhật thành công!", "Thông báo");
-                        Console.WriteLine(query);
-                        BindToDataGridView();
-
-
+                        MessageBox.Show("IdUser không tồn tại!", "Cảnh báo");
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                        DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn cập nhật không?", "Xác nhận cập nhật", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+                        if (result == DialogResult.Yes)
+                        {
+                            try
+                            {
+                                dataAccess = new DataAccess();
+
+                                string query = "UPDATE `employeems`.`user` SET `userName` = '" + txtUsername.Text + "', `pass` = '" + txtPassword.Text + "', `hoTen` = '" + txtHoTen.Text + "', `maQuyen` = '" + cbbMaQuyen.SelectedValue.ToString() + "', `idUser` = '" + txtIDUser.Text + "', `maNV` = '" + txtMaNV.Text + "' WHERE (`idUser` = '" + txtIDUser.Text + "');";
+                                dataAccess.UpdateData(query);
+                                MessageBox.Show("Cập nhật thành công!", "Thông báo");
+                                Console.WriteLine(query);
+                                BindToDataGridView();
+
+
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Lỗi: " + ex, "Thông báo");
+
+                            }
+                        }
                     }
-                
+                }
+                else
+                {
+                    MessageBox.Show(isValid(), "Cảnh báo");
+                }
+
             }
         }
 
@@ -286,6 +358,22 @@ namespace QuanLyNhanSuApp
             FormSearching fsearch = new FormSearching(query);
             fsearch.FormClosed += FormSearchClosed;
             fsearch.ShowDialog();
+        }
+
+        private void txtMaNV_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Không cho phép ký tự được nhập vào
+            }
+        }
+
+        private void txtIDUser_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Không cho phép ký tự được nhập vào
+            }
         }
     }
 }

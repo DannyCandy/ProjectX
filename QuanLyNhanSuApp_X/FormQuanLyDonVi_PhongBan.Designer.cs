@@ -97,6 +97,7 @@
             this.txtMaBoPhan.Name = "txtMaBoPhan";
             this.txtMaBoPhan.Size = new System.Drawing.Size(297, 34);
             this.txtMaBoPhan.TabIndex = 50;
+            this.txtMaBoPhan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaBoPhan_KeyPress);
             // 
             // txtGhiChu
             // 
@@ -162,6 +163,7 @@
             this.txtMaPhong.Name = "txtMaPhong";
             this.txtMaPhong.Size = new System.Drawing.Size(284, 34);
             this.txtMaPhong.TabIndex = 47;
+            this.txtMaPhong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaPhong_KeyPress);
             // 
             // lblMaPhong
             // 

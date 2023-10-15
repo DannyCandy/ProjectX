@@ -99,6 +99,7 @@
             this.txtMaNV.Name = "txtMaNV";
             this.txtMaNV.Size = new System.Drawing.Size(278, 34);
             this.txtMaNV.TabIndex = 28;
+            this.txtMaNV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaNV_KeyPress);
             // 
             // txtPassword
             // 
@@ -115,6 +116,7 @@
             this.txtIDUser.Name = "txtIDUser";
             this.txtIDUser.Size = new System.Drawing.Size(278, 34);
             this.txtIDUser.TabIndex = 26;
+            this.txtIDUser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIDUser_KeyPress);
             // 
             // lblMaNV
             // 

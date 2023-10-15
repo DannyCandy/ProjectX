@@ -105,6 +105,7 @@
             this.txtMaPhong.Name = "txtMaPhong";
             this.txtMaPhong.Size = new System.Drawing.Size(309, 34);
             this.txtMaPhong.TabIndex = 49;
+            this.txtMaPhong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaPhong_KeyPress);
             // 
             // txtLyDo
             // 

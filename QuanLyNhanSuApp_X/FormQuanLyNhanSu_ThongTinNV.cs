@@ -190,6 +190,35 @@ namespace QuanLyNhanSuApp
             return isRequire;
         }
 
+        private string isValid() { 
+            string message = string.Empty;
+            if (txtMaNV.Text.Length > 10)
+            {
+                message += "Mã nhân viên chỉ chứa tối đa 10 chữ số\n";
+            }
+            if (txtHoTen.Text.Length > 50)
+            {
+                message += "Họ tên nhân viên quá dài\n";
+            }
+            if (txtChucVu.Text.Length > 50)
+            {
+                message += "Chức vụ quá dài\n";
+            }
+            if (txtTTHonNhan.Text.Length > 50)
+            {
+                message += "Quá nhiều ký tự trong textbox tình trạng hôn nhân\n";
+            }
+            if(txtCMND.Text.Length != 9)
+            {
+                message += "CMND phải có 9 chữ số\n";
+            }
+            if(txtNoiCap.Text.Length > 50)
+            {
+                message += "Quá nhiều ký tự trong textbox nơi cấp\n";
+            }
+            return message;
+        }
+
         private void SetDefault()
         {
             cbbGioiTinh.SelectedIndex = 0;
@@ -213,27 +242,41 @@ namespace QuanLyNhanSuApp
             }
             else
             {
-                
-                    try
+                if (isValid() == "")
+                {
+                    DataAccess dataAccess = new DataAccess();
+                    DataTable dataTable = dataAccess.GetData("SELECT maNV FROM ttnvcoban WHERE maNV = '" + txtMaNV.Text + "'");
+                    if (dataTable.Rows.Count != 0)
                     {
-
-                        string timeNgaySinhString = dateTimePickerNgaySinh.Value.ToString("yyyy-MM-dd");
-
-                        DataAccess dataAccess = new DataAccess();
-                        string query = "INSERT INTO `employeems`.`ttnvcoban` (`maNV`, `hoTen`, `maPhong`, `ngaySinh`, `gioiTinh`, `ttHonNhan`, `CMND`, `noiCap`, `chucVu`)" +
-                        " VALUES ('"+txtMaNV.Text+"', '"+txtHoTen.Text+"', '"+cbbPhongBan.SelectedValue.ToString()+"', '"+timeNgaySinhString+"', '"+cbbGioiTinh.SelectedIndex.ToString()+"', '"+txtTTHonNhan.Text+"', '"+txtCMND.Text+"', '"+txtNoiCap.Text+"', '"+txtChucVu.Text+"');";
-                        dataAccess.InsertData(query);
-                        MessageBox.Show("Thêm thành công!", "Thông báo");
-                        BindToDataGridView();
-
-
+                        MessageBox.Show("Mã nhân viên đã tồn tại!", "Cảnh báo");
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                        try
+                        {
 
+                            string timeNgaySinhString = dateTimePickerNgaySinh.Value.ToString("yyyy-MM-dd");
+
+                            dataAccess = new DataAccess();
+                            string query = "INSERT INTO `employeems`.`ttnvcoban` (`maNV`, `hoTen`, `maPhong`, `ngaySinh`, `gioiTinh`, `ttHonNhan`, `CMND`, `noiCap`, `chucVu`)" +
+                            " VALUES ('" + txtMaNV.Text + "', '" + txtHoTen.Text + "', '" + cbbPhongBan.SelectedValue.ToString() + "', '" + timeNgaySinhString + "', '" + cbbGioiTinh.SelectedIndex.ToString() + "', '" + txtTTHonNhan.Text + "', '" + txtCMND.Text + "', '" + txtNoiCap.Text + "', '" + txtChucVu.Text + "');";
+                            dataAccess.InsertData(query);
+                            MessageBox.Show("Thêm thành công!", "Thông báo");
+                            BindToDataGridView();
+
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi: " + ex, "Thông báo");
+
+                        }
                     }
-                
+                }
+                else
+                {
+                    MessageBox.Show(isValid(), "Cảnh báo");
+                }
             }
         }
 
@@ -246,20 +289,34 @@ namespace QuanLyNhanSuApp
             }
             else
             {
-                try
+                DataAccess dataAccess = new DataAccess();
+                DataTable dataTable = dataAccess.GetData("SELECT maNV FROM ttnvcoban WHERE maNV = '" + txtMaNV.Text + "'");
+                if (dataTable.Rows.Count == 0)
                 {
-                    txtMaNV.BackColor = SystemColors.Window;
-                    DataAccess dataAccess = new DataAccess();
-                    string query = "DELETE FROM `employeems`.`ttnvcoban` WHERE (`maNV` = '" + txtMaNV.Text + "');";
-                    dataAccess.DeleteData(query);
-                    MessageBox.Show("Xóa thành công", "Thông báo");
-                    BindToDataGridView();
-                    ResetTextBox();
-
+                    MessageBox.Show("Mã nhân viên không tồn tại!", "Cảnh báo");
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                    DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            txtMaNV.BackColor = SystemColors.Window;
+                            dataAccess = new DataAccess();
+                            string query = "DELETE FROM `employeems`.`ttnvcoban` WHERE (`maNV` = '" + txtMaNV.Text + "');";
+                            dataAccess.DeleteData(query);
+                            MessageBox.Show("Xóa thành công", "Thông báo");
+                            BindToDataGridView();
+                            ResetTextBox();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                        }
+                    }
                 }
             }
         }
@@ -272,35 +329,55 @@ namespace QuanLyNhanSuApp
             }
             else
             {
-                    try
+                if (isValid() == "")
+                {
+                    DataAccess dataAccess = new DataAccess();
+                    DataTable dataTable = dataAccess.GetData("SELECT maNV FROM ttnvcoban WHERE maNV = '" + txtMaNV.Text + "'");
+                    if (dataTable.Rows.Count == 0)
                     {
-                        string timeNgaySinhString = dateTimePickerNgaySinh.Value.ToString("yyyy-MM-dd");
-
-
-                        DataAccess dataAccess = new DataAccess();
-                        string query = "UPDATE `employeems`.`ttnvcoban` SET " +
-                        "`maNV` = '"+txtMaNV.Text+"', " +
-                        "`hoTen` = '"+txtHoTen.Text+"', " +
-                        "`maPhong` = '"+cbbPhongBan.SelectedValue.ToString()+"', " +
-                        "`ngaySinh` = '"+timeNgaySinhString+"', " +
-                        "`gioiTinh` = '"+cbbGioiTinh.SelectedIndex.ToString()+"', " +
-                        "`ttHonNhan` = '"+txtTTHonNhan.Text+"', " +
-                        "`CMND` = '"+txtCMND.Text+"', " +
-                        "`noiCap` = '"+txtNoiCap.Text+"', " +
-                        "`chucVu` = '"+txtChucVu.Text+"'" +
-                        " WHERE (`maNV` = '"+txtMaNV.Text+"');";
-                        dataAccess.UpdateData(query);
-                        MessageBox.Show("Cập nhật thành công!", "Thông báo");
-                        BindToDataGridView();
-
-
+                        MessageBox.Show("Mã nhân viên không tồn tại!", "Cảnh báo");
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                        DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn cập nhật không?", "Xác nhận cập nhật", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+                        if (result == DialogResult.Yes)
+                        {
+                            try
+                            {
+                                string timeNgaySinhString = dateTimePickerNgaySinh.Value.ToString("yyyy-MM-dd");
+
+
+                                dataAccess = new DataAccess();
+                                string query = "UPDATE `employeems`.`ttnvcoban` SET " +
+                                "`maNV` = '" + txtMaNV.Text + "', " +
+                                "`hoTen` = '" + txtHoTen.Text + "', " +
+                                "`maPhong` = '" + cbbPhongBan.SelectedValue.ToString() + "', " +
+                                "`ngaySinh` = '" + timeNgaySinhString + "', " +
+                                "`gioiTinh` = '" + cbbGioiTinh.SelectedIndex.ToString() + "', " +
+                                "`ttHonNhan` = '" + txtTTHonNhan.Text + "', " +
+                                "`CMND` = '" + txtCMND.Text + "', " +
+                                "`noiCap` = '" + txtNoiCap.Text + "', " +
+                                "`chucVu` = '" + txtChucVu.Text + "'" +
+                                " WHERE (`maNV` = '" + txtMaNV.Text + "');";
+                                dataAccess.UpdateData(query);
+                                MessageBox.Show("Cập nhật thành công!", "Thông báo");
+                                BindToDataGridView();
+
+
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Lỗi: " + ex, "Thông báo");
+
+                            }
+                        }
                     }
-                
+                }
+                else
+                {
+                    MessageBox.Show(isValid(), "Cảnh báo");
+                }
             }
         }
 
@@ -384,6 +461,14 @@ namespace QuanLyNhanSuApp
             FormSearching fsearch = new FormSearching(query, 6);
             fsearch.FormClosed += FormSearchClosed;
             fsearch.ShowDialog();
+        }
+
+        private void txtMaNV_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Không cho phép ký tự được nhập vào
+            }
         }
     }
 }

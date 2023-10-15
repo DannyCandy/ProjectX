@@ -101,6 +101,7 @@
             this.txtMaHopDong.Name = "txtMaHopDong";
             this.txtMaHopDong.Size = new System.Drawing.Size(294, 34);
             this.txtMaHopDong.TabIndex = 26;
+            this.txtMaHopDong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaHopDong_KeyPress);
             // 
             // txtThoiHanLamViec
             // 
@@ -176,6 +177,7 @@
             this.txtMaNV.Name = "txtMaNV";
             this.txtMaNV.Size = new System.Drawing.Size(328, 34);
             this.txtMaNV.TabIndex = 21;
+            this.txtMaNV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaNV_KeyPress);
             // 
             // lblMaNV
             // 
