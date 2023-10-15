@@ -409,9 +409,6 @@ namespace QuanLyNhanSuApp
                             {
                                 try
                                 {
-                                    DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhật thông tin chứ?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                                    if (dialogResult == DialogResult.Yes)
-                                    {
                                         string query = "UPDATE `employeems`.`ttcanhan` SET " +
                                             "`maNV` = '" + txtMaNV.Text + "', " +
                                             "`hoTen` = '" + txtHoTen.Text + "', " +
@@ -434,7 +431,6 @@ namespace QuanLyNhanSuApp
                                         connection.Close();
                                         MessageBox.Show("Cập nhật thành công!", "Thông báo");
                                         BindToDataGridView();
-                                    }
                                 }
                                 catch (Exception ex)
                                 {
@@ -514,6 +510,7 @@ namespace QuanLyNhanSuApp
 
         private void dgvFormQuanLyTTCaNhan_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            viewMode = true;
             //Chưa có blob image
             if (dgvFormQuanLyTTCaNhan.Rows.Count > 0)
             {
