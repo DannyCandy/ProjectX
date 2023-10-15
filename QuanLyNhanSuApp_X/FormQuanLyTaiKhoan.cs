@@ -253,7 +253,7 @@ namespace QuanLyNhanSuApp
                         {
                             txtMaNV.BackColor = SystemColors.Window;
                             dataAccess = new DataAccess();
-                            string query = "DELETE FROM `employeems`.`user` WHERE(`maNV` = '" + txtIDUser.Text + "')";
+                            string query = "DELETE FROM `employeems`.`user` WHERE(`idUser` = '" + txtIDUser.Text + "')";
                             dataAccess.DeleteData(query);
                             MessageBox.Show("Xóa thành công", "Thông báo");
                             BindToDataGridView();
