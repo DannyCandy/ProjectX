@@ -398,8 +398,7 @@ namespace QuanLyNhanSuApp
                                     "`ngayTroLaiLam` = '" + timeTroLaiLamString + "', " +
                                     "`troCapCongTy` = '" + txtTroCapCty.Text + "', " +
                                     "`ghiChu` = '" + txtGhiChu.Text + "', " +
-                                    "`maThaiSan` = '" + txtMaThaiSan.Text + "', " +
-                                    "`ngayTaoYeuCau` = '" + txtNgayTaoYeuCau.Text + "' WHERE (`maThaiSan` = '" + txtMaThaiSan.Text + "');";
+                                    "`maThaiSan` = '" + txtMaThaiSan.Text + "'" + " WHERE (`maThaiSan` = '" + txtMaThaiSan.Text + "');";
                                 dataAccess.UpdateData(query);
                                 MessageBox.Show("Cập nhật thành công!", "Thông báo");
                                 BindToDataGridView();
