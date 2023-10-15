@@ -39,16 +39,20 @@
             this.txtQuyen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuyen.Location = new System.Drawing.Point(545, 354);
             this.txtQuyen.Name = "txtQuyen";
+            this.txtQuyen.ReadOnly = true;
             this.txtQuyen.Size = new System.Drawing.Size(323, 30);
             this.txtQuyen.TabIndex = 5;
+            this.txtQuyen.TabStop = false;
             // 
             // txtTenTaiKhoan
             // 
             this.txtTenTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenTaiKhoan.Location = new System.Drawing.Point(545, 290);
             this.txtTenTaiKhoan.Name = "txtTenTaiKhoan";
+            this.txtTenTaiKhoan.ReadOnly = true;
             this.txtTenTaiKhoan.Size = new System.Drawing.Size(323, 30);
             this.txtTenTaiKhoan.TabIndex = 6;
+            this.txtTenTaiKhoan.TabStop = false;
             // 
             // lblQuyen
             // 

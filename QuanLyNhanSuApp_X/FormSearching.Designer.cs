@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSearching));
             this.txtGiaTriTK = new System.Windows.Forms.TextBox();
             this.lblValueSearch = new System.Windows.Forms.Label();
             this.cbbTruongTimKiem = new System.Windows.Forms.ComboBox();
@@ -245,6 +246,7 @@
             this.Controls.Add(this.lblFieldSearch);
             this.Controls.Add(this.lblValueSearch);
             this.Controls.Add(this.txtGiaTriTK);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormSearching";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Tra cứu";
