@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGiaoDienChinh));
             this.menuStripGiaoDienChinh = new System.Windows.Forms.MenuStrip();
             this.taiKhoanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thongTinTaiKhoanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,22 +78,25 @@
             // 
             // thongTinTaiKhoanToolStripMenuItem
             // 
+            this.thongTinTaiKhoanToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("thongTinTaiKhoanToolStripMenuItem.Image")));
             this.thongTinTaiKhoanToolStripMenuItem.Name = "thongTinTaiKhoanToolStripMenuItem";
-            this.thongTinTaiKhoanToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
+            this.thongTinTaiKhoanToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.thongTinTaiKhoanToolStripMenuItem.Text = "Thông tin tài khoản";
             this.thongTinTaiKhoanToolStripMenuItem.Click += new System.EventHandler(this.thongTinTaiKhoanToolStripMenuItem_Click);
             // 
             // doiMatKhauToolStripMenuItem
             // 
+            this.doiMatKhauToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("doiMatKhauToolStripMenuItem.Image")));
             this.doiMatKhauToolStripMenuItem.Name = "doiMatKhauToolStripMenuItem";
-            this.doiMatKhauToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
+            this.doiMatKhauToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.doiMatKhauToolStripMenuItem.Text = "Đổi mật khẩu";
             this.doiMatKhauToolStripMenuItem.Click += new System.EventHandler(this.doiMatKhauToolStripMenuItem_Click);
             // 
             // thoatToolStripMenuItem
             // 
+            this.thoatToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("thoatToolStripMenuItem.Image")));
             this.thoatToolStripMenuItem.Name = "thoatToolStripMenuItem";
-            this.thoatToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
+            this.thoatToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.thoatToolStripMenuItem.Text = "Thoát";
             this.thoatToolStripMenuItem.Click += new System.EventHandler(this.thoatToolStripMenuItem_Click);
             // 
@@ -113,6 +117,7 @@
             // 
             // quanLyLichLamViecToolStripMenuItem
             // 
+            this.quanLyLichLamViecToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("quanLyLichLamViecToolStripMenuItem.Image")));
             this.quanLyLichLamViecToolStripMenuItem.Name = "quanLyLichLamViecToolStripMenuItem";
             this.quanLyLichLamViecToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
             this.quanLyLichLamViecToolStripMenuItem.Text = "Quản lý lịch làm việc";
@@ -120,6 +125,7 @@
             // 
             // quanLyNhanSuToolStripMenuItem
             // 
+            this.quanLyNhanSuToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("quanLyNhanSuToolStripMenuItem.Image")));
             this.quanLyNhanSuToolStripMenuItem.Name = "quanLyNhanSuToolStripMenuItem";
             this.quanLyNhanSuToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
             this.quanLyNhanSuToolStripMenuItem.Text = "Quản lý nhân sự";
@@ -127,6 +133,7 @@
             // 
             // quanLyLuongToolStripMenuItem
             // 
+            this.quanLyLuongToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("quanLyLuongToolStripMenuItem.Image")));
             this.quanLyLuongToolStripMenuItem.Name = "quanLyLuongToolStripMenuItem";
             this.quanLyLuongToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
             this.quanLyLuongToolStripMenuItem.Text = "Quản lý lương";
@@ -134,6 +141,7 @@
             // 
             // quanLyHopDongToolStripMenuItem
             // 
+            this.quanLyHopDongToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("quanLyHopDongToolStripMenuItem.Image")));
             this.quanLyHopDongToolStripMenuItem.Name = "quanLyHopDongToolStripMenuItem";
             this.quanLyHopDongToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
             this.quanLyHopDongToolStripMenuItem.Text = "Quản lý hợp đồng";
@@ -141,6 +149,7 @@
             // 
             // quanLyCheDoToolStripMenuItem
             // 
+            this.quanLyCheDoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("quanLyCheDoToolStripMenuItem.Image")));
             this.quanLyCheDoToolStripMenuItem.Name = "quanLyCheDoToolStripMenuItem";
             this.quanLyCheDoToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
             this.quanLyCheDoToolStripMenuItem.Text = "Quản lý chế độ";
@@ -148,6 +157,7 @@
             // 
             // quanLyKhoaDaoTaoToolStripMenuItem
             // 
+            this.quanLyKhoaDaoTaoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("quanLyKhoaDaoTaoToolStripMenuItem.Image")));
             this.quanLyKhoaDaoTaoToolStripMenuItem.Name = "quanLyKhoaDaoTaoToolStripMenuItem";
             this.quanLyKhoaDaoTaoToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
             this.quanLyKhoaDaoTaoToolStripMenuItem.Text = "Quản lý khóa đào tạo";
@@ -155,6 +165,7 @@
             // 
             // quanLyDonViToolStripMenuItem
             // 
+            this.quanLyDonViToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("quanLyDonViToolStripMenuItem.Image")));
             this.quanLyDonViToolStripMenuItem.Name = "quanLyDonViToolStripMenuItem";
             this.quanLyDonViToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
             this.quanLyDonViToolStripMenuItem.Text = "Quản lý đơn vị";
@@ -162,6 +173,7 @@
             // 
             // quanLyTaiKhoanToolStripMenuItem
             // 
+            this.quanLyTaiKhoanToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("quanLyTaiKhoanToolStripMenuItem.Image")));
             this.quanLyTaiKhoanToolStripMenuItem.Name = "quanLyTaiKhoanToolStripMenuItem";
             this.quanLyTaiKhoanToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
             this.quanLyTaiKhoanToolStripMenuItem.Text = "Quản lý tài khoản";
@@ -178,15 +190,17 @@
             // 
             // baoCaoToolStripMenuItem
             // 
+            this.baoCaoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("baoCaoToolStripMenuItem.Image")));
             this.baoCaoToolStripMenuItem.Name = "baoCaoToolStripMenuItem";
-            this.baoCaoToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.baoCaoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.baoCaoToolStripMenuItem.Text = "Báo cáo";
             this.baoCaoToolStripMenuItem.Click += new System.EventHandler(this.baoCaoToolStripMenuItem_Click);
             // 
             // vePhanMemToolStripMenuItem
             // 
+            this.vePhanMemToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("vePhanMemToolStripMenuItem.Image")));
             this.vePhanMemToolStripMenuItem.Name = "vePhanMemToolStripMenuItem";
-            this.vePhanMemToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.vePhanMemToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.vePhanMemToolStripMenuItem.Text = "Về phần mềm";
             this.vePhanMemToolStripMenuItem.Click += new System.EventHandler(this.vePhanMemToolStripMenuItem_Click);
             // 
@@ -212,6 +226,7 @@
             this.ClientSize = new System.Drawing.Size(1262, 753);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.menuStripGiaoDienChinh);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripGiaoDienChinh;
             this.Name = "FormGiaoDienChinh";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

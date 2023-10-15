@@ -61,10 +61,11 @@
             // 
             // btnUpdateImage
             // 
-            this.btnUpdateImage.BackColor = System.Drawing.Color.RosyBrown;
-            this.btnUpdateImage.Location = new System.Drawing.Point(48, 404);
+            this.btnUpdateImage.BackColor = System.Drawing.Color.Transparent;
+            this.btnUpdateImage.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdateImage.Image")));
+            this.btnUpdateImage.Location = new System.Drawing.Point(48, 389);
             this.btnUpdateImage.Name = "btnUpdateImage";
-            this.btnUpdateImage.Size = new System.Drawing.Size(45, 45);
+            this.btnUpdateImage.Size = new System.Drawing.Size(60, 60);
             this.btnUpdateImage.TabIndex = 144;
             this.btnUpdateImage.UseVisualStyleBackColor = false;
             this.btnUpdateImage.Click += new System.EventHandler(this.btnUpdateImage_Click);

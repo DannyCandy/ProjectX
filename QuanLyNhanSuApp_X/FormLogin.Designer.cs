@@ -420,6 +420,7 @@
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUserName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormLogin";
             this.Palette = this.kryptonPaletteFormLogin;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;

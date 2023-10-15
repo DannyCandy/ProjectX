@@ -266,9 +266,7 @@ namespace QuanLyNhanSuApp
                                 {
                                     try
                                     {
-                                        DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhật thông tin chứ?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                                        if (dialogResult == DialogResult.Yes)
-                                        {
+                                        
                                             string query = "UPDATE `employeems`.`ttcanhan` SET " +
                                                 "`maNV` = '" + txtMaNV.Text + "', " +
                                                 "`hoTen` = '" + txtHoTen.Text + "', " +
@@ -290,7 +288,7 @@ namespace QuanLyNhanSuApp
                                             cmd.ExecuteNonQuery();
                                             connection.Close();
                                             MessageBox.Show("Cập nhật thành công!", "Thông báo");
-                                        }
+                                        
                                     }
                                     catch (Exception ex)
                                     {
@@ -302,9 +300,7 @@ namespace QuanLyNhanSuApp
                                 {
                                     try
                                     {
-                                        DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhật thông tin chứ?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                                        if (dialogResult == DialogResult.Yes)
-                                        {
+                                        
                                             pictureBoxAvt.ImageLocation = ImageSrc;
 
                                             byte[] img;
@@ -341,7 +337,7 @@ namespace QuanLyNhanSuApp
                                             cmd.ExecuteNonQuery();
                                             connection.Close();
                                             MessageBox.Show("Cập nhật thành công!", "Thông báo");
-                                        }
+                                        
                                     }
                                     catch (Exception ex)
                                     {

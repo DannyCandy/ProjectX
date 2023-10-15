@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSearching_LichLamViec));
             this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
             this.cbbTruongTimKiem = new System.Windows.Forms.ComboBox();
@@ -247,6 +248,7 @@
             this.Controls.Add(this.lblFieldSearch);
             this.Controls.Add(this.lblValueSearch);
             this.Controls.Add(this.txtGiaTriTK);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormSearching_LichLamViec";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Tra cứu";
