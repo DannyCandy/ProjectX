@@ -37,37 +37,37 @@
             // 
             // menuStripThongTin
             // 
-            this.menuStripThongTin.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStripThongTin.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuStripThongTin.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStripThongTin.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TTCBToolStripMenuItem,
             this.TTCNToolStripMenuItem});
             this.menuStripThongTin.Location = new System.Drawing.Point(0, 0);
             this.menuStripThongTin.Name = "menuStripThongTin";
-            this.menuStripThongTin.Size = new System.Drawing.Size(1224, 33);
+            this.menuStripThongTin.Size = new System.Drawing.Size(1224, 28);
             this.menuStripThongTin.TabIndex = 1;
             this.menuStripThongTin.Text = "menuStrip1";
             // 
             // TTCBToolStripMenuItem
             // 
             this.TTCBToolStripMenuItem.Name = "TTCBToolStripMenuItem";
-            this.TTCBToolStripMenuItem.Size = new System.Drawing.Size(171, 29);
+            this.TTCBToolStripMenuItem.Size = new System.Drawing.Size(135, 24);
             this.TTCBToolStripMenuItem.Text = "Thông tin cơ bản";
             this.TTCBToolStripMenuItem.Click += new System.EventHandler(this.TTCBToolStripMenuItem_Click);
             // 
             // TTCNToolStripMenuItem
             // 
             this.TTCNToolStripMenuItem.Name = "TTCNToolStripMenuItem";
-            this.TTCNToolStripMenuItem.Size = new System.Drawing.Size(181, 29);
+            this.TTCNToolStripMenuItem.Size = new System.Drawing.Size(141, 24);
             this.TTCNToolStripMenuItem.Text = "Thông tin cá nhân";
             this.TTCNToolStripMenuItem.Click += new System.EventHandler(this.TTCNToolStripMenuItem_Click);
             // 
             // panelThongTin
             // 
             this.panelThongTin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelThongTin.Location = new System.Drawing.Point(0, 33);
+            this.panelThongTin.Location = new System.Drawing.Point(0, 28);
             this.panelThongTin.Name = "panelThongTin";
-            this.panelThongTin.Size = new System.Drawing.Size(1224, 562);
+            this.panelThongTin.Size = new System.Drawing.Size(1224, 567);
             this.panelThongTin.TabIndex = 2;
             // 
             // FormThongTinNV
@@ -79,7 +79,8 @@
             this.Controls.Add(this.menuStripThongTin);
             this.Location = new System.Drawing.Point(0, 33);
             this.Name = "FormThongTinNV";
-            this.Text = "FormThongTinNV";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Thông tin nhân viên";
             this.Load += new System.EventHandler(this.FormThongTinNV_Load);
             this.menuStripThongTin.ResumeLayout(false);
             this.menuStripThongTin.PerformLayout();

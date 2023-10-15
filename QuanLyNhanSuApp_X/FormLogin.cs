@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using ComponentFactory.Krypton.Toolkit;
+using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Math.Field;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace QuanLyNhanSuApp
 {
-    public partial class FormLogin : Form
+    public partial class FormLogin : KryptonForm
     {
         public FormLogin()
         {

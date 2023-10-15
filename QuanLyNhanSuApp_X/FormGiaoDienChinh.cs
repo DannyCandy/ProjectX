@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace QuanLyNhanSuApp
 {
-    public partial class FormGiaoDienChinh : Form
+    public partial class FormGiaoDienChinh : KryptonForm
     {
         /*public static string quyen;*/
         private bool forceExit = false;

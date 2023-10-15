@@ -52,7 +52,7 @@
             // 
             // menuStripGiaoDienChinh
             // 
-            this.menuStripGiaoDienChinh.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStripGiaoDienChinh.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuStripGiaoDienChinh.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStripGiaoDienChinh.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.taiKhoanToolStripMenuItem,
@@ -61,7 +61,7 @@
             this.caNhanToolStripMenuItem});
             this.menuStripGiaoDienChinh.Location = new System.Drawing.Point(0, 0);
             this.menuStripGiaoDienChinh.Name = "menuStripGiaoDienChinh";
-            this.menuStripGiaoDienChinh.Size = new System.Drawing.Size(1262, 31);
+            this.menuStripGiaoDienChinh.Size = new System.Drawing.Size(1262, 28);
             this.menuStripGiaoDienChinh.TabIndex = 0;
             this.menuStripGiaoDienChinh.Text = "menuStrip1";
             // 
@@ -200,9 +200,9 @@
             // panelMain
             // 
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMain.Location = new System.Drawing.Point(0, 31);
+            this.panelMain.Location = new System.Drawing.Point(0, 28);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1262, 722);
+            this.panelMain.Size = new System.Drawing.Size(1262, 725);
             this.panelMain.TabIndex = 1;
             // 
             // FormGiaoDienChinh
@@ -215,7 +215,7 @@
             this.MainMenuStrip = this.menuStripGiaoDienChinh;
             this.Name = "FormGiaoDienChinh";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormGiaoDienChinh";
+            this.Text = "EMS";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormGiaoDienChinh_FormClosing);
             this.Load += new System.EventHandler(this.FormGiaoDienChinh_Load);
             this.menuStripGiaoDienChinh.ResumeLayout(false);

@@ -37,37 +37,37 @@
             // 
             // menuStripCheDo
             // 
-            this.menuStripCheDo.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStripCheDo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuStripCheDo.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStripCheDo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.baoHiemToolStripMenuItem,
             this.thaiSanToolStripMenuItem});
             this.menuStripCheDo.Location = new System.Drawing.Point(0, 0);
             this.menuStripCheDo.Name = "menuStripCheDo";
-            this.menuStripCheDo.Size = new System.Drawing.Size(1244, 33);
+            this.menuStripCheDo.Size = new System.Drawing.Size(1244, 28);
             this.menuStripCheDo.TabIndex = 0;
             this.menuStripCheDo.Text = "menuStrip1";
             // 
             // baoHiemToolStripMenuItem
             // 
             this.baoHiemToolStripMenuItem.Name = "baoHiemToolStripMenuItem";
-            this.baoHiemToolStripMenuItem.Size = new System.Drawing.Size(109, 29);
+            this.baoHiemToolStripMenuItem.Size = new System.Drawing.Size(89, 24);
             this.baoHiemToolStripMenuItem.Text = "Bảo Hiểm";
             this.baoHiemToolStripMenuItem.Click += new System.EventHandler(this.baoHiemToolStripMenuItem_Click);
             // 
             // thaiSanToolStripMenuItem
             // 
             this.thaiSanToolStripMenuItem.Name = "thaiSanToolStripMenuItem";
-            this.thaiSanToolStripMenuItem.Size = new System.Drawing.Size(97, 29);
+            this.thaiSanToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
             this.thaiSanToolStripMenuItem.Text = "Thai sản";
             this.thaiSanToolStripMenuItem.Click += new System.EventHandler(this.thaiSanToolStripMenuItem_Click);
             // 
             // panelCheDo
             // 
             this.panelCheDo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelCheDo.Location = new System.Drawing.Point(0, 33);
+            this.panelCheDo.Location = new System.Drawing.Point(0, 28);
             this.panelCheDo.Name = "panelCheDo";
-            this.panelCheDo.Size = new System.Drawing.Size(1244, 642);
+            this.panelCheDo.Size = new System.Drawing.Size(1244, 647);
             this.panelCheDo.TabIndex = 1;
             // 
             // FormCheDo
@@ -80,7 +80,8 @@
             this.Location = new System.Drawing.Point(0, 31);
             this.MainMenuStrip = this.menuStripCheDo;
             this.Name = "FormCheDo";
-            this.Text = "FormCheDo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Chế độ";
             this.Load += new System.EventHandler(this.FormCheDo_Load);
             this.menuStripCheDo.ResumeLayout(false);
             this.menuStripCheDo.PerformLayout();

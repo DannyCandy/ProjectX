@@ -25,15 +25,15 @@ namespace QuanLyNhanSuApp
             InitializeComponent();
             selfQuery = query;
             isSelf = true;
-        }
-
-        private void FormCheDo_Load(object sender, EventArgs e)
-        {
             defaultFont = menuStripCheDo.Font;
             menuStripCheDo.Items[0].Select();
             menuStripCheDo.Items[0].Font = new Font(FontFamily.GenericSansSerif,
     12.0F, FontStyle.Bold);
+            menuStripCheDo.Items[1].Font = defaultFont;
+        }
 
+        private void FormCheDo_Load(object sender, EventArgs e)
+        {
             if (isSelf)
             {
                 FormCheDo_BaoHiem fbaohiem = new FormCheDo_BaoHiem(selfQuery);

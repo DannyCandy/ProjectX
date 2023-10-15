@@ -18,17 +18,19 @@ namespace QuanLyNhanSuApp
         public FormQuanLyNhanSu()
         {
             InitializeComponent();
-            
+            defaultFont = menuStripQuanLyNhanSu.Font;
+            menuStripQuanLyNhanSu.Items[0].Select();
+            menuStripQuanLyNhanSu.Items[0].Font = new Font(FontFamily.GenericSansSerif,
+    12.0F, FontStyle.Bold);
+            menuStripQuanLyNhanSu.Items[1].Font = defaultFont;
+            menuStripQuanLyNhanSu.Items[2].Font = defaultFont;
+
         }
 
         
         private void FormQuanLyNhanSu_Load(object sender, EventArgs e)
         {
-            
-                defaultFont = menuStripQuanLyNhanSu.Font;
-                menuStripQuanLyNhanSu.Items[0].Select();
-                menuStripQuanLyNhanSu.Items[0].Font = new Font(FontFamily.GenericSansSerif,
-        12.0F, FontStyle.Bold);
+                
 
             FormQuanLyNhanSu_BangCong fbangcong = new FormQuanLyNhanSu_BangCong();
             panelQuanLyNhanSu.Show();

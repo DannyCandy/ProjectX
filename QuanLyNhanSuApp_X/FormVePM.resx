@@ -117,4 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lblDescription.Text" xml:space="preserve">
+    <value>Phần mềm quản lý nhân sự EMS là một giải pháp hiệu quả và tiện lợi cho việc quản lý thông tin nhân sự và tài nguyên con người trong tổ chức của bạn. Với tính năng mạnh mẽ, giao diện thân thiện và khả năng lưu trữ, cập nhật và truy xuất dữ liệu dễ dàng, phần mềm của chúng tôi giúp tối ưu hóa quá trình quản lý nhân sự, theo dõi hiệu suất nhân viên và đưa ra quyết định thông minh cho sự phát triển và quản lý nhân sự.</value>
+  </data>
 </root>
