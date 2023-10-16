@@ -281,7 +281,7 @@ namespace QuanLyNhanSuApp
                             {
                                 if (viewMode)
                                 {
-                                    MessageBox.Show("Bạn đang xử dụng lại ảnh của đối tượng khác!", "Cảnh báo");
+                                    MessageBox.Show("Bạn đang sử dụng lại ảnh của đối tượng khác!", "Cảnh báo");
                                 }
                                 else
                                 {
@@ -322,16 +322,15 @@ namespace QuanLyNhanSuApp
                                 connection.Close();
                                 MessageBox.Show("Thêm thành công!", "Thông báo");
                                 BindToDataGridView();
+
+                                viewMode = true;
+                                ImageSrc = string.Empty;
                             }
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                            MessageBox.Show("Lỗi: "+ex, "Thông báo");
 
-                        }
-                        finally
-                        {
-                            ImageSrc = string.Empty;
                         }
                     }
                 }
@@ -373,6 +372,8 @@ namespace QuanLyNhanSuApp
                             BindToDataGridView();
                             ResetTextBox();
 
+                            pictureBoxAvt.Image = Resources.DefaultAvt;
+                            ImageSrc = string.Empty;
                         }
                         catch (Exception ex)
                         {
@@ -401,105 +402,105 @@ namespace QuanLyNhanSuApp
                     }
                     else
                     {
-                        DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn cập nhật không?", "Xác nhận cập nhật", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                        if (result == DialogResult.Yes)
+                        if (ImageSrc == string.Empty)
                         {
-                            if (ImageSrc == string.Empty)
+                            DialogResult dialogResult = MessageBox.Show("Bạn đang cập nhật thông tin mà không cập nhật ảnh đại diện, nếu muốn cập nhật ảnh đại diện hãy chọn nút cập nhật!", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            if (dialogResult == DialogResult.Yes)
                             {
                                 try
                                 {
-                                        string query = "UPDATE `employeems`.`ttcanhan` SET " +
-                                            "`maNV` = '" + txtMaNV.Text + "', " +
-                                            "`hoTen` = '" + txtHoTen.Text + "', " +
-                                            "`noiSinh` = '" + txtNoiSinh.Text + "', " +
-                                            "`nguyenQuan` = '" + txtNguyenQuan.Text + "', " +
-                                            "`dCThuongTru` = '" + txtDcThuongTru.Text + "', " +
-                                            "`dcTamTru` = '" + txtDcTamTru.Text + "', " +
-                                            "`sdt` = '" + txtSDT.Text + "', " +
-                                            "`danToc` = '" + txtDanToc.Text + "', " +
-                                            "`tonGiao` = '" + txtTonGiao.Text + "', " +
-                                            "`quocTich` = '" + txtQuocTich.Text + "', " +
-                                            "`hocVan` = '" + txtHocVan.Text + "', " +
-                                            "`ghiChu` = '" + txtGhiChu.Text + "' " +
-                                            "WHERE (`maNV` = '" + txtMaNV.Text + "');";
+                                    string query = "UPDATE `employeems`.`ttcanhan` SET " +
+                                        "`maNV` = '" + txtMaNV.Text + "', " +
+                                        "`hoTen` = '" + txtHoTen.Text + "', " +
+                                        "`noiSinh` = '" + txtNoiSinh.Text + "', " +
+                                        "`nguyenQuan` = '" + txtNguyenQuan.Text + "', " +
+                                        "`dCThuongTru` = '" + txtDcThuongTru.Text + "', " +
+                                        "`dcTamTru` = '" + txtDcTamTru.Text + "', " +
+                                        "`sdt` = '" + txtSDT.Text + "', " +
+                                        "`danToc` = '" + txtDanToc.Text + "', " +
+                                        "`tonGiao` = '" + txtTonGiao.Text + "', " +
+                                        "`quocTich` = '" + txtQuocTich.Text + "', " +
+                                        "`hocVan` = '" + txtHocVan.Text + "', " +
+                                        "`ghiChu` = '" + txtGhiChu.Text + "' " +
+                                        "WHERE (`maNV` = '" + txtMaNV.Text + "');";
 
-                                        MySqlConnection connection = new MySqlConnection("Server=localhost;Database=employeems;Uid=root;Pwd=123;");
-                                        connection.Open();
-                                        MySqlCommand cmd = new MySqlCommand(query, connection);
-                                        cmd.ExecuteNonQuery();
-                                        connection.Close();
-                                        MessageBox.Show("Cập nhật thành công!", "Thông báo");
-                                        BindToDataGridView();
-                                }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show("Lỗi: " + ex, "Thông báo");
+                                    MySqlConnection connection = new MySqlConnection("Server=localhost;Database=employeems;Uid=root;Pwd=123;");
+                                    connection.Open();
+                                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                                    cmd.ExecuteNonQuery();
+                                    connection.Close();
+                                    MessageBox.Show("Cập nhật thành công!", "Thông báo");
+                                    BindToDataGridView();
 
-                                }
-                            }
-                            else
-                            {
-                                try
-                                {
-                                    DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhật thông tin chứ?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                                    if (dialogResult == DialogResult.Yes)
-                                    {
-                                        pictureBoxAvt.ImageLocation = ImageSrc;
-                                        /*byte[] img = null;
-                                        FileStream stream = new FileStream(ImageSrc, FileMode.Open, FileAccess.Read);
-                                        BinaryReader br = new BinaryReader(stream);
-                                        img = br.ReadBytes((int)stream.Length);*/
-                                        byte[] img;
-                                        using (FileStream stream = new FileStream(ImageSrc, FileMode.Open, FileAccess.Read))
-                                        {
-                                            using (MemoryStream memoryStream = new MemoryStream())
-                                            {
-                                                stream.CopyTo(memoryStream);
-                                                img = memoryStream.ToArray();
-                                            }
-                                        }
-
-                                        string query = "UPDATE `employeems`.`ttcanhan` SET " +
-                                            "`maNV` = '" + txtMaNV.Text + "', " +
-                                            "`hoTen` = '" + txtHoTen.Text + "', " +
-                                            "`noiSinh` = '" + txtNoiSinh.Text + "', " +
-                                            "`nguyenQuan` = '" + txtNguyenQuan.Text + "', " +
-                                            "`dCThuongTru` = '" + txtDcThuongTru.Text + "', " +
-                                            "`dcTamTru` = '" + txtDcTamTru.Text + "', " +
-                                            "`sdt` = '" + txtSDT.Text + "', " +
-                                            "`danToc` = '" + txtDanToc.Text + "', " +
-                                            "`tonGiao` = '" + txtTonGiao.Text + "', " +
-                                            "`quocTich` = '" + txtQuocTich.Text + "', " +
-                                            "`hocVan` = '" + txtHocVan.Text + "', " +
-                                            "`ghiChu` = '" + txtGhiChu.Text + "', " +
-                                            "`anhDaiDien` = @pic " +
-                                            "WHERE (`maNV` = '" + txtMaNV.Text + "');";
-
-                                        MySqlConnection connection = new MySqlConnection("Server=localhost;Database=employeems;Uid=root;Pwd=123;");
-                                        connection.Open();
-                                        MySqlCommand cmd = new MySqlCommand(query, connection);
-
-                                        cmd.Parameters.AddWithValue("@pic", img);
-                                        cmd.ExecuteNonQuery();
-                                        connection.Close();
-                                        MessageBox.Show("Cập nhật thành công!", "Thông báo");
-                                        BindToDataGridView();
-
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show("Lỗi: " + ex, "Thông báo");
-
-                                }
-                                finally
-                                {
                                     ImageSrc = string.Empty;
+                                    viewMode = true;
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show("Lỗi: " + ex, "Thông báo");
+
                                 }
                             }
                         }
+                        else
+                        {
+                            try
+                            {
+                                DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhật thông tin chứ?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                if (dialogResult == DialogResult.Yes)
+                                {
+                                    pictureBoxAvt.ImageLocation = ImageSrc;
+                                    /*byte[] img = null;
+                                    FileStream stream = new FileStream(ImageSrc, FileMode.Open, FileAccess.Read);
+                                    BinaryReader br = new BinaryReader(stream);
+                                    img = br.ReadBytes((int)stream.Length);*/
+                                    byte[] img;
+                                    using (FileStream stream = new FileStream(ImageSrc, FileMode.Open, FileAccess.Read))
+                                    {
+                                        using (MemoryStream memoryStream = new MemoryStream())
+                                        {
+                                            stream.CopyTo(memoryStream);
+                                            img = memoryStream.ToArray();
+                                        }
+                                    }
+
+                                    string query = "UPDATE `employeems`.`ttcanhan` SET " +
+                                        "`maNV` = '" + txtMaNV.Text + "', " +
+                                        "`hoTen` = '" + txtHoTen.Text + "', " +
+                                        "`noiSinh` = '" + txtNoiSinh.Text + "', " +
+                                        "`nguyenQuan` = '" + txtNguyenQuan.Text + "', " +
+                                        "`dCThuongTru` = '" + txtDcThuongTru.Text + "', " +
+                                        "`dcTamTru` = '" + txtDcTamTru.Text + "', " +
+                                        "`sdt` = '" + txtSDT.Text + "', " +
+                                        "`danToc` = '" + txtDanToc.Text + "', " +
+                                        "`tonGiao` = '" + txtTonGiao.Text + "', " +
+                                        "`quocTich` = '" + txtQuocTich.Text + "', " +
+                                        "`hocVan` = '" + txtHocVan.Text + "', " +
+                                        "`ghiChu` = '" + txtGhiChu.Text + "', " +
+                                        "`anhDaiDien` = @pic " +
+                                        "WHERE (`maNV` = '" + txtMaNV.Text + "');";
+
+                                    MySqlConnection connection = new MySqlConnection("Server=localhost;Database=employeems;Uid=root;Pwd=123;");
+                                    connection.Open();
+                                    MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                                    cmd.Parameters.AddWithValue("@pic", img);
+                                    cmd.ExecuteNonQuery();
+                                    connection.Close();
+                                    MessageBox.Show("Cập nhật thành công!", "Thông báo");
+                                    BindToDataGridView();
+                                    ImageSrc = string.Empty;
+                                    viewMode = true;
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Lỗi: " + ex, "Thông báo");
+
+                            }
+                        }
                     }
+                    
                 }
                 else
                 {
@@ -511,6 +512,7 @@ namespace QuanLyNhanSuApp
         private void dgvFormQuanLyTTCaNhan_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             viewMode = true;
+            ImageSrc = string.Empty;
             //Chưa có blob image
             if (dgvFormQuanLyTTCaNhan.Rows.Count > 0)
             {
@@ -540,6 +542,7 @@ namespace QuanLyNhanSuApp
 
         private void btnUpdateImage_Click(object sender, EventArgs e)
         {
+            viewMode = false;
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Choose Image(*.jpg;*.png;*.gif) |*.jpg;*.png;*.gif";
 
