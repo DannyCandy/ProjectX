@@ -196,12 +196,12 @@ CREATE TABLE `baocaotinhtrangnhansu` (
   `thang` int DEFAULT NULL,
   `nam` int DEFAULT NULL,
   `soNVRoiToChuc` int NOT NULL,
-  `maBaoCao` char(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `maBaoCao` int NOT NULL AUTO_INCREMENT,
   `maPhong` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`maBaoCao`),
   KEY `Fk.BaoCaoTinhTrangNhanSu_PhongBan_idx` (`maPhong`),
   CONSTRAINT `Fk.BaoCaoTinhTrangNhanSu_PhongBan` FOREIGN KEY (`maPhong`) REFERENCES `phongban` (`maPhong`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -210,7 +210,7 @@ CREATE TABLE `baocaotinhtrangnhansu` (
 
 LOCK TABLES `baocaotinhtrangnhansu` WRITE;
 /*!40000 ALTER TABLE `baocaotinhtrangnhansu` DISABLE KEYS */;
-INSERT INTO `baocaotinhtrangnhansu` VALUES (1,'2023-10-02 09:31:55',10,2023,1,'bc1','p1'),(1,'2023-10-02 09:32:04',10,2023,1,'bc2','p2'),(1,'2023-10-02 09:32:16',10,2023,0,'bc3','p9'),(1,'2023-10-15 18:39:25',10,2023,1,'bc4','p3');
+INSERT INTO `baocaotinhtrangnhansu` VALUES (1,'2023-10-16 11:20:40',10,2023,1,1,'p1'),(1,'2023-10-16 11:20:40',10,2023,1,2,'p2'),(1,'2023-10-16 11:20:40',10,2023,1,3,'p3'),(1,'2023-10-16 11:20:40',10,2023,0,4,'p4'),(1,'2023-10-16 11:20:40',10,2023,0,5,'p5'),(1,'2023-10-16 11:20:40',10,2023,0,6,'p6'),(1,'2023-10-16 11:20:40',10,2023,0,7,'p7'),(1,'2023-10-16 11:20:40',10,2023,0,8,'p8'),(1,'2023-10-16 11:20:40',10,2023,0,9,'p9'),(2,'2023-10-16 11:20:40',10,2023,0,10,'p10'),(1,'2023-10-16 11:20:40',10,2023,0,11,'p11');
 /*!40000 ALTER TABLE `baocaotinhtrangnhansu` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -223,6 +223,37 @@ UNLOCK TABLES;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `baocaotinhtrangnhansu_insert_trigger` BEFORE INSERT ON `baocaotinhtrangnhansu` FOR EACH ROW BEGIN
+    SET NEW.ngayTaoBaoCao = NOW();
+    SET NEW.thang = MONTH(NOW());
+    SET NEW.nam = YEAR(NOW());
+    
+    SELECT COUNT(*) INTO @tongSoNV
+    FROM employeems.ttnvcoban
+    WHERE maPhong = NEW.maPhong;
+
+    SET NEW.tongSoNV = @tongSoNV;
+
+    SELECT COUNT(*) INTO @soNVRoiToChuc
+    FROM employeems.nvroitochuc
+    WHERE MONTH(ngayRoi) = NEW.thang AND YEAR(ngayRoi) = NEW.nam AND new.maPhong = maPhong;
+    
+    SET NEW.soNVRoiToChuc = @soNVRoiToChuc;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `baocaotinhtrangnhansu_update_trigger` BEFORE UPDATE ON `baocaotinhtrangnhansu` FOR EACH ROW BEGIN
     SET NEW.ngayTaoBaoCao = NOW();
     SET NEW.thang = MONTH(NOW());
     SET NEW.nam = YEAR(NOW());
@@ -707,4 +738,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-15 22:09:13
+-- Dump completed on 2023-10-16 11:52:55

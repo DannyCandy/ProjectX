@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -89,7 +104,7 @@
     </Reference>
     <Reference Include="MySql.Data, Version=8.0.33.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector NET 8.0.33.1\MySql.Data.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector NET 8.0.33.1\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -183,6 +198,12 @@
     <Compile Include="FormCheDo_ThaiSan.Designer.cs">
       <DependentUpon>FormCheDo_ThaiSan.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormChonBaoCao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChonBaoCao.Designer.cs">
+      <DependentUpon>FormChonBaoCao.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDoiMK.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +221,12 @@
     </Compile>
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormQuanLyBaoCao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormQuanLyBaoCao.Designer.cs">
+      <DependentUpon>FormQuanLyBaoCao.cs</DependentUpon>
     </Compile>
     <Compile Include="FormQuanLyDonVi.cs">
       <SubType>Form</SubType>
@@ -333,6 +360,9 @@
     <EmbeddedResource Include="FormCheDo_ThaiSan.resx">
       <DependentUpon>FormCheDo_ThaiSan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormChonBaoCao.resx">
+      <DependentUpon>FormChonBaoCao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDoiMK.resx">
       <DependentUpon>FormDoiMK.cs</DependentUpon>
     </EmbeddedResource>
@@ -341,6 +371,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormQuanLyBaoCao.resx">
+      <DependentUpon>FormQuanLyBaoCao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormQuanLyDonVi.resx">
       <DependentUpon>FormQuanLyDonVi.cs</DependentUpon>
@@ -447,6 +480,17 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

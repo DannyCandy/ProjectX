@@ -428,3 +428,7 @@ C:\Users\Admin\OneDrive\Desktop\CODE\.NetWinForm\PullApp\QuanLyNhanSuApp_X\obj\D
 C:\Users\Admin\OneDrive\Desktop\CODE\.NetWinForm\PullApp\QuanLyNhanSuApp_X\obj\Debug\QuanLyNhanSuApp.pdb
 C:\Users\Admin\OneDrive\Desktop\CODE\.NetWinForm\PullApp\QuanLyNhanSuApp_X\bin\Debug\ComponentFactory.Krypton.Ribbon.dll
 C:\Users\Admin\OneDrive\Desktop\CODE\.NetWinForm\PullApp\QuanLyNhanSuApp_X\bin\Debug\ComponentFactory.Krypton.Ribbon.pdb
+C:\Users\Admin\OneDrive\Desktop\CODE\.NetWinForm\PullApp\QuanLyNhanSuApp_X\obj\Debug\QuanLyNhanSuApp.FormQuanLyBaoCao.resources
+C:\Users\Admin\OneDrive\Desktop\CODE\.NetWinForm\PullApp\QuanLyNhanSuApp_X\obj\Debug\QuanLyNhanSuApp.FormChonBaoCao.resources
+C:\Users\Admin\OneDrive\Desktop\CODE\.NetWinForm\PullApp\QuanLyNhanSuApp_X\bin\Debug\MySql.Data.dll
+C:\Users\Admin\OneDrive\Desktop\CODE\.NetWinForm\PullApp\QuanLyNhanSuApp_X\bin\Debug\MySql.Data.xml

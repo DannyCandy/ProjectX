@@ -13,7 +13,6 @@ namespace QuanLyNhanSuApp
 {
     public partial class FormQuanLyTaiKhoan : Form
     {
-        private string primary = string.Empty;
         public FormQuanLyTaiKhoan()
         {
             InitializeComponent();
