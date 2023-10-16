@@ -206,7 +206,17 @@ namespace QuanLyNhanSuApp
 
         private void baoCaoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormBaoCao fbc = new FormBaoCao();
+            /*FormBaoCao fbc = new FormBaoCao();
+            panelMain.Show();
+            panelMain.Controls.Clear();
+            fbc.TopLevel = false;
+            fbc.FormBorderStyle = FormBorderStyle.None;
+            fbc.WindowState = FormWindowState.Maximized;
+            fbc.Dock = DockStyle.Fill;
+            panelMain.Controls.Add(fbc);
+            fbc.Show();*/
+
+            FormQuanLyBaoCao fbc = new FormQuanLyBaoCao();
             panelMain.Show();
             panelMain.Controls.Clear();
             fbc.TopLevel = false;

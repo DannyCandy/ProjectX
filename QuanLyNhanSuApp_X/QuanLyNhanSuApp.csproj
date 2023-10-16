@@ -183,6 +183,12 @@
     <Compile Include="FormCheDo_ThaiSan.Designer.cs">
       <DependentUpon>FormCheDo_ThaiSan.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormChonBaoCao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChonBaoCao.Designer.cs">
+      <DependentUpon>FormChonBaoCao.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDoiMK.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,12 @@
     </Compile>
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormQuanLyBaoCao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormQuanLyBaoCao.Designer.cs">
+      <DependentUpon>FormQuanLyBaoCao.cs</DependentUpon>
     </Compile>
     <Compile Include="FormQuanLyDonVi.cs">
       <SubType>Form</SubType>
@@ -333,6 +345,9 @@
     <EmbeddedResource Include="FormCheDo_ThaiSan.resx">
       <DependentUpon>FormCheDo_ThaiSan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormChonBaoCao.resx">
+      <DependentUpon>FormChonBaoCao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDoiMK.resx">
       <DependentUpon>FormDoiMK.cs</DependentUpon>
     </EmbeddedResource>
@@ -341,6 +356,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormQuanLyBaoCao.resx">
+      <DependentUpon>FormQuanLyBaoCao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormQuanLyDonVi.resx">
       <DependentUpon>FormQuanLyDonVi.cs</DependentUpon>

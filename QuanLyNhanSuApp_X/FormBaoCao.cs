@@ -25,9 +25,13 @@ namespace QuanLyNhanSuApp
         private void FormBaoCao_Load(object sender, EventArgs e)
         {
             reportViewerBCCT.LocalReport.DataSources.Clear();
-            reportViewerBCCT.LocalReport.DataSources
+            /*reportViewerBCCT.LocalReport.DataSources
                 .Add(new ReportDataSource("BaoCaoCongTy", 
-                DataAccess.GetDataToDTS("SELECT * FROM employeems.baocaotinhtrangnhansu", "BaoCao").Tables[0]));
+                DataAccess.GetDataToDTS("SELECT * FROM employeems.baocaotinhtrangnhansu", "BaoCao").Tables[0]));*/
+            reportViewerBCCT.LocalReport.DataSources
+                .Add(new ReportDataSource("BaoCaoCongTy",
+                DataAccess.GetDataToDTS("SELECT bophan.tenBoPhan,phongban.tenPhong,tongSoNV,soNVRoiToChuc,thang,nam,ngayTaoBaoCao FROM employeems.baocaotinhtrangnhansu INNER JOIN phongban INNER JOIN bophan " +
+                "ON phongban.maPhong = baocaotinhtrangnhansu.maPhong AND phongban.maBoPhan = bophan.maBoPhan", "BaoCao").Tables[0]));
             reportViewerBCCT.LocalReport.ReportEmbeddedResource = "QuanLyNhanSuApp.BaoCao.rdlc";
             reportViewerBCCT.RefreshReport();
             
