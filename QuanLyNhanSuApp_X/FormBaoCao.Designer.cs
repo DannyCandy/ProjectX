@@ -37,14 +37,14 @@
             this.reportViewerBCCT.Location = new System.Drawing.Point(0, 0);
             this.reportViewerBCCT.Name = "ReportViewer";
             this.reportViewerBCCT.ServerReport.BearerToken = null;
-            this.reportViewerBCCT.Size = new System.Drawing.Size(1244, 675);
+            this.reportViewerBCCT.Size = new System.Drawing.Size(1902, 1033);
             this.reportViewerBCCT.TabIndex = 0;
             // 
             // FormBaoCao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1244, 675);
+            this.ClientSize = new System.Drawing.Size(1902, 1033);
             this.Controls.Add(this.reportViewerBCCT);
             this.Location = new System.Drawing.Point(0, 31);
             this.Name = "FormBaoCao";

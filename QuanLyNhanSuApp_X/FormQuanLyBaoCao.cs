@@ -119,30 +119,52 @@ namespace QuanLyNhanSuApp
             }
             
         }
+        private void btnXemBaoCao_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT DISTINCT nam FROM baocaotinhtrangnhansu";
+            FormChonBaoCao fchonbaocao = new FormChonBaoCao(query);
+            fchonbaocao.ShowDialog();
+        }
 
-        //Chuc nang chon bao cao
+        //Chức năng tra cứu
         private string fieldValue = string.Empty;
 
+        private void BindToDataGridView(string queryCondition)
+        {
+            DataAccess dataAccess = new DataAccess();
+            string query = "SELECT * FROM baocaotinhtrangnhansu WHERE " + queryCondition;
+            DataTable dataTable = dataAccess.GetData(query);
+            if (dataTable != null)
+            {
+                dataGridViewReport.DataSource = dataTable;
+            }
+        }
         private void FormSearchClosed(object sender, FormClosedEventArgs e)
         {
-            FormChonBaoCao fsearch = sender as FormChonBaoCao;
+            FormSearching fsearch = sender as FormSearching;
             if (fsearch != null)
             {
                 fieldValue = fsearch.ResultSearching();
             }
 
-            if (!fieldValue.Equals(string.Empty))
+            if (fieldValue.Equals(string.Empty))
             {
-                Console.WriteLine("\n"+fieldValue.ToString()+"\n");
+                BindToDataGridView();
+            }
+            else
+            {
+                Console.WriteLine(fieldValue.ToString());
+                BindToDataGridView(fieldValue);
             }
         }
 
-        private void btnXemBaoCao_Click(object sender, EventArgs e)
+        private void btnTraCuu_Click(object sender, EventArgs e)
         {
-            string query = "SELECT DISTINCT nam FROM baocaotinhtrangnhansu";
-            FormChonBaoCao fchonbaocao = new FormChonBaoCao(query);
-            fchonbaocao.FormClosed += FormSearchClosed;
-            fchonbaocao.ShowDialog();
+            string query = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` " +
+                "WHERE `TABLE_SCHEMA`='employeems' AND `TABLE_NAME`='baocaotinhtrangnhansu'";
+            FormSearching fsearch = new FormSearching(query,3);
+            fsearch.FormClosed += FormSearchClosed;
+            fsearch.ShowDialog();
         }
     }
 }

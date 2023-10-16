@@ -17,7 +17,6 @@ namespace QuanLyNhanSuApp
             InitializeComponent();
         }
 
-        private string queryParam = string.Empty;
         private string queryDBToCbb = string.Empty;
 
         public FormChonBaoCao(string query)
@@ -68,10 +67,6 @@ namespace QuanLyNhanSuApp
             return isRequire;
         }
 
-        public string ResultSearching()
-        {
-            return queryParam;
-        }
         private void btnXacNhan_Click(object sender, EventArgs e)
         {
             if (!isRequire())
@@ -80,7 +75,10 @@ namespace QuanLyNhanSuApp
             }
             else
             {
-                queryParam = " thang = '"+cbbThang.SelectedItem.ToString()+"' AND nam = '"+cbbNam.SelectedValue.ToString()+"'";
+                string queryParam = " WHERE thang = '"+cbbThang.SelectedItem.ToString()+"' AND nam = '"+cbbNam.SelectedValue.ToString()+"'";
+                string textHeader = "Báo cáo tổng quan tình hình nhân sự tháng "+ cbbThang.SelectedItem.ToString();
+                FormBaoCao fbc = new FormBaoCao(queryParam,textHeader);
+                fbc.ShowDialog();
                 this.Close();
             }
         }
