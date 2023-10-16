@@ -52,7 +52,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(124, 533);
+            this.label1.Location = new System.Drawing.Point(132, 533);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(489, 36);
             this.label1.TabIndex = 2;
@@ -62,12 +62,13 @@
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(680, 540);
+            this.linkLabel1.Location = new System.Drawing.Point(672, 540);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(107, 27);
+            this.linkLabel1.Size = new System.Drawing.Size(440, 27);
             this.linkLabel1.TabIndex = 3;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "linkLabel1";
+            this.linkLabel1.Text = "https://github.com/DannyCandy/ProjectX.git";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // FormVePM
             // 
