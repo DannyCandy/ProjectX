@@ -17,26 +17,32 @@ namespace QuanLyNhanSuApp
             InitializeComponent();
         }
 
-        private string queryDBToCbb = string.Empty;
+        private string queryDBToCbbNam = string.Empty;
+        private string queryDBToCbbThang = string.Empty;
 
-        public FormChonBaoCao(string query)
+        public FormChonBaoCao(string query1, string query2)
         {
             InitializeComponent();
-            queryDBToCbb = query;
+            queryDBToCbbNam = query1;
+            queryDBToCbbThang = query2;
         }
 
-        private void BindToComboboxField(string query)
+        private void BindToComboboxField(string queryNam,string queryThang)
         {
             DataAccess dataAccess = new DataAccess();
-            cbbNam.DataSource = dataAccess.GetData(query);
+            cbbNam.DataSource = dataAccess.GetData(queryNam);
             cbbNam.DisplayMember = "nam";
             cbbNam.ValueMember = "nam";
+
+            cbbThang.DataSource = dataAccess.GetData(queryThang);
+            cbbThang.DisplayMember = "thang";
+            cbbThang.ValueMember = "thang";
         }
         private void FormChonBaoCao_Load(object sender, EventArgs e)
         {
             try
             {
-                BindToComboboxField(queryDBToCbb);
+                BindToComboboxField(queryDBToCbbNam,queryDBToCbbThang);
             }
             catch (Exception ex)
             {
@@ -75,8 +81,8 @@ namespace QuanLyNhanSuApp
             }
             else
             {
-                string queryParam = " WHERE thang = '"+cbbThang.SelectedItem.ToString()+"' AND nam = '"+cbbNam.SelectedValue.ToString()+"'";
-                string textHeader = "Báo cáo tổng quan tình hình nhân sự tháng "+ cbbThang.SelectedItem.ToString();
+                string queryParam = " WHERE thang = '"+cbbThang.SelectedValue.ToString()+"' AND nam = '"+cbbNam.SelectedValue.ToString()+"'";
+                string textHeader = "Báo cáo tổng quan tình hình nhân sự tháng "+ cbbThang.SelectedValue.ToString();
                 FormBaoCao fbc = new FormBaoCao(queryParam,textHeader);
                 fbc.ShowDialog();
                 this.Close();

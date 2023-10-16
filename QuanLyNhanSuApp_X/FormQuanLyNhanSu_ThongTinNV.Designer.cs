@@ -264,15 +264,18 @@
             // 
             // cbbBoPhan
             // 
+            this.cbbBoPhan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbBoPhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbBoPhan.FormattingEnabled = true;
             this.cbbBoPhan.Location = new System.Drawing.Point(250, 127);
             this.cbbBoPhan.Name = "cbbBoPhan";
             this.cbbBoPhan.Size = new System.Drawing.Size(310, 37);
             this.cbbBoPhan.TabIndex = 79;
+            this.cbbBoPhan.SelectedValueChanged += new System.EventHandler(this.cbbBoPhan_SelectedValueChanged);
             // 
             // cbbPhongBan
             // 
+            this.cbbPhongBan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbPhongBan.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbPhongBan.FormattingEnabled = true;
             this.cbbPhongBan.Location = new System.Drawing.Point(250, 191);
@@ -291,6 +294,7 @@
             // 
             // cbbGioiTinh
             // 
+            this.cbbGioiTinh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbGioiTinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbGioiTinh.FormattingEnabled = true;
             this.cbbGioiTinh.Items.AddRange(new object[] {

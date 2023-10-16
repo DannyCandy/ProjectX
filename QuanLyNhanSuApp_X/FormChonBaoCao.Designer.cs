@@ -155,19 +155,6 @@
             // 
             this.cbbThang.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbThang.FormattingEnabled = true;
-            this.cbbThang.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12"});
             this.cbbThang.Location = new System.Drawing.Point(227, 36);
             this.cbbThang.Name = "cbbThang";
             this.cbbThang.Size = new System.Drawing.Size(138, 37);

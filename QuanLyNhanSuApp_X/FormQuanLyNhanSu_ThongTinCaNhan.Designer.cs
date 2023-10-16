@@ -197,7 +197,7 @@
             this.dgvFormQuanLyTTCaNhan.RowHeadersWidth = 51;
             this.dgvFormQuanLyTTCaNhan.RowTemplate.Height = 24;
             this.dgvFormQuanLyTTCaNhan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFormQuanLyTTCaNhan.Size = new System.Drawing.Size(1180, 134);
+            this.dgvFormQuanLyTTCaNhan.Size = new System.Drawing.Size(1180, 274);
             this.dgvFormQuanLyTTCaNhan.TabIndex = 82;
             this.dgvFormQuanLyTTCaNhan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFormQuanLyTTCaNhan_CellClick);
             // 
@@ -554,7 +554,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1208, 515);
+            this.ClientSize = new System.Drawing.Size(1208, 675);
             this.Controls.Add(this.btnTraCuu);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnXoa);

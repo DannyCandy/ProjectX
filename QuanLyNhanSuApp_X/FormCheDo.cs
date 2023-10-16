@@ -18,6 +18,11 @@ namespace QuanLyNhanSuApp
         public FormCheDo()
         {
             InitializeComponent();
+            defaultFont = menuStripCheDo.Font;
+            menuStripCheDo.Items[0].Select();
+            menuStripCheDo.Items[0].Font = new Font(FontFamily.GenericSansSerif,
+    12.0F, FontStyle.Bold);
+            menuStripCheDo.Items[1].Font = defaultFont;
         }
 
         public FormCheDo(string query)

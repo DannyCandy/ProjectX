@@ -13,6 +13,7 @@ namespace QuanLyNhanSuApp
 {
     public partial class FormQuanLyNhanSu_ThongTinNV : Form
     {
+        private string index = string.Empty;
         public FormQuanLyNhanSu_ThongTinNV()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace QuanLyNhanSuApp
                 DataTable dataTable = dataAccess.GetData(query);
                 if (dataTable != null)
                 {
-                    cbbBoPhan.DataSource = dataAccess.GetData(query);
+                    cbbBoPhan.DataSource = dataTable;
                     cbbBoPhan.DisplayMember = "tenBoPhan"; // Cột hiển thị
                     cbbBoPhan.ValueMember = "maBoPhan"; // Cột giá trị
                 }
@@ -45,6 +46,27 @@ namespace QuanLyNhanSuApp
             {
                 DataAccess dataAccess = new DataAccess();
                 string query = "SELECT maPhong,tenPhong FROM phongban";
+                DataTable dataTable = dataAccess.GetData(query);
+                if (dataTable != null)
+                {
+                    cbbPhongBan.DataSource = dataTable;
+                    cbbPhongBan.DisplayMember = "tenPhong"; // Cột hiển thị
+                    cbbPhongBan.ValueMember = "maPhong"; // Cột giá trị
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể load dữ liệu Combobox Phòng ban. Error: " + ex.Message);
+            }
+
+        }
+
+        private void BindToComboboxPhongBan(string index)
+        {
+            try
+            {
+                DataAccess dataAccess = new DataAccess();
+                string query = "SELECT maPhong,tenPhong FROM phongban WHERE maBoPhan = '"+index+"'";
                 DataTable dataTable = dataAccess.GetData(query);
                 if (dataTable != null)
                 {
@@ -468,6 +490,15 @@ namespace QuanLyNhanSuApp
             if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true; // Không cho phép ký tự được nhập vào
+            }
+        }
+
+        private void cbbBoPhan_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if(cbbBoPhan.Text != string.Empty)
+            {
+                index = cbbBoPhan.SelectedValue.ToString();
+                BindToComboboxPhongBan(index);
             }
         }
     }

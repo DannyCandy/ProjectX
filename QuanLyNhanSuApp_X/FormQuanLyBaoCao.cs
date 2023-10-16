@@ -121,8 +121,9 @@ namespace QuanLyNhanSuApp
         }
         private void btnXemBaoCao_Click(object sender, EventArgs e)
         {
-            string query = "SELECT DISTINCT nam FROM baocaotinhtrangnhansu";
-            FormChonBaoCao fchonbaocao = new FormChonBaoCao(query);
+            string queryNam = "SELECT DISTINCT nam FROM baocaotinhtrangnhansu";
+            string queryThang = "SELECT DISTINCT thang FROM baocaotinhtrangnhansu";
+            FormChonBaoCao fchonbaocao = new FormChonBaoCao(queryNam,queryThang);
             fchonbaocao.ShowDialog();
         }
 
