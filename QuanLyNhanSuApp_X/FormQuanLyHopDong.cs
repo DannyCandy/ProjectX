@@ -170,6 +170,10 @@ namespace QuanLyNhanSuApp
                 double.TryParse(txtThoiHanLamViec.Text, out thoiGianLamViec);
                 if (daysDiff >= thoiGianLamViec && thoiGianLamViec >= conditionDaysDiff)
                 {
+                    
+                }
+                else
+                {
                     message += "Thời gian làm việc không hợp lệ!\n";
                 }
             }
