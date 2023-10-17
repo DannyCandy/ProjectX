@@ -250,14 +250,14 @@ namespace QuanLyNhanSuApp
             {
                     if (isValid() == "")
                     {
-                        DataAccess dataAccess = new DataAccess();
+                        /*DataAccess dataAccess = new DataAccess();
                         DataTable dataTable = dataAccess.GetData("SELECT maNV FROM ttcanhan WHERE maNV = '" + txtMaNV.Text + "'");
                         if (dataTable.Rows.Count == 0)
                         {
                             MessageBox.Show("Mã nhân viên không tồn tại!", "Cảnh báo");
                         }
                         else
-                        {
+                        {*/
                             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn cập nhật không?", "Xác nhận cập nhật", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                             if (result == DialogResult.Yes)
@@ -350,7 +350,7 @@ namespace QuanLyNhanSuApp
                                     }
                                 }
                             }
-                        }
+                        /*}*/
                     }          
             }
                 //Lock form
@@ -377,7 +377,6 @@ namespace QuanLyNhanSuApp
                 btnSua.Text = "Cập nhật";
 
                 //Open form
-                txtMaNV.ReadOnly = false;
                 txtHoTen.ReadOnly = false;
                 txtTonGiao.ReadOnly = false;
                 txtQuocTich.ReadOnly = false;

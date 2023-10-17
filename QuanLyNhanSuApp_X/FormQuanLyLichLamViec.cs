@@ -310,8 +310,8 @@ namespace QuanLyNhanSuApp
                             string timeOutString = dateTimePickerGioRa.Value.ToString("HH:mm:ss");
 
                             dataAccess = new DataAccess();
-                            string query = "INSERT INTO `employeems`.`lichlamviec` (`maLichLamViec`, `thang`, `nam`, `gioVao`, `gioRa`, `caLamViec`, `maNV`) " +
-                                "VALUES ('" + txtMaLichLamViec.Text + "', '" + txtThang.Text + "', '" + txtNam.Text + "', '" + timeInString + "', '" + timeOutString + "', '" + txtCaLamViec.Text + "', '" + txtMaNhanVien.Text + "');";
+                            string query = "INSERT INTO `employeems`.`lichlamviec` (`maLichLamViec`, `thang`, `nam`, `gioVao`, `gioRa`,`ngayLamViec`, `caLamViec`, `maNV`) " +
+                                "VALUES ('" + txtMaLichLamViec.Text + "', '" + txtThang.Text + "', '" + txtNam.Text + "', '" + timeInString + "', '" + timeOutString + "', '"+txtNgayLamViec.Text+"', '" + txtCaLamViec.Text + "', '" + txtMaNhanVien.Text + "');";
                             dataAccess.InsertData(query);
                             MessageBox.Show("Thêm thành công!", "Thông báo");
                             BindToDataGridView();
