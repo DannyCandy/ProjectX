@@ -64,6 +64,7 @@
             this.cbbTruongTimKiem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbTruongTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbTruongTimKiem.FormattingEnabled = true;
+            this.cbbTruongTimKiem.IntegralHeight = false;
             this.cbbTruongTimKiem.Location = new System.Drawing.Point(294, 78);
             this.cbbTruongTimKiem.Name = "cbbTruongTimKiem";
             this.cbbTruongTimKiem.Size = new System.Drawing.Size(351, 37);

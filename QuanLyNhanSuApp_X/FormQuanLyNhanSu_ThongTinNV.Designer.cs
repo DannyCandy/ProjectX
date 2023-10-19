@@ -62,6 +62,11 @@
             // 
             // dgvFormQuanLyTTNVCoBan
             // 
+            this.dgvFormQuanLyTTNVCoBan.AllowUserToAddRows = false;
+            this.dgvFormQuanLyTTNVCoBan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvFormQuanLyTTNVCoBan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFormQuanLyTTNVCoBan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFormQuanLyTTNVCoBan.Location = new System.Drawing.Point(14, 369);
             this.dgvFormQuanLyTTNVCoBan.Name = "dgvFormQuanLyTTNVCoBan";
@@ -238,6 +243,8 @@
             // 
             // txtTTHonNhan
             // 
+            this.txtTTHonNhan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTTHonNhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTTHonNhan.Location = new System.Drawing.Point(789, 71);
             this.txtTTHonNhan.Name = "txtTTHonNhan";
@@ -246,6 +253,8 @@
             // 
             // txtCMND
             // 
+            this.txtCMND.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCMND.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCMND.Location = new System.Drawing.Point(789, 191);
             this.txtCMND.Name = "txtCMND";
@@ -255,6 +264,8 @@
             // 
             // txtNoiCap
             // 
+            this.txtNoiCap.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNoiCap.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNoiCap.Location = new System.Drawing.Point(789, 250);
             this.txtNoiCap.Multiline = true;
@@ -267,6 +278,7 @@
             this.cbbBoPhan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbBoPhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbBoPhan.FormattingEnabled = true;
+            this.cbbBoPhan.IntegralHeight = false;
             this.cbbBoPhan.Location = new System.Drawing.Point(250, 127);
             this.cbbBoPhan.Name = "cbbBoPhan";
             this.cbbBoPhan.Size = new System.Drawing.Size(310, 37);
@@ -278,6 +290,7 @@
             this.cbbPhongBan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbPhongBan.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbPhongBan.FormattingEnabled = true;
+            this.cbbPhongBan.IntegralHeight = false;
             this.cbbPhongBan.Location = new System.Drawing.Point(250, 191);
             this.cbbPhongBan.Name = "cbbPhongBan";
             this.cbbPhongBan.Size = new System.Drawing.Size(310, 37);
@@ -285,6 +298,8 @@
             // 
             // dateTimePickerNgaySinh
             // 
+            this.dateTimePickerNgaySinh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePickerNgaySinh.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerNgaySinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerNgaySinh.Location = new System.Drawing.Point(789, 130);
@@ -294,6 +309,8 @@
             // 
             // cbbGioiTinh
             // 
+            this.cbbGioiTinh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbbGioiTinh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbGioiTinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbGioiTinh.FormattingEnabled = true;

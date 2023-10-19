@@ -54,6 +54,8 @@
             // 
             // dateTimePickerNgayTroLaiLam
             // 
+            this.dateTimePickerNgayTroLaiLam.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePickerNgayTroLaiLam.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerNgayTroLaiLam.Location = new System.Drawing.Point(856, 204);
             this.dateTimePickerNgayTroLaiLam.Name = "dateTimePickerNgayTroLaiLam";
@@ -62,6 +64,8 @@
             // 
             // dateTimePickerNgayNghiSinh
             // 
+            this.dateTimePickerNgayNghiSinh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePickerNgayNghiSinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerNgayNghiSinh.Location = new System.Drawing.Point(856, 86);
             this.dateTimePickerNgayNghiSinh.Name = "dateTimePickerNgayNghiSinh";
@@ -70,6 +74,8 @@
             // 
             // txtMaThaiSan
             // 
+            this.txtMaThaiSan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMaThaiSan.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaThaiSan.Location = new System.Drawing.Point(856, 27);
             this.txtMaThaiSan.Name = "txtMaThaiSan";
@@ -79,6 +85,8 @@
             // 
             // lblNgayTroLaiLam
             // 
+            this.lblNgayTroLaiLam.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNgayTroLaiLam.AutoSize = true;
             this.lblNgayTroLaiLam.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNgayTroLaiLam.Location = new System.Drawing.Point(643, 209);
@@ -89,6 +97,8 @@
             // 
             // txtGhiChu
             // 
+            this.txtGhiChu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtGhiChu.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGhiChu.Location = new System.Drawing.Point(265, 145);
             this.txtGhiChu.Multiline = true;
@@ -98,6 +108,8 @@
             // 
             // txtTroCapCty
             // 
+            this.txtTroCapCty.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTroCapCty.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTroCapCty.Location = new System.Drawing.Point(265, 86);
             this.txtTroCapCty.Name = "txtTroCapCty";
@@ -107,6 +119,8 @@
             // 
             // lblNgayNghiSinh
             // 
+            this.lblNgayNghiSinh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNgayNghiSinh.AutoSize = true;
             this.lblNgayNghiSinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNgayNghiSinh.Location = new System.Drawing.Point(643, 91);
@@ -117,6 +131,8 @@
             // 
             // lblMaThaiSan
             // 
+            this.lblMaThaiSan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMaThaiSan.AutoSize = true;
             this.lblMaThaiSan.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaThaiSan.Location = new System.Drawing.Point(643, 32);
@@ -127,6 +143,8 @@
             // 
             // lblNgayTaoYeuCau
             // 
+            this.lblNgayTaoYeuCau.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNgayTaoYeuCau.AutoSize = true;
             this.lblNgayTaoYeuCau.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNgayTaoYeuCau.Location = new System.Drawing.Point(643, 269);
@@ -137,6 +155,8 @@
             // 
             // lblGhiChu
             // 
+            this.lblGhiChu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblGhiChu.AutoSize = true;
             this.lblGhiChu.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGhiChu.Location = new System.Drawing.Point(74, 148);
@@ -147,6 +167,8 @@
             // 
             // lblTroCapCongTy
             // 
+            this.lblTroCapCongTy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTroCapCongTy.AutoSize = true;
             this.lblTroCapCongTy.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTroCapCongTy.Location = new System.Drawing.Point(74, 89);
@@ -157,6 +179,8 @@
             // 
             // txtMaNV
             // 
+            this.txtMaNV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMaNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaNV.Location = new System.Drawing.Point(265, 27);
             this.txtMaNV.Name = "txtMaNV";
@@ -166,6 +190,8 @@
             // 
             // lblMaNV
             // 
+            this.lblMaNV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMaNV.AutoSize = true;
             this.lblMaNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaNV.Location = new System.Drawing.Point(74, 30);
@@ -176,6 +202,11 @@
             // 
             // dgvFormQuanLyCheDo_ThaiSan
             // 
+            this.dgvFormQuanLyCheDo_ThaiSan.AllowUserToAddRows = false;
+            this.dgvFormQuanLyCheDo_ThaiSan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvFormQuanLyCheDo_ThaiSan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFormQuanLyCheDo_ThaiSan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFormQuanLyCheDo_ThaiSan.Location = new System.Drawing.Point(23, 404);
             this.dgvFormQuanLyCheDo_ThaiSan.Name = "dgvFormQuanLyCheDo_ThaiSan";
@@ -189,6 +220,8 @@
             // 
             // dateTimePickerNgayVeSom
             // 
+            this.dateTimePickerNgayVeSom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePickerNgayVeSom.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerNgayVeSom.Location = new System.Drawing.Point(856, 143);
             this.dateTimePickerNgayVeSom.Name = "dateTimePickerNgayVeSom";
@@ -197,6 +230,8 @@
             // 
             // lblNgayVeSom
             // 
+            this.lblNgayVeSom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNgayVeSom.AutoSize = true;
             this.lblNgayVeSom.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNgayVeSom.Location = new System.Drawing.Point(643, 148);
@@ -207,6 +242,8 @@
             // 
             // txtNgayTaoYeuCau
             // 
+            this.txtNgayTaoYeuCau.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNgayTaoYeuCau.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNgayTaoYeuCau.Location = new System.Drawing.Point(856, 266);
             this.txtNgayTaoYeuCau.Name = "txtNgayTaoYeuCau";

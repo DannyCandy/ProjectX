@@ -153,8 +153,10 @@
             // 
             // cbbThang
             // 
+            this.cbbThang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbThang.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbThang.FormattingEnabled = true;
+            this.cbbThang.IntegralHeight = false;
             this.cbbThang.Location = new System.Drawing.Point(227, 36);
             this.cbbThang.Name = "cbbThang";
             this.cbbThang.Size = new System.Drawing.Size(138, 37);
@@ -172,8 +174,10 @@
             // 
             // cbbNam
             // 
+            this.cbbNam.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbNam.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbNam.FormattingEnabled = true;
+            this.cbbNam.IntegralHeight = false;
             this.cbbNam.Location = new System.Drawing.Point(227, 90);
             this.cbbNam.Name = "cbbNam";
             this.cbbNam.Size = new System.Drawing.Size(138, 37);

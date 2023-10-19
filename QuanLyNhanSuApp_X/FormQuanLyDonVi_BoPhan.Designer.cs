@@ -46,17 +46,21 @@
             // 
             // dateTimePickerNgayThanhLap
             // 
+            this.dateTimePickerNgayThanhLap.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePickerNgayThanhLap.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerNgayThanhLap.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerNgayThanhLap.Location = new System.Drawing.Point(833, 32);
+            this.dateTimePickerNgayThanhLap.Location = new System.Drawing.Point(845, 57);
             this.dateTimePickerNgayThanhLap.Name = "dateTimePickerNgayThanhLap";
             this.dateTimePickerNgayThanhLap.Size = new System.Drawing.Size(296, 34);
             this.dateTimePickerNgayThanhLap.TabIndex = 72;
             // 
             // txtGhiChu
             // 
+            this.txtGhiChu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtGhiChu.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGhiChu.Location = new System.Drawing.Point(833, 89);
+            this.txtGhiChu.Location = new System.Drawing.Point(845, 114);
             this.txtGhiChu.Multiline = true;
             this.txtGhiChu.Name = "txtGhiChu";
             this.txtGhiChu.Size = new System.Drawing.Size(296, 151);
@@ -64,17 +68,21 @@
             // 
             // txtTenBoPhan
             // 
+            this.txtTenBoPhan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTenBoPhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenBoPhan.Location = new System.Drawing.Point(265, 86);
+            this.txtTenBoPhan.Location = new System.Drawing.Point(277, 111);
             this.txtTenBoPhan.Name = "txtTenBoPhan";
             this.txtTenBoPhan.Size = new System.Drawing.Size(284, 34);
             this.txtTenBoPhan.TabIndex = 65;
             // 
             // lblNgayThanhLap
             // 
+            this.lblNgayThanhLap.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNgayThanhLap.AutoSize = true;
             this.lblNgayThanhLap.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNgayThanhLap.Location = new System.Drawing.Point(633, 32);
+            this.lblNgayThanhLap.Location = new System.Drawing.Point(645, 57);
             this.lblNgayThanhLap.Name = "lblNgayThanhLap";
             this.lblNgayThanhLap.Size = new System.Drawing.Size(172, 29);
             this.lblNgayThanhLap.TabIndex = 61;
@@ -82,9 +90,11 @@
             // 
             // lblGhiChu
             // 
+            this.lblGhiChu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblGhiChu.AutoSize = true;
             this.lblGhiChu.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGhiChu.Location = new System.Drawing.Point(633, 89);
+            this.lblGhiChu.Location = new System.Drawing.Point(645, 114);
             this.lblGhiChu.Name = "lblGhiChu";
             this.lblGhiChu.Size = new System.Drawing.Size(94, 29);
             this.lblGhiChu.TabIndex = 60;
@@ -92,9 +102,11 @@
             // 
             // lblTenBoPhan
             // 
+            this.lblTenBoPhan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTenBoPhan.AutoSize = true;
             this.lblTenBoPhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTenBoPhan.Location = new System.Drawing.Point(74, 89);
+            this.lblTenBoPhan.Location = new System.Drawing.Point(86, 114);
             this.lblTenBoPhan.Name = "lblTenBoPhan";
             this.lblTenBoPhan.Size = new System.Drawing.Size(149, 29);
             this.lblTenBoPhan.TabIndex = 59;
@@ -102,8 +114,10 @@
             // 
             // txtMaBoPhan
             // 
+            this.txtMaBoPhan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMaBoPhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaBoPhan.Location = new System.Drawing.Point(265, 32);
+            this.txtMaBoPhan.Location = new System.Drawing.Point(277, 57);
             this.txtMaBoPhan.Name = "txtMaBoPhan";
             this.txtMaBoPhan.Size = new System.Drawing.Size(284, 34);
             this.txtMaBoPhan.TabIndex = 64;
@@ -111,9 +125,11 @@
             // 
             // lblMaBoPhan
             // 
+            this.lblMaBoPhan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMaBoPhan.AutoSize = true;
             this.lblMaBoPhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaBoPhan.Location = new System.Drawing.Point(74, 30);
+            this.lblMaBoPhan.Location = new System.Drawing.Point(86, 55);
             this.lblMaBoPhan.Name = "lblMaBoPhan";
             this.lblMaBoPhan.Size = new System.Drawing.Size(139, 29);
             this.lblMaBoPhan.TabIndex = 63;
@@ -121,6 +137,11 @@
             // 
             // dgvFormQuanLyDonVi_BoPhan
             // 
+            this.dgvFormQuanLyDonVi_BoPhan.AllowUserToAddRows = false;
+            this.dgvFormQuanLyDonVi_BoPhan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvFormQuanLyDonVi_BoPhan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFormQuanLyDonVi_BoPhan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFormQuanLyDonVi_BoPhan.Location = new System.Drawing.Point(23, 404);
             this.dgvFormQuanLyDonVi_BoPhan.Name = "dgvFormQuanLyDonVi_BoPhan";

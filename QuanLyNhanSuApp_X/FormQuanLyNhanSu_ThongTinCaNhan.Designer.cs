@@ -66,6 +66,8 @@
             // 
             // txtHocVan
             // 
+            this.txtHocVan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtHocVan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHocVan.Location = new System.Drawing.Point(886, 117);
             this.txtHocVan.Multiline = true;
@@ -189,6 +191,9 @@
             // dgvFormQuanLyTTCaNhan
             // 
             this.dgvFormQuanLyTTCaNhan.AllowUserToAddRows = false;
+            this.dgvFormQuanLyTTCaNhan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvFormQuanLyTTCaNhan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFormQuanLyTTCaNhan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFormQuanLyTTCaNhan.Location = new System.Drawing.Point(14, 369);
@@ -230,6 +235,8 @@
             // 
             // txtGhiChu
             // 
+            this.txtGhiChu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtGhiChu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGhiChu.Location = new System.Drawing.Point(886, 172);
             this.txtGhiChu.Multiline = true;
@@ -247,6 +254,8 @@
             // 
             // txtDcThuongTru
             // 
+            this.txtDcThuongTru.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDcThuongTru.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDcThuongTru.Location = new System.Drawing.Point(886, 14);
             this.txtDcThuongTru.Name = "txtDcThuongTru";
@@ -265,6 +274,8 @@
             // 
             // txtDcTamTru
             // 
+            this.txtDcTamTru.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDcTamTru.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDcTamTru.Location = new System.Drawing.Point(886, 62);
             this.txtDcTamTru.Name = "txtDcTamTru";
@@ -283,6 +294,8 @@
             // 
             // txtNguyenQuan
             // 
+            this.txtNguyenQuan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNguyenQuan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNguyenQuan.Location = new System.Drawing.Point(886, 231);
             this.txtNguyenQuan.Name = "txtNguyenQuan";
