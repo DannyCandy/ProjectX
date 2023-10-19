@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -353,7 +354,7 @@ namespace QuanLyNhanSuApp
         private void btnTraCuu_Click(object sender, EventArgs e)
         {
             string query = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` " +
-                "WHERE `TABLE_SCHEMA`='employeems' AND `TABLE_NAME`='user'";
+                "WHERE `TABLE_SCHEMA`='employeems' AND `TABLE_NAME`='user' AND `COLUMN_NAME` <> 'pass'";
             FormSearching fsearch = new FormSearching(query);
             fsearch.FormClosed += FormSearchClosed;
             fsearch.ShowDialog();

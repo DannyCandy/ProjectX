@@ -14,7 +14,9 @@ namespace QuanLyNhanSuApp
 {
     public partial class FormQuanLyKhoaDaoTao : Form
     {
+        //Tạo sự thay đổi khi hiển thị trên form Cá nhân và quản lý
         private bool isSelf = false;
+        //Câu truy vấn trong form cá nhân
         private string selfQuery = string.Empty;
         public FormQuanLyKhoaDaoTao()
         {
